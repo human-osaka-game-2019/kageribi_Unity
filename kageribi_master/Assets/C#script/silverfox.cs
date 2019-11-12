@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class goldfox : MonoBehaviour
+public class silverfox : MonoBehaviour
 {
     public float speed = 0.1f;
 
     public RuntimeAnimatorController   Fire;
     public RuntimeAnimatorController  Water;
     public RuntimeAnimatorController  Grass;
-    public GameObject Gin;
+    public GameObject Kin;
 
     private Animator animator;
 
@@ -87,7 +87,7 @@ public class goldfox : MonoBehaviour
         {
             if(animator.runtimeAnimatorController==Fire)//もし　アニメーターがFireなら
             {
-                Instantiate(Gin, this.gameObject.transform.position, Quaternion.identity);
+                Instantiate(Kin, this.gameObject.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
                 Debug.Log("kieta");
                 animator.runtimeAnimatorController = Fire;
@@ -97,7 +97,7 @@ public class goldfox : MonoBehaviour
         {
             if (animator.runtimeAnimatorController == Water)//もし　アニメーターがFireなら
             {
-                Instantiate(Gin, this.gameObject.transform.position, Quaternion.identity);
+                Instantiate(Kin, this.gameObject.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
                 Debug.Log("kieta");
                 animator.runtimeAnimatorController =Water ;
@@ -107,7 +107,7 @@ public class goldfox : MonoBehaviour
         {
             if (animator.runtimeAnimatorController == Grass)//もし　アニメーターがFireなら
             {
-                Instantiate(Gin, this.gameObject.transform.position, Quaternion.identity);
+                Instantiate(Kin, this.gameObject.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
                 Debug.Log("kieta");
                 animator.runtimeAnimatorController = Grass;
