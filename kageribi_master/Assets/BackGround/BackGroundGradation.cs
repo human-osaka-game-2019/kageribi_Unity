@@ -5,37 +5,86 @@ using UnityEngine.UI;
 
 public class BackGroundGradation : MonoBehaviour
 {
-    public GameObject Filter;
+    [System.Serializable]
+    public class BGFilter
+    {
+        public GameObject Filter;
+        public bool isStart;
+        bool isMax;
+        public float speed = 0.01f;
+        public float alpha = 0.0f;
+        public void ChangeAlphaValue()
+        {
+            if (isMax == false)
+            {
+                alpha += speed;
+                if (alpha >= 1.0f)
+                {
+                    isMax = true;
+                }
+            }
+            else
+            {
+                alpha -= speed;
+                if (alpha <= 0.0f)
+                {
+                    isMax = false;
+                    isStart = false;
+                    alpha = 0.0f;
+                }
+            }
+        }
+    }
 
-    float alpha = 0.0f;
-    public float speed;
-    bool ismax;
+    public BGFilter Moning = new BGFilter();
+    public BGFilter Evening = new BGFilter();
+    public BGFilter Night = new BGFilter();
 
     // Start is called before the first frame update
     void Start()
     {
-        ismax = false;
+        Moning.Filter.SetActive(false);
+        Evening.Filter.SetActive(false);
+        Night.Filter.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Filter.GetComponent<Renderer> ().material.color = new Color(1.0f, 1.0f, 1.0f, alpha);
-        
-        if (ismax == false)
+        if (Moning.isStart == true)
         {
-            alpha += speed;
-            if (alpha > 1.0f)
+            Moning.Filter.GetComponent<Renderer> ().material.color = new Color(1.0f, 1.0f, 1.0f, Moning.alpha);
+            Moning.Filter.SetActive(true);
+            Moning.ChangeAlphaValue();
+
+            if (Moning.alpha <= 0.0f)
             {
-                ismax = true;
+                Evening.isStart = true;
             }
         }
-        else
+        
+
+        if (Evening.isStart == true)
         {
-            alpha -= speed;
-            if (alpha < 0.0f)
+            Evening.Filter.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, Evening.alpha);
+            Evening.Filter.SetActive(true);
+            Evening.ChangeAlphaValue();
+
+            if (Evening.alpha >= 1.0f)
             {
-                ismax = false;
+                Night.isStart = true;
+            }
+        }
+
+        if (Night.isStart == true)
+        {
+            Night.Filter.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, Night.alpha);
+            Night.Filter.SetActive(true);
+            Night.ChangeAlphaValue();
+
+            if (Night.alpha >= 1.0f)
+            {
+                Moning.isStart = true;
             }
         }
     }
