@@ -13,9 +13,17 @@ TagManager:
   - UI
   - 
   - 
+  - 
+  - 
   - Sprite
   - Background
   - Filter
+  - 
+  - obj1
+  - obj2
+  - obj3
+  - 
+  - 
   - 
   - 
   - 
@@ -49,4 +57,6 @@ TagManager:
     locked: 0
   - name: Sprite
     uniqueID: 1783016777
+  - name: obj1
+    uniqueID: 1301646917
     locked: 0
