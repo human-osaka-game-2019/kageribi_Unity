@@ -306,8 +306,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb4a996f4edf2349b2d60f2881acf4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Filter: {fileID: 1645178622}
-  speed: 0.001
+  Moning:
+    Filter: {fileID: 1917186119}
+    isStart: 1
+    speed: 0.001
+    alpha: 0
+  Evening:
+    Filter: {fileID: 1645178622}
+    isStart: 0
+    speed: 0.001
+    alpha: 0
+  Night:
+    Filter: {fileID: 1435672822}
+    isStart: 1
+    speed: 0.001
+    alpha: 1
 --- !u!4 &950595767
 Transform:
   m_ObjectHideFlags: 0
@@ -338,7 +351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1435672823
 Transform:
   m_ObjectHideFlags: 0
@@ -496,7 +509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1917186120
 Transform:
   m_ObjectHideFlags: 0
