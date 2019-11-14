@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class BackGroundGradation : MonoBehaviour
+public class BackgroundGradation : MonoBehaviour
 {
     [System.Serializable]
     public class BGFilter
@@ -11,27 +10,44 @@ public class BackGroundGradation : MonoBehaviour
         public GameObject Filter;
         public bool isStart;
         bool isMax;
-        public float speed = 0.01f;
-        public float alpha = 0.0f;
+        public float speed;
+        public float alpha;
+
+        public void DrawTexture()
+        {
+            Filter.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+            Filter.SetActive(true);
+
+            ChangeAlphaValue();
+        }
+
         public void ChangeAlphaValue()
         {
             if (isMax == false)
             {
                 alpha += speed;
-                if (alpha >= 1.0f)
-                {
-                    isMax = true;
-                }
             }
             else
             {
                 alpha -= speed;
-                if (alpha <= 0.0f)
-                {
-                    isMax = false;
-                    isStart = false;
-                    alpha = 0.0f;
-                }
+            }
+
+            CompareAlphaSize();
+        }
+
+        public void CompareAlphaSize()
+        {
+            if (alpha >= 1.0f)
+            {
+                isMax = true;
+                alpha = 1.0f;
+            }
+
+            if (alpha <= 0.0f)
+            {
+                isMax = false;
+                isStart = false;
+                alpha = 0.0f;
             }
         }
     }
@@ -53,9 +69,7 @@ public class BackGroundGradation : MonoBehaviour
     {
         if (Moning.isStart == true)
         {
-            Moning.Filter.GetComponent<Renderer> ().material.color = new Color(1.0f, 1.0f, 1.0f, Moning.alpha);
-            Moning.Filter.SetActive(true);
-            Moning.ChangeAlphaValue();
+            Moning.DrawTexture();
 
             if (Moning.alpha <= 0.0f)
             {
@@ -66,9 +80,7 @@ public class BackGroundGradation : MonoBehaviour
 
         if (Evening.isStart == true)
         {
-            Evening.Filter.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, Evening.alpha);
-            Evening.Filter.SetActive(true);
-            Evening.ChangeAlphaValue();
+            Evening.DrawTexture();
 
             if (Evening.alpha >= 1.0f)
             {
@@ -78,9 +90,7 @@ public class BackGroundGradation : MonoBehaviour
 
         if (Night.isStart == true)
         {
-            Night.Filter.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, Night.alpha);
-            Night.Filter.SetActive(true);
-            Night.ChangeAlphaValue();
+            Night.DrawTexture();
 
             if (Night.alpha >= 1.0f)
             {
