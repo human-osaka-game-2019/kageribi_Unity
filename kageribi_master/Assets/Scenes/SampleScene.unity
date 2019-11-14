@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 950595767}
   - component: {fileID: 950595766}
   m_Layer: 0
-  m_Name: BackGroundGradation
+  m_Name: BackgroundGradation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,17 +309,17 @@ MonoBehaviour:
   Moning:
     Filter: {fileID: 1917186119}
     isStart: 1
-    speed: 0.001
+    speed: 0.005
     alpha: 0
   Evening:
     Filter: {fileID: 1645178622}
     isStart: 0
-    speed: 0.001
+    speed: 0.005
     alpha: 0
   Night:
     Filter: {fileID: 1435672822}
     isStart: 1
-    speed: 0.001
+    speed: 0.005
     alpha: 1
 --- !u!4 &950595767
 Transform:
