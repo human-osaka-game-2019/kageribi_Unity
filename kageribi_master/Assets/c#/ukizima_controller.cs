@@ -18,7 +18,8 @@ using UnityEngine;
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
+        //time += Time.deltaTime;
+        time += 1;
         if (time >= timeout)
         {
             if (gold.activeSelf==true)
@@ -36,10 +37,6 @@ using UnityEngine;
         }
 
     }
-    /*void switching()
-    {
 
-
-    }*/
 }
 
