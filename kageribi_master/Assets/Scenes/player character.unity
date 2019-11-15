@@ -151,9 +151,9 @@ MonoBehaviour:
   Fire: {fileID: 9100000, guid: 9b44a160adae88e47867cf89d4351a0e, type: 2}
   Water: {fileID: 9100000, guid: 707c7b1cf28c39f4b810b503b8bd620b, type: 2}
   Grass: {fileID: 9100000, guid: 3a35c4868f9f7f744a8be576e4b6d0ba, type: 2}
-  Kin: {fileID: 4219927457210574869, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd, type: 3}
-  jumpForce: 200
-  jumpForce2: 300
+  Kin: {fileID: 3204007945735057774, guid: c0bcc65e3b20a664492f136460097169, type: 3}
+  jumpForce: 300
+  jumpForce2: 200
 --- !u!50 &1008527171
 Rigidbody2D:
   serializedVersion: 4
@@ -375,7 +375,12 @@ PrefabInstance:
     - target: {fileID: 6493333384236873973, guid: feb6888ad884cb7409e388f0dc7ba728,
         type: 3}
       propertyPath: m_Name
-      value: floar
+      value: floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6493333384236873973, guid: feb6888ad884cb7409e388f0dc7ba728,
+        type: 3}
+      propertyPath: m_TagString
+      value: floor
       objectReference: {fileID: 0}
     - target: {fileID: 6493333384236873969, guid: feb6888ad884cb7409e388f0dc7ba728,
         type: 3}
@@ -502,11 +507,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 292421276, guid: 16629d246efb05c4194afef737579767, type: 3}
       propertyPath: jumpForce2
-      value: 300
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 292421276, guid: 16629d246efb05c4194afef737579767, type: 3}
       propertyPath: jumpForce
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 292421281, guid: 16629d246efb05c4194afef737579767, type: 3}
       propertyPath: m_LocalPosition.x
@@ -630,17 +635,17 @@ PrefabInstance:
         type: 3}
       propertyPath: Gin
       value: 
-      objectReference: {fileID: 3204007945735057774, guid: c0bcc65e3b20a664492f136460097169,
+      objectReference: {fileID: 4219927457210574869, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd,
         type: 3}
     - target: {fileID: 4219927457210574870, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd,
         type: 3}
       propertyPath: jumpForce2
-      value: 300
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4219927457210574870, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd,
         type: 3}
       propertyPath: jumpForce
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd, type: 3}
@@ -654,7 +659,12 @@ PrefabInstance:
     - target: {fileID: 6493333384236873973, guid: feb6888ad884cb7409e388f0dc7ba728,
         type: 3}
       propertyPath: m_Name
-      value: floar
+      value: floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6493333384236873973, guid: feb6888ad884cb7409e388f0dc7ba728,
+        type: 3}
+      propertyPath: m_TagString
+      value: floor
       objectReference: {fileID: 0}
     - target: {fileID: 6493333384236873969, guid: feb6888ad884cb7409e388f0dc7ba728,
         type: 3}

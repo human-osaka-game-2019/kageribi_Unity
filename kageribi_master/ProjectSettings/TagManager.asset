@@ -6,7 +6,7 @@ TagManager:
   tags:
   - gold
   - silver
-  - floar
+  - floor
   layers:
   - Default
   - TransparentFX
