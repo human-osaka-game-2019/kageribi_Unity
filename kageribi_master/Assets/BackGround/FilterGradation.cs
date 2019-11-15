@@ -10,26 +10,25 @@ public class FilterGradation : MonoBehaviour
         public GameObject Filter;
         public bool isStart;
         bool isMax;
-        public float speed;
         public float alpha;
 
-        public void DrawTexture()
+        public void DrawTexture(float second)
         {
             Filter.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, alpha);
             Filter.SetActive(true);
 
-            ChangeAlphaValue();
+            ChangeAlphaValue(second);
         }
 
-        void ChangeAlphaValue()
+        void ChangeAlphaValue(float second)
         {
             if (isMax == false)
             {
-                alpha += speed;
+                alpha += 1.0f / (second * 60);
             }
             else
             {
-                alpha -= speed;
+                alpha -= 1.0f / (second * 60);
             }
 
             CompareAlphaSize();
@@ -50,8 +49,9 @@ public class FilterGradation : MonoBehaviour
                 alpha = 0.0f;
             }
         }
-
     }
+
+    public float second;
 
     public BGFilter Moning = new BGFilter();
     public BGFilter Evening = new BGFilter();
@@ -70,7 +70,7 @@ public class FilterGradation : MonoBehaviour
     {
         if (Moning.isStart == true)
         {
-            Moning.DrawTexture();
+            Moning.DrawTexture(second);
 
             if (Moning.alpha <= 0.0f)
             {
@@ -81,7 +81,7 @@ public class FilterGradation : MonoBehaviour
 
         if (Evening.isStart == true)
         {
-            Evening.DrawTexture();
+            Evening.DrawTexture(second);
 
             if (Evening.alpha >= 1.0f)
             {
@@ -91,7 +91,7 @@ public class FilterGradation : MonoBehaviour
 
         if (Night.isStart == true)
         {
-            Night.DrawTexture();
+            Night.DrawTexture(second);
 
             if (Night.alpha >= 1.0f)
             {
