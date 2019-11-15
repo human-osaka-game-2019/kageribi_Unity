@@ -206,6 +206,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: stage 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7801202620701974587, guid: cb3198b7ccd4cc6459d7bd29f15f1bbb,
+        type: 3}
+      propertyPath: m_TagString
+      value: stage
+      objectReference: {fileID: 0}
     - target: {fileID: 2626213789110732954, guid: cb3198b7ccd4cc6459d7bd29f15f1bbb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -398,6 +403,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BgObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 126004736434397771, guid: 79ebe274d46e8344bbbdffe34a49e61d,
+        type: 3}
+      propertyPath: m_TagString
+      value: stage
       objectReference: {fileID: 0}
     - target: {fileID: 9193246083474010883, guid: 79ebe274d46e8344bbbdffe34a49e61d,
         type: 3}
@@ -10028,6 +10038,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: gold_ukizima
       objectReference: {fileID: 0}
+    - target: {fileID: 6135336723518242861, guid: ba8d1cb12e56ad643ac53e63a193d1c9,
+        type: 3}
+      propertyPath: m_TagString
+      value: stage
+      objectReference: {fileID: 0}
     - target: {fileID: 8522974381190844206, guid: ba8d1cb12e56ad643ac53e63a193d1c9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13471,6 +13486,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: silver_ukizima
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084059026143633095, guid: e180fc94f3e2d494288824b3ca580a6a,
+        type: 3}
+      propertyPath: m_TagString
+      value: stage
       objectReference: {fileID: 0}
     - target: {fileID: 1838524526703351160, guid: e180fc94f3e2d494288824b3ca580a6a,
         type: 3}
