@@ -21,7 +21,7 @@ public class BackgroundGradation : MonoBehaviour
             ChangeAlphaValue();
         }
 
-        public void ChangeAlphaValue()
+        void ChangeAlphaValue()
         {
             if (isMax == false)
             {
@@ -35,7 +35,7 @@ public class BackgroundGradation : MonoBehaviour
             CompareAlphaSize();
         }
 
-        public void CompareAlphaSize()
+        void CompareAlphaSize()
         {
             if (alpha >= 1.0f)
             {
@@ -50,6 +50,7 @@ public class BackgroundGradation : MonoBehaviour
                 alpha = 0.0f;
             }
         }
+
     }
 
     public BGFilter Moning = new BGFilter();
