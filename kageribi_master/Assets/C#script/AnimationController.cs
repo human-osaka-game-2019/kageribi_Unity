@@ -1,4 +1,4 @@
-﻿using System.Collections;
+?�using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,11 +36,14 @@ public class AnimationController : MonoBehaviour
     private Animator Player_Animator_01;
     private Animator Player_Animator_02;
 
-    private Vector2 Player_01_position;//位置情報の変数　金狐
-    private Vector2 Player_02_position;//位置情報の変数　銀狐
+    private Vector2 Player_01_position;//位置�??�の変数�?金狐
+    private Vector2 Player_02_position;//位置�??�の変数�?�?�?
 
     public static bool IsLeft, IsRight, IsUp, IsDown;
     private float _LastX, _LastY;
+
+    public int gameCounts=10;
+    int Counts = 0;
 
 
     // Start is called before the first frame update
@@ -53,6 +56,7 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
         float x = Input.GetAxisRaw("DPADH");
         float y = Input.GetAxisRaw("DPADV");
 
@@ -81,7 +85,10 @@ public class AnimationController : MonoBehaviour
         _LastY = y;
 
         if (IsUp == true)
+        Counts++;
+        if (Counts==gameCounts)
         {
+            Counts = 0;
             if(goldfox.activeSelf==true)
             {
                 if (Player_Animator_01.runtimeAnimatorController == Gold_Fire)
