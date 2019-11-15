@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundGradation : MonoBehaviour
+public class FilterGradation : MonoBehaviour
 {
     [System.Serializable]
     public class BGFilter
@@ -77,7 +77,7 @@ public class BackgroundGradation : MonoBehaviour
                 Evening.isStart = true;
             }
         }
-        
+
 
         if (Evening.isStart == true)
         {
