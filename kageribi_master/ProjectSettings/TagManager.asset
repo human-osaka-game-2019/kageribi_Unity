@@ -11,6 +11,7 @@ TagManager:
   - Monsters
   - AttackRange_Fire
   - floor
+  - stage
   layers:
   - Default
   - TransparentFX
