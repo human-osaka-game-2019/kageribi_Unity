@@ -14,7 +14,8 @@ public class goldfox : MonoBehaviour
     private Animator animator;
 
     Rigidbody2D rigid2D;
-    public float jumpForce = 390.0f;
+    public float jumpForce;
+    public float jumpForce2;
     int jumpCounts = 0;
 
 
@@ -63,31 +64,39 @@ public class goldfox : MonoBehaviour
             if (jumpCounts==2)
             {
                 animator.SetBool("Jump", true);
-                rigid2D.AddForce(transform.up * jumpForce);
+                rigid2D.AddForce(transform.up * jumpForce2);
             }
         }
 
 
                 //以下テストコード
-                if (Input.GetKeyDown(KeyCode.A))
+                  if (Input.GetKeyDown(KeyCode.A))
         {
-            animator.runtimeAnimatorController = Fire;
-        }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            animator.runtimeAnimatorController = Water;
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            animator.runtimeAnimatorController = Grass;
+            Debug.Log("aa");
+            if(animator.runtimeAnimatorController == Fire)
+            {
+                animator.runtimeAnimatorController = Water;
+            }
+     
+            else if (animator.runtimeAnimatorController == Water)
+            {
+                animator.runtimeAnimatorController = Grass;
+            }
+      
+            else if (animator.runtimeAnimatorController == Grass)
+            {
+                animator.runtimeAnimatorController = Fire;
+            }
+            
         }
 
-
+/*
         if (Input.GetKeyDown(KeyCode.C))
         {
-            if(animator.runtimeAnimatorController==Fire)//もし　アニメーターがFireなら
+            if (animator.runtimeAnimatorController == Fire)//もし　アニメーターがFireなら
             {
-                Instantiate(Gin, this.gameObject.transform.position, Quaternion.identity);
+                GameObject prefab = Resources.Load("prefabs/Silver") as GameObject;
+                Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
                 Debug.Log("kieta");
                 animator.runtimeAnimatorController = Fire;
@@ -97,24 +106,34 @@ public class goldfox : MonoBehaviour
         {
             if (animator.runtimeAnimatorController == Water)//もし　アニメーターがFireなら
             {
-                Instantiate(Gin, this.gameObject.transform.position, Quaternion.identity);
+                GameObject prefab = Resources.Load("prefabs/Silver") as GameObject;
+                Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
                 Debug.Log("kieta");
-                animator.runtimeAnimatorController =Water ;
+                animator.runtimeAnimatorController = Water;
             }
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
             if (animator.runtimeAnimatorController == Grass)//もし　アニメーターがFireなら
             {
-                Instantiate(Gin, this.gameObject.transform.position, Quaternion.identity);
+                GameObject prefab = Resources.Load("prefabs/Silver") as GameObject;
+                Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
                 Debug.Log("kieta");
                 animator.runtimeAnimatorController = Grass;
             }
+        }*/
+
+
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.name == "floar")
+        {
+            jumpCounts = 0;
         }
-
-
     }
 
     void FinishJump()
