@@ -1,4 +1,4 @@
-﻿using System.Collections;
+?�using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class silverfox : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start() //最初の一回のみ呼び出される
+    void Start() //�?初�?�?回�?み呼び出され�?
     {
         animator = GetComponent<Animator>();
         rigid2D = GetComponent<Rigidbody2D>();
@@ -35,11 +35,11 @@ public class silverfox : MonoBehaviour
         bool left = Input.GetAxisRaw("HorizontalL") < -0.19;
         bool up = Input.GetButtonDown("XBOXA");
         //Animator animator = GetComponent<Animator>();
-        //float GetAxis ("Horizintal") ←と→　を同時に取得できる。
+        //float GetAxis ("Horizintal") ←と→�??を同時に取得できる�?
 
         if (right == true)
         {
-            transform.Translate(speed, 0.0f, 0.0f);//座標の更新　rigidbody .Addforce 
+            transform.Translate(speed, 0.0f, 0.0f);//座標�?更新�?rigidbody .Addforce 
             animator.SetInteger("Right", 1);
         }
         else if (left == true)
@@ -58,14 +58,16 @@ public class silverfox : MonoBehaviour
             jumpCounts = jumpCounts + 1;
             if (jumpCounts == 1)
             {
-                animator.SetBool("Jump", true);
+                animator.SetBool("JumpRight", true);
+                animator.SetBool("JumpLeft", true);
+                rigid2D.velocity = Vector2.zero;
                 rigid2D.AddForce(transform.up * jumpForce);
 
             }
         }
 
 
-        //以下テストコード
+        //以下テストコー�?
         if (Input.GetButtonDown("XBOXRB"))
         {
 
@@ -107,7 +109,7 @@ public class silverfox : MonoBehaviour
             /*
                     if (Input.GetKeyDown(KeyCode.C))
                     {
-                        if (animator.runtimeAnimatorController == Fire)//もし　アニメーターがFireなら
+                        if (animator.runtimeAnimatorController == Fire)//もし�?アニメーターがFireな�?
                         {
                             GameObject prefab = Resources.Load("prefabs/Gold") as GameObject;
                             Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
@@ -118,7 +120,7 @@ public class silverfox : MonoBehaviour
                     }
                     if (Input.GetKeyDown(KeyCode.C))
                     {
-                        if (animator.runtimeAnimatorController == Water)//もし　アニメーターがFireなら
+                        if (animator.runtimeAnimatorController == Water)//もし�?アニメーターがFireな�?
                         {
                             GameObject prefab = Resources.Load("prefabs/Gold") as GameObject;
                             Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
@@ -129,7 +131,7 @@ public class silverfox : MonoBehaviour
                     }
                     if (Input.GetKeyDown(KeyCode.C))
                     {
-                        if (animator.runtimeAnimatorController == Grass)//もし　アニメーターがFireなら
+                        if (animator.runtimeAnimatorController == Grass)//もし�?アニメーターがFireな�?
                         {
                             GameObject prefab = Resources.Load("prefabs/Gold") as GameObject;
                             Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
@@ -147,7 +149,7 @@ public class silverfox : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "floar")
+        if (collision.gameObject.name == "floor")
         {
             jumpCounts = 0;
         }
@@ -155,7 +157,9 @@ public class silverfox : MonoBehaviour
 
     void FinishJump()
     {
-      animator.SetBool("Jump", false);
+        animator.SetBool("Jump", false);
+        animator.SetBool("JumpRight", false);
+        animator.SetBool("JumpLeft", false);
     }
 
 }
