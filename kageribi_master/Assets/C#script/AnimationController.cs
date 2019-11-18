@@ -21,6 +21,9 @@ public class AnimationController : MonoBehaviour
     private Vector2 Player_01_position;//位置情報の変数　金狐
     private Vector2 Player_02_position;//位置情報の変数　銀狐
 
+    public static bool IsLeft, IsRight, IsUp, IsDown;
+    private float _LastX, _LastY;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +35,34 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        float x = Input.GetAxisRaw("DPADH");
+        float y = Input.GetAxisRaw("DPADV");
+
+        IsLeft = false;
+        IsRight = false;
+        IsUp = false;
+        IsDown = false;
+        
+        if(_LastX != x)
+        {
+            if (x == -1)
+                IsLeft = true;
+            else if (x == 1)
+                IsRight = true;
+        }
+
+        if(_LastY != y)
+        {
+            if (y == -1)
+                IsDown = true;
+            else if (y == 1)
+                IsUp = true;
+        }
+
+        _LastX = x;
+        _LastY = y;
+
+        if (IsUp == true)
         {
             if(goldfox.activeSelf==true)
             {

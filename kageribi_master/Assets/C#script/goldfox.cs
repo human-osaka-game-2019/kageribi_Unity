@@ -13,7 +13,7 @@ public class goldfox : MonoBehaviour
 
     private Animator animator;
 
-    Rigidbody2D rigid2D;
+    public Rigidbody2D rigid2D;
     public float jumpForce;
     public float jumpForce2;
     int jumpCounts = 0;
@@ -24,9 +24,8 @@ public class goldfox : MonoBehaviour
     {
       animator =  GetComponent<Animator>();
       rigid2D = GetComponent<Rigidbody2D>();
-
     }
-
+   
     // Update is called once per frame
     void Update()
     {
@@ -52,21 +51,26 @@ public class goldfox : MonoBehaviour
             animator.SetInteger("Right", 0);
             animator.SetInteger("Left", 0);
         }
-        
-        if(up==true)
+
+       
+        if (up == true)
         {
-            jumpCounts=jumpCounts+1;
-            if(jumpCounts==1)
+
+            jumpCounts = jumpCounts + 1;
+
+            if(jumpCounts == 1)
             {
                 animator.SetBool("Jump", true);
                 rigid2D.AddForce(transform.up * jumpForce);
 
             }
-            if (jumpCounts==2)
+            if (jumpCounts == 2)
             {
                 animator.SetBool("Jump", true);
                 rigid2D.AddForce(transform.up * jumpForce2);
-            }
+
+            }  
+
         }
 
 
@@ -145,12 +149,11 @@ public class goldfox : MonoBehaviour
                     }
                 }*/
 
-
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (collision.gameObject.name == "floor")
+        if (collision.gameObject.name == "floar")
         {
             jumpCounts = 0;
         }
