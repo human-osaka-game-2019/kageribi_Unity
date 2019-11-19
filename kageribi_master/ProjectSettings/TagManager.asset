@@ -7,6 +7,7 @@ TagManager:
   - gold
   - silver
   - floor
+  - floar
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - MonsterBlock
+  - Player
   - 
   - 
   - 
