@@ -12,23 +12,23 @@ public class FilterGradation : MonoBehaviour
         bool isMax;
         public float alpha;
 
-        public void DrawTexture(float second)
+        public void DrawTexture(float seconds)
         {
             Filter.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, alpha);
             Filter.SetActive(true);
 
-            ChangeAlphaValue(second);
+            ChangeAlphaValue(seconds);
         }
 
-        void ChangeAlphaValue(float second)
+        void ChangeAlphaValue(float seconds)
         {
             if (isMax == false)
             {
-                alpha += 1.0f / (second * 60);
+                alpha += 1.0f / seconds * Time.deltaTime;
             }
             else
             {
-                alpha -= 1.0f / (second * 60);
+                alpha -= 1.0f / seconds * Time.deltaTime;
             }
 
             CompareAlphaSize();
@@ -51,7 +51,7 @@ public class FilterGradation : MonoBehaviour
         }
     }
 
-    public float second;
+    public float seconds;
 
     public BGFilter Moning = new BGFilter();
     public BGFilter Evening = new BGFilter();
@@ -70,7 +70,7 @@ public class FilterGradation : MonoBehaviour
     {
         if (Moning.isStart == true)
         {
-            Moning.DrawTexture(second);
+            Moning.DrawTexture(seconds);
 
             if (Moning.alpha <= 0.0f)
             {
@@ -81,7 +81,7 @@ public class FilterGradation : MonoBehaviour
 
         if (Evening.isStart == true)
         {
-            Evening.DrawTexture(second);
+            Evening.DrawTexture(seconds);
 
             if (Evening.alpha >= 1.0f)
             {
@@ -91,7 +91,7 @@ public class FilterGradation : MonoBehaviour
 
         if (Night.isStart == true)
         {
-            Night.DrawTexture(second);
+            Night.DrawTexture(seconds);
 
             if (Night.alpha >= 1.0f)
             {
