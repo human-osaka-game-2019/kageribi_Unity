@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c8260d566fca94eb2f293171642350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackRange: {fileID: 2019386605}
   speed: 0.1
   Fire: {fileID: 9100000, guid: 9b44a160adae88e47867cf89d4351a0e, type: 2}
   Water: {fileID: 9100000, guid: 707c7b1cf28c39f4b810b503b8bd620b, type: 2}
@@ -273,7 +274,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.46, y: 0.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2019386608}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -376,6 +378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6493333384236873973, guid: feb6888ad884cb7409e388f0dc7ba728,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6493333384236873969, guid: feb6888ad884cb7409e388f0dc7ba728,
         type: 3}
@@ -486,6 +493,53 @@ MonoBehaviour:
   goldfox: {fileID: 1082822957}
   silverfox: {fileID: 1008527169}
   gameCounts: 300
+--- !u!1 &2019386605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2019386608}
+  - component: {fileID: 2019386606}
+  m_Layer: 0
+  m_Name: AttackRange_Fire
+  m_TagString: AttackRange_Fire
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!58 &2019386606
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019386605}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!4 &2019386608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019386605}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.82, y: -2.9950671, z: 0}
+  m_LocalScale: {x: 1.99, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1008527175}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3204007944550805837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -647,6 +701,21 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 400
       objectReference: {fileID: 0}
+    - target: {fileID: 4219927457210574870, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd,
+        type: 3}
+      propertyPath: Water
+      value: 
+      objectReference: {fileID: 9100000, guid: 2c45dd497a0ba1a4f83ab966d28ecd24, type: 2}
+    - target: {fileID: 4219927457210574870, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd,
+        type: 3}
+      propertyPath: Fire
+      value: 
+      objectReference: {fileID: 9100000, guid: 101186410c17dce47b9de698ee35563c, type: 2}
+    - target: {fileID: 4219927457210574870, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd,
+        type: 3}
+      propertyPath: Grass
+      value: 
+      objectReference: {fileID: 9100000, guid: 0b028765ba812f640b71af7d25060364, type: 2}
     - target: {fileID: 4219927457210574874, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd,
         type: 3}
       propertyPath: m_Constraints
@@ -665,6 +734,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6493333384236873973, guid: feb6888ad884cb7409e388f0dc7ba728,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6493333384236873969, guid: feb6888ad884cb7409e388f0dc7ba728,
         type: 3}

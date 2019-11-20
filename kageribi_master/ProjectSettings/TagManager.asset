@@ -9,6 +9,7 @@ TagManager:
   - floor
   - floar
   - Monsters
+  - AttackRange_Fire
   layers:
   - Default
   - TransparentFX
