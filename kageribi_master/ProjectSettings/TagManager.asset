@@ -8,6 +8,7 @@ TagManager:
   - silver
   - floor
   - floar
+  - Monsters
   layers:
   - Default
   - TransparentFX
