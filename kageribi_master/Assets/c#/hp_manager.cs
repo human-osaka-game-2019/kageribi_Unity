@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class hp_manager : MonoBehaviour
 {
-    [SerializeField] private GameObject gold;
-    [SerializeField] private GameObject silver;
     [SerializeField] private int hp = 20;
     GameObject[] gold_hp;
     GameObject[] silver_hp;
@@ -29,5 +27,35 @@ public class hp_manager : MonoBehaviour
     void Update()
     {
 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        for (hp = 20; hp <= 0; hp--)
+        {
+            /*if ()
+            {
+                if (hp <= 4)
+                {
+
+                }
+                else if (hp <= 8)
+                {
+
+                }
+                else if (hp <= 12)
+                {
+
+                }
+                else if (hp <= 16)
+                {
+
+                }
+                else if (hp <= 20)
+                {
+
+                }
+            }*/
+            
+        }
     }
 }
