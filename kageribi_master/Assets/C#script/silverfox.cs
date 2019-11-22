@@ -20,6 +20,8 @@ public class silverfox : MonoBehaviour
     public float jumpForce2;
     int jumpCounts = 0;
     int attackCounts = 0;
+    [SerializeField ]
+    private bool Attack_Flag;
 
     int RunFlag=0;
 
@@ -45,7 +47,22 @@ public class silverfox : MonoBehaviour
 
         //Animator animator = GetComponent<Animator>();
         //float GetAxis ("Horizintal") ←と→�??を同時に取得できる�?
-
+        if(Attack_Flag == false)
+        {
+            if (right == true)
+            {
+                transform.Translate(speed, 0.0f, 0.0f);//座標�?更新�?rigidbody .Addforce 
+                animator.SetInteger("Right", 1);
+                RunFlag = 1;
+            }
+            else if (left == true)
+            {
+                transform.Translate(-speed, 0.0f, 0.0f);
+                animator.SetInteger("Left", 1);
+                RunFlag = -1;
+            }
+        }
+        /*
         if (right == true)
         {
             transform.Translate(speed, 0.0f, 0.0f);//座標�?更新�?rigidbody .Addforce 
@@ -58,6 +75,15 @@ public class silverfox : MonoBehaviour
             animator.SetInteger("Left", 1);
             RunFlag = -1;
         }
+        */
+        if(attack==true)
+        {
+            Attack_Flag = true;
+            animator.SetTrigger("Attack");
+            AttackRange.SetActive(true);
+            rigid2D.velocity = Vector2.zero;
+        }
+
         else
         {
             animator.SetInteger("Right", 0);
@@ -69,18 +95,11 @@ public class silverfox : MonoBehaviour
             jumpCounts = jumpCounts + 1;
             if (jumpCounts == 1)
             {
-                animator.SetBool("JumpRight", true);
-                animator.SetBool("JumpLeft", true);
+                animator.SetTrigger("Jump");
                 rigid2D.velocity = Vector2.zero;
                 rigid2D.AddForce(transform.up * jumpForce);
 
             }
-        }
-        if(attack==true)
-        {
-            animator.SetTrigger("Attack");
-            AttackRange.SetActive(true);
-            rigid2D.velocity = Vector2.zero;
         }
 
 
@@ -195,6 +214,7 @@ public class silverfox : MonoBehaviour
     void FinishAttack()
     {
         AttackRange.SetActive(false);
+        Attack_Flag = false;
     }
 
 }
