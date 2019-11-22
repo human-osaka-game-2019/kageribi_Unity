@@ -23,7 +23,7 @@ public class Rotation : MonoBehaviour
 
         public bool isSearchObject(GameObject Camera, float camera_width)
         {
-            if (RotationTexture.transform.position.x - (width / 2) + 0.1 < Camera.transform.position.x + (camera_width / 100))
+            if (RotationTexture.transform.position.x - (width / 2) + 0.1 < Camera.transform.position.x + (camera_width / 55))
             {
                 return true;
             }
@@ -40,7 +40,7 @@ public class Rotation : MonoBehaviour
         void SetupInitialPosition(GameObject Camera, float camera_width)
         {
             Position = new Vector3(
-            Camera.transform.position.x - (camera_width / 100) - (width / 2),
+            Camera.transform.position.x - (camera_width / 55) - (width / 2),
             Camera.transform.position.y - 1.0f,
             0.0f);
         }
@@ -50,9 +50,12 @@ public class Rotation : MonoBehaviour
             RotationTexture.transform.position = new Vector3(Position.x, Position.y, Position.z);
         }
 
-        public void RotateTexture(float seconds)
+        public void RotateTexture(float seconds, GameObject Camera, float camera_width)
         {
-            RotationTexture.transform.RotateAround(new Vector3(0.0f, -10.6f - (height / 2), 0.0f), new Vector3(0.0f, 0.0f, 1.0f), 45.0f / -seconds * Time.deltaTime);
+            RotationTexture.transform.RotateAround(
+                new Vector3(Camera.transform.position.x, Camera.transform.position.y - (camera_width / 55) - (width / 2) - 1.0f, 0.0f),
+                new Vector3(0.0f, 0.0f, 1.0f),
+                45.0f / -seconds * Time.deltaTime);
 
             RotationTexture.transform.Rotate(new Vector3(0.0f, 0.0f, 45.0f / seconds * Time.deltaTime));
         }
@@ -64,7 +67,7 @@ public class Rotation : MonoBehaviour
     public RotationObject Moon = new RotationObject();
 
     public GameObject Main;
-    float camera_width, camera_height;
+    float camera_width;
 
     // Start is called before the first frame update
     void Start()
@@ -82,7 +85,7 @@ public class Rotation : MonoBehaviour
     {
         if (Sun.is_draw == true)
         {
-            Sun.RotateTexture(seconds);
+            Sun.RotateTexture(seconds, Main, camera_width);
 
             if (Sun.isSearchObject(Main, camera_width) == false)
             {
@@ -93,7 +96,7 @@ public class Rotation : MonoBehaviour
         }
         else if (Moon.is_draw == true)
         {
-            Moon.RotateTexture(seconds);
+            Moon.RotateTexture(seconds, Main, camera_width);
 
             if (Moon.isSearchObject(Main, camera_width) == false)
             {
