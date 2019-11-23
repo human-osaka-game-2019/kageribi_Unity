@@ -40,17 +40,17 @@ public class silverfox : MonoBehaviour
     void Update()
     {
 
-        bool right = Input.GetAxisRaw("HorizontalL") > 0.19;
-        bool left = Input.GetAxisRaw("HorizontalL") < -0.19;
-        bool up = Input.GetButtonDown("XBOXA");
-		bool attack = Input.GetButtonDown("XBOXB");
-
+        bool right = Input.GetKey(KeyCode.RightArrow) || Input.GetAxisRaw("HorizontalL") > 0.19;
+        bool left = Input.GetKey(KeyCode.LeftArrow) || Input.GetAxisRaw("HorizontalL") < -0.19;
+        bool up = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("XBOXA");
+        bool attack = Input.GetKeyDown(KeyCode.S) || Input.GetButtonDown("XBOXB");
         //Animator animator = GetComponent<Animator>();
         //float GetAxis ("Horizintal") ←と→�??を同時に取得できる�?
-        if(Attack_Flag == false)
+        if (Attack_Flag == false)
         {
             if (right == true)
             {
+                Debug.Log("abs");
                 transform.Translate(speed, 0.0f, 0.0f);//座標�?更新�?rigidbody .Addforce 
                 animator.SetInteger("Right", 1);
                 RunFlag = 1;
@@ -61,10 +61,17 @@ public class silverfox : MonoBehaviour
                 animator.SetInteger("Left", 1);
                 RunFlag = -1;
             }
+            else
+            {
+                animator.SetInteger("Right", 0);
+                animator.SetInteger("Left", 0);
+            }
+
         }
-        /*
-        if (right == true)
+
+        if (attack==true)
         {
+
             transform.Translate(speed, 0.0f, 0.0f);//座標�?更新�?rigidbody .Addforce 
             animator.SetInteger("Right", 1);
             RunFlag = 1;
@@ -78,17 +85,14 @@ public class silverfox : MonoBehaviour
         */
         if(attack==true)
         {
+
             Attack_Flag = true;
             animator.SetTrigger("Attack");
             AttackRange.SetActive(true);
             rigid2D.velocity = Vector2.zero;
         }
 
-        else
         {
-            animator.SetInteger("Right", 0);
-            animator.SetInteger("Left", 0);
-        }
 
         if (up == true)
         {
@@ -102,10 +106,7 @@ public class silverfox : MonoBehaviour
             }
         }
 
-
-
-        //以下テストコー�?
-        if (Input.GetButtonDown("XBOXRB"))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("XBOXRB"))
         {
             if(RunFlag==1)
 
