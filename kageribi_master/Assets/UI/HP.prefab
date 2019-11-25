@@ -108,7 +108,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 4635618176818978697}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &498563159136934443
 SpriteRenderer:
@@ -187,7 +187,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 4635618176818978697}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &498563159451709502
 SpriteRenderer:
@@ -326,7 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4635618176818978697}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,9 +344,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 498563158284671941}
-  - {fileID: 498563159451709497}
-  - {fileID: 498563159782074664}
   - {fileID: 498563159136934442}
+  - {fileID: 498563159782074664}
+  - {fileID: 498563159451709497}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
