@@ -9,66 +9,54 @@ public class hp_manager : MonoBehaviour
     [SerializeField] private GameObject silver;
     [SerializeField] private int hp;
     [SerializeField] private int damage;
+    private GameObject[] gold_hp = new GameObject[20];
+    private GameObject[] silver_hp = new GameObject[20];
     int Pdm = 0;
+    int Gobj_count = 0;
+    int Sobj_count = 0;
+    int Dcount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
 
+        foreach (Transform gold_child in gold.transform)
+        {
+            if (Gobj_count == 20)
+            {
+                break;
+            }
+            gold_hp[Gobj_count] = gold_child.gameObject;
+            Gobj_count += 1;
+        }
+        foreach (Transform silver_child in silver.transform)
+        {
+            if (Sobj_count == 20)
+            {
+                break;
+            }
+            silver_hp[Sobj_count] = silver_child.gameObject;
+            Sobj_count += 1;
+        }
     }
 
-    // Update is called once per frame
+            // Update is called once per frame
     void Update()
     {
         Pdm = hp - damage;
-        int dmcount = 0;
 
         if (Input.GetKeyDown(KeyCode.A))
         {
             for (hp = hp; hp > Pdm; hp--)
             {
-                if (gold.activeSelf == true)
-                {
-                    foreach (Transform childTransform in gold.transform)
-                    {
-                        if (dmcount == damage)
-                        {
-                            break;
-                        }
-                        Transform GHP = childTransform;
-                        Debug.Log(GHP.gameObject.name);
-                        Destroy(GHP.gameObject);
-                        dmcount += 1;
-
-
-                    }
-                }
-                else if (silver.activeSelf == true)
-                {
-
-
-                    foreach (Transform childTransform in silver.transform)
-                    {
-                        if (dmcount == damage)
-                        {
-                            break;
-                        }
-                        Transform GHP = childTransform;
-                        Debug.Log(GHP.gameObject.name);
-                        Destroy(GHP.gameObject);
-                        dmcount += 1;
-
-
-                    }
-                }
-
+                Destroy(gold_hp[Dcount]);
+                Destroy(silver_hp[Dcount]);
+                Dcount += 1;
             }
-        }
-
-
-
-        
+            
+        }    
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         /*int Pdm=hp-damage;
