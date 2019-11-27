@@ -13,7 +13,7 @@ public class Rotation : MonoBehaviour
         public void Start()
         {
             // 画面の幅のサイズを取得
-            width = Screen.width * Camera.main.orthographicSize / (Screen.width / 2);
+            width = Screen.width * Camera.main.orthographicSize / (Screen.height / 2);
             half_width = width / 2;
         }
 
@@ -54,7 +54,7 @@ public class Rotation : MonoBehaviour
 
         public bool is_InTheScreen(CameraObject MainCamera) // 画面上にオブジェクトがいるか
         {
-            if (Texture.transform.position.x - half_width + 0.1f < MainCamera.Camera.transform.position.x + MainCamera.GetHalfWidth())
+            if (Texture.transform.position.x - half_width < MainCamera.Camera.transform.position.x + MainCamera.GetHalfWidth())
             {
                 return true;
             }
