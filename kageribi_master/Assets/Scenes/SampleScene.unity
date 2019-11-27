@@ -138,17 +138,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 116000919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca22dda85ed90d8438a051c8450a4724, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e2f1756b1efdf94abc87b958db03677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   seconds: 3
+  MainCamera:
+    Camera: {fileID: 519420031}
   Sun:
-    RotationTexture: {fileID: 1927146149}
-    is_draw: 1
+    Texture: {fileID: 1927146149}
   Moon:
-    RotationTexture: {fileID: 988590576}
-    is_draw: 0
-  Main: {fileID: 519420028}
+    Texture: {fileID: 988590576}
 --- !u!4 &116000921
 Transform:
   m_ObjectHideFlags: 0
@@ -239,7 +238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 100, y: 256, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1927146150}
@@ -320,7 +319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988590576}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -351,7 +350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927146149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 519420032}
