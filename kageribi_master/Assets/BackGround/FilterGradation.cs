@@ -9,7 +9,7 @@ public class FilterGradation : MonoBehaviour
     {
         public GameObject Filter;
         public bool isStart;
-        bool isMax;
+        public bool isMax;
         public float alpha;
 
         public void DrawTexture(float seconds)
@@ -52,6 +52,7 @@ public class FilterGradation : MonoBehaviour
     }
 
     public float seconds;
+    public float frame = 0;
 
     public BGFilter Moning = new BGFilter();
     public BGFilter Evening = new BGFilter();
@@ -70,7 +71,21 @@ public class FilterGradation : MonoBehaviour
     {
         if (Moning.isStart == true)
         {
-            Moning.DrawTexture(seconds);
+            if (Moning.isMax == true)
+            {
+                Moning.DrawTexture(seconds);
+            }
+            else
+            {
+                frame += 1.0f * Time.deltaTime;
+                Moning.DrawTexture(seconds * 1.25f);
+            }
+
+            if (frame > seconds)
+            {
+                Moning.alpha = 1.0f;
+                Moning.isMax = true;
+            }
 
             if (Moning.alpha <= 0.0f)
             {
@@ -78,25 +93,52 @@ public class FilterGradation : MonoBehaviour
             }
         }
 
-
         if (Evening.isStart == true)
         {
-            Evening.DrawTexture(seconds);
-
-            if (Evening.alpha >= 1.0f)
+            if (Evening.isMax == true)
             {
+                Evening.DrawTexture(seconds);
+            }
+            else
+            {
+                frame += 1.0f * Time.deltaTime;
+                Evening.DrawTexture(seconds * 1.25f);
+            }
+
+            if (frame > seconds)
+            {
+                Evening.alpha = 1.0f;
+                Evening.isMax = true;
                 Night.isStart = true;
             }
         }
 
         if (Night.isStart == true)
         {
-            Night.DrawTexture(seconds);
+            if (Night.isMax == true)
+            {
+                Night.DrawTexture(seconds * 1.25f);
+            }
+            else
+            {
+                Night.DrawTexture(seconds);
+            }
+
+            if (frame > seconds)
+            {
+                Night.alpha = 0.0f;
+            }
 
             if (Night.alpha >= 1.0f)
             {
+                Night.isMax = true;
                 Moning.isStart = true;
             }
+        }
+
+        if (frame > seconds)
+        {
+            frame = 0.0f;
         }
     }
 }
