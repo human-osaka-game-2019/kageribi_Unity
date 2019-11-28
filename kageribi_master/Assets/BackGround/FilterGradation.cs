@@ -81,7 +81,7 @@ public class FilterGradation : MonoBehaviour
                 Moning.DrawTexture(seconds * 1.25f);
             }
 
-            if (frame > seconds)
+            if (frame >= seconds)
             {
                 Moning.alpha = 1.0f;
                 Moning.isMax = true;
@@ -105,7 +105,7 @@ public class FilterGradation : MonoBehaviour
                 Evening.DrawTexture(seconds * 1.25f);
             }
 
-            if (frame > seconds)
+            if (frame >= seconds)
             {
                 Evening.alpha = 1.0f;
                 Evening.isMax = true;
@@ -124,7 +124,7 @@ public class FilterGradation : MonoBehaviour
                 Night.DrawTexture(seconds);
             }
 
-            if (frame > seconds)
+            if (frame >= seconds)
             {
                 Night.alpha = 0.0f;
             }
@@ -136,7 +136,7 @@ public class FilterGradation : MonoBehaviour
             }
         }
 
-        if (frame > seconds)
+        if (frame >= seconds)
         {
             frame = 0.0f;
         }
