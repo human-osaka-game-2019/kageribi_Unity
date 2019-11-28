@@ -22,6 +22,8 @@ TagManager:
   - 
   - MonsterBlock
   - Player
+  - BG_sky
+  - BG_filter
   - 
   - 
   - 
@@ -47,4 +49,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG_sky
+    uniqueID: 18748625
+    locked: 0
+  - name: BG_filter
+    uniqueID: 1921857171
     locked: 0
