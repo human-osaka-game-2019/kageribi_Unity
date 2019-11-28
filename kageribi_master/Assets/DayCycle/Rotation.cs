@@ -31,20 +31,20 @@ public class Rotation : MonoBehaviour
             half_width = Texture.GetComponent<SpriteRenderer>().bounds.size.x / 2.0f;
         }
 
-        public void SetPosition(CameraObject MainCamera) // オブジェクトの座標を設定
+        public void SetPosition(CameraObject Main) // オブジェクトの座標を設定
         {
             Texture.transform.position = new Vector3(
-                MainCamera.Camera.transform.position.x - MainCamera.GetHalfWidth() - half_width,
-                MainCamera.Camera.transform.position.y - 1.0f,
+                Main.Camera.transform.position.x - Main.GetHalfWidth() - half_width,
+                Main.Camera.transform.position.y - 1.0f,
                 10.0f);
         }
 
-        public void Rotate(CameraObject MainCamera, float seconds) // オブジェクトを回転させる
+        public void Rotate(CameraObject Main, float seconds) // オブジェクトを回転させる
         {
             Texture.transform.RotateAround(
                 new Vector3(
-                    MainCamera.Camera.transform.position.x,
-                    MainCamera.Camera.transform.position.y - MainCamera.GetHalfWidth() - half_width - 1.0f,
+                    Main.Camera.transform.position.x,
+                    Main.Camera.transform.position.y - Main.GetHalfWidth() - half_width - 1.0f,
                     0.0f),
                 new Vector3(0.0f, 0.0f, 1.0f),
                 45.0f / -seconds * Time.deltaTime);
@@ -52,9 +52,9 @@ public class Rotation : MonoBehaviour
             Texture.transform.Rotate(new Vector3(0.0f, 0.0f, 45.0f / seconds * Time.deltaTime));
         }
 
-        public bool is_InTheScreen(CameraObject MainCamera) // 画面上にオブジェクトがいるか
+        public bool is_InTheScreen(CameraObject Main) // 画面上にオブジェクトがいるか
         {
-            if (Texture.transform.position.x - half_width < MainCamera.Camera.transform.position.x + MainCamera.GetHalfWidth())
+            if (Texture.transform.position.x - half_width < Main.Camera.transform.position.x + Main.GetHalfWidth())
             {
                 return true;
             }
@@ -66,7 +66,7 @@ public class Rotation : MonoBehaviour
     int current_number = 0;
     public float seconds;
 
-    public CameraObject MainCamera = new CameraObject();
+    public CameraObject Main = new CameraObject();
     public RotationObject Sun = new RotationObject();
     public RotationObject Moon = new RotationObject();
     RotationObject[] ObjectList;
@@ -74,24 +74,24 @@ public class Rotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MainCamera.Start();
+        Main.Start();
 
         ObjectList = new RotationObject[2] { Sun, Moon };
         for (int i = 0; i < 2; i++)
         {
             ObjectList[i].ObtainWidth();
-            ObjectList[i].SetPosition(MainCamera);
+            ObjectList[i].SetPosition(Main);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        ObjectList[current_number].Rotate(MainCamera, seconds);
+        ObjectList[current_number].Rotate(Main, seconds);
 
-        if (ObjectList[current_number].is_InTheScreen(MainCamera) == false)
+        if (ObjectList[current_number].is_InTheScreen(Main) == false)
         {
-            ObjectList[current_number].SetPosition(MainCamera);
+            ObjectList[current_number].SetPosition(Main);
             if (++current_number > 1)
             {
                 current_number = 0;
