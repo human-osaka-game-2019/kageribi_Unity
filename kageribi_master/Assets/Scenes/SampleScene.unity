@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seconds: 3
-  MainCamera:
+  Main:
     Camera: {fileID: 519420031}
   Sun:
     Texture: {fileID: 1927146149}
