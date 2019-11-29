@@ -18,6 +18,8 @@ public class goldfox : MonoBehaviour
     public float jumpForce2;
     int jumpCounts = 0;
 
+    private bool Attack_Flag;
+    int Run_Flag = 1;
 
     // Start is called before the first frame update
     void Start() //�?初�?�?回�?み呼び出され�?
@@ -30,28 +32,89 @@ public class goldfox : MonoBehaviour
     void Update()
     {
 
-        bool right = Input.GetAxisRaw("HorizontalL") > 0.19;
-        bool left = Input.GetAxisRaw("HorizontalL") < -0.19;
-        bool up = Input.GetButtonDown("XBOXA");
+        bool right = Input.GetKey(KeyCode.RightArrow) || Input.GetAxisRaw("HorizontalL") > 0.19;
+        bool left = Input.GetKey(KeyCode.LeftArrow) || Input.GetAxisRaw("HorizontalL") < -0.19;
+        bool up = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("XBOXA");
+        bool attack = Input.GetKeyDown(KeyCode.S) || Input.GetButtonDown("XBOXB");
         //Animator animator = GetComponent<Animator>();
         //float GetAxis ("Horizintal") ←と→�??を同時に取得できる�?
-
-        if (right == true)
+        if (Attack_Flag == false)
         {
-            transform.Translate(speed, 0.0f, 0.0f);//座標�?更新�?rigidbody .Addforce 
-            animator.SetInteger("Right", 1);
+            if (right == true)
+            {
+                transform.Translate(speed, 0.0f, 0.0f);//座標�?更新�?rigidbody .Addforce 
+                animator.SetInteger("Right", 1);
+                Run_Flag = 1;
+            }
+            else if (left == true)
+            {
+                transform.Translate(-speed, 0.0f, 0.0f);
+                animator.SetInteger("Left", 1);
+                Run_Flag = -1;
+            }
+            else
+            {           
+                animator.SetInteger("Right", 0);
+                animator.SetInteger("Left", 0);
+            }
         }
-        else if (left == true)
+        if (attack == true)
         {
-            transform.Translate(-speed, 0.0f, 0.0f);
-            animator.SetInteger("Left", 1);
+            Attack_Flag = true;
+            animator.SetTrigger("Attack");
+            rigid2D.velocity = Vector2.zero;
+            /*
+            if (Run_Flag == 1)
+            {
+                if (animator.runtimeAnimatorController == Fire)
+                {
+                    GameObject prefab = Resources.Load("prefabs/floar") as GameObject;
+                    Instantiate(prefab, transform.position, Quaternion.identity);
+
+                }
+                if (animator.runtimeAnimatorController == Water)
+                {
+                    GameObject prefab = Resources.Load("prefabs/floar") as GameObject;
+                    Instantiate(prefab, transform.position, Quaternion.identity);
+
+                }
+                if (animator.runtimeAnimatorController == Grass)
+                {
+                    GameObject prefab = Resources.Load("prefabs/floar") as GameObject;
+                    Instantiate(prefab, transform.position, Quaternion.identity);
+
+                }
+
+            }
+            if (Run_Flag == -1)
+            {
+                if (animator.runtimeAnimatorController == Fire)
+                {
+                    GameObject prefab = Resources.Load("prefabs/floar") as GameObject;
+                    Instantiate(prefab, transform.position, Quaternion.identity);
+
+                }
+                if (animator.runtimeAnimatorController == Water)
+                {
+                    GameObject prefab = Resources.Load("prefabs/floar") as GameObject;
+                    Instantiate(prefab, transform.position, Quaternion.identity);
+
+                }
+                if (animator.runtimeAnimatorController == Grass)
+                {
+                    GameObject prefab = Resources.Load("prefabs/floar") as GameObject;
+                    Instantiate(prefab, transform.position, Quaternion.identity);
+
+                }
+
+            }*/
+
         }
         else
         {           
             animator.SetInteger("Right", 0);
             animator.SetInteger("Left", 0);
         }
-
        
         if (up == true)
         {
@@ -60,16 +123,14 @@ public class goldfox : MonoBehaviour
 
             if(jumpCounts == 1)
             {
-                animator.SetBool("JumpRight", true);
-                animator.SetBool("JumpLeft", true);
+                animator.SetTrigger("Jump");
                 rigid2D.velocity = Vector2.zero;
                 rigid2D.AddForce(transform.up * jumpForce);
 
             }
             if (jumpCounts == 2)
             {
-                animator.SetBool("JumpRight", true);
-                animator.SetBool("JumpLeft", true);
+                animator.SetTrigger("Jump");
                 rigid2D.velocity = Vector2.zero;
                 rigid2D.AddForce(transform.up * jumpForce2);
 
@@ -77,9 +138,8 @@ public class goldfox : MonoBehaviour
 
         }
 
-
                 //以下テストコー�?
-        if (Input.GetButtonDown("XBOXRB"))
+                  if (Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("XBOXRB"))
         {
            
             if(animator.runtimeAnimatorController == Fire)
@@ -109,6 +169,7 @@ public class goldfox : MonoBehaviour
 
             else if (animator.runtimeAnimatorController == Grass)
             {
+
                 animator.runtimeAnimatorController = Water;
             }
 
@@ -116,7 +177,6 @@ public class goldfox : MonoBehaviour
             {
                 animator.runtimeAnimatorController = Fire;
             }
-
         }
         /*
                 if (Input.GetKeyDown(KeyCode.C))
@@ -160,6 +220,14 @@ public class goldfox : MonoBehaviour
         if (collision.gameObject.name == "floor")
         {
             jumpCounts = 0;
+            animator.SetBool("Jumping", false);
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "floor")
+        {
+            animator.SetBool("Jumping", true);
         }
     }
 
@@ -167,6 +235,11 @@ public class goldfox : MonoBehaviour
     {
         animator.SetBool("JumpRight", false);
         animator.SetBool("JumpLeft", false);
+    }
+
+    void FinishAttack()
+    {
+        Attack_Flag = false;
     }
 
 }

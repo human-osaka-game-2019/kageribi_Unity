@@ -150,8 +150,8 @@ MonoBehaviour:
   AttackRange: {fileID: 2019386605}
   speed: 0.1
   Fire: {fileID: 9100000, guid: 9b44a160adae88e47867cf89d4351a0e, type: 2}
-  Water: {fileID: 9100000, guid: 707c7b1cf28c39f4b810b503b8bd620b, type: 2}
-  Grass: {fileID: 9100000, guid: 3a35c4868f9f7f744a8be576e4b6d0ba, type: 2}
+  Water: {fileID: 9100000, guid: 8bf0792a919efe04d84624e20f543380, type: 2}
+  Grass: {fileID: 9100000, guid: 52ba9948da428304ebb4f54a4011e54a, type: 2}
   Kin: {fileID: 4219927457210574869, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd, type: 3}
   jumpForce: 400
   jumpForce2: 0
@@ -383,7 +383,7 @@ PrefabInstance:
     - target: {fileID: 6493333384236873973, guid: feb6888ad884cb7409e388f0dc7ba728,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: floor
       objectReference: {fileID: 0}
     - target: {fileID: 6493333384236873969, guid: feb6888ad884cb7409e388f0dc7ba728,
         type: 3}
@@ -710,22 +710,27 @@ PrefabInstance:
         type: 3}
       propertyPath: Water
       value: 
-      objectReference: {fileID: 9100000, guid: 2c45dd497a0ba1a4f83ab966d28ecd24, type: 2}
+      objectReference: {fileID: 9100000, guid: 16d1557b2e20aac42a3699eed9361fe7, type: 2}
     - target: {fileID: 4219927457210574870, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd,
         type: 3}
       propertyPath: Fire
       value: 
-      objectReference: {fileID: 9100000, guid: 101186410c17dce47b9de698ee35563c, type: 2}
+      objectReference: {fileID: 9100000, guid: 570db7e532291b8409e827bdce497947, type: 2}
     - target: {fileID: 4219927457210574870, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd,
         type: 3}
       propertyPath: Grass
       value: 
-      objectReference: {fileID: 9100000, guid: 0b028765ba812f640b71af7d25060364, type: 2}
+      objectReference: {fileID: 9100000, guid: 3431c093aeb9c6e42b53991b0466a68c, type: 2}
     - target: {fileID: 4219927457210574874, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd,
         type: 3}
       propertyPath: m_Constraints
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4219927457210574871, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 570db7e532291b8409e827bdce497947, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e505323bb4b6a04c8c9ca82c80ce3fd, type: 3}
 --- !u!1001 &6493333383607986135
@@ -743,7 +748,7 @@ PrefabInstance:
     - target: {fileID: 6493333384236873973, guid: feb6888ad884cb7409e388f0dc7ba728,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: floor
       objectReference: {fileID: 0}
     - target: {fileID: 6493333384236873969, guid: feb6888ad884cb7409e388f0dc7ba728,
         type: 3}

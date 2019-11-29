@@ -23,7 +23,7 @@ public class silverfox : MonoBehaviour
     [SerializeField ]
     private bool Attack_Flag;
 
-    int RunFlag=0;
+    int Run_Flag=0;
 
     // Start is called before the first frame update
     void Start() //Êú?Âàù„?‰∏?Âõû„?„ÅøÂëº„Å≥Âá∫„Åï„Çå„Ç?
@@ -53,13 +53,13 @@ public class silverfox : MonoBehaviour
                 Debug.Log("abs");
                 transform.Translate(speed, 0.0f, 0.0f);//Â∫ßÊ®ô„?Êõ¥Êñ∞„Ä?rigidbody .Addforce 
                 animator.SetInteger("Right", 1);
-                RunFlag = 1;
+                Run_Flag = 1;
             }
             else if (left == true)
             {
                 transform.Translate(-speed, 0.0f, 0.0f);
                 animator.SetInteger("Left", 1);
-                RunFlag = -1;
+                Run_Flag = -1;
             }
             else
             {
@@ -200,9 +200,17 @@ public class silverfox : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "floor")
+        if (collision.gameObject.tag == "floor")
         {
             jumpCounts = 0;
+            animator.SetBool("Jumping", false);
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "floor")
+        {
+            animator.SetBool("Jumping",true);
         }
     }
 
