@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
+    public static int score = 0;
+    public static GameObject GetGameObject()
+    {
+        return GameObject.FindGameObjectWithTag("Player");
+    }
+    public static Transform GetTransform()
+    {
+        return GameObject.FindGameObjectWithTag("Player").transform;
+    }
+    public static AnimationController GetController()
+    {
+        return GameObject.FindGameObjectWithTag("Player").GetComponent<AnimationController>();
+    }
+    public static Animator GetAnimator()
+    {
+        return GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+    }
+
     public RuntimeAnimatorController Gold_Fire;
     public RuntimeAnimatorController Gold_Water;
     public RuntimeAnimatorController Gold_Grass;
