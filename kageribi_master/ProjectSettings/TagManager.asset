@@ -45,18 +45,6 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
@@ -69,6 +57,10 @@ TagManager:
     locked: 0
   - name: Sprite
     uniqueID: 1783016777
+    locked: 0
   - name: obj1
     uniqueID: 1301646917
+    locked: 0
+  - name: UI
+    uniqueID: 1966607619
     locked: 0

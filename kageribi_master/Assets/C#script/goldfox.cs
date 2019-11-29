@@ -13,7 +13,7 @@ public class goldfox : MonoBehaviour
 
     private Animator animator;
 
-    public Rigidbody2D rigid2D;
+    Rigidbody2D rigid2D;
     public float jumpForce;
     public float jumpForce2;
     int jumpCounts = 0;
@@ -42,6 +42,7 @@ public class goldfox : MonoBehaviour
         {
             if (right == true)
             {
+                Debug.Log("aaa");
                 transform.Translate(speed, 0.0f, 0.0f);//座標�?更新�?rigidbody .Addforce 
                 animator.SetInteger("Right", 1);
                 Run_Flag = 1;

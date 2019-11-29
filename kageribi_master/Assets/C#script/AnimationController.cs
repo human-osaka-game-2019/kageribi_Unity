@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
+    
     public static int score = 0;
     public static GameObject GetGameObject()
     {
@@ -21,6 +22,7 @@ public class AnimationController : MonoBehaviour
     {
         return GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
+    
 
     public RuntimeAnimatorController Gold_Fire;
     public RuntimeAnimatorController Gold_Water;
@@ -39,9 +41,6 @@ public class AnimationController : MonoBehaviour
     private Vector2 Player_01_position;//‰ΩçÁΩÆÊÉ??±„ÅÆÂ§âÊï∞„Ä?ÈáëÁãê
     private Vector2 Player_02_position;//‰ΩçÁΩÆÊÉ??±„ÅÆÂ§âÊï∞„Ä?Èä?Áã?
 
-    public static bool IsLeft, IsRight, IsUp, IsDown;
-    private float _LastX, _LastY;
-
     public int gameCounts=10;
     int Counts = 0;
 
@@ -56,34 +55,7 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = Input.GetAxisRaw("DPADH");
-        float y = Input.GetAxisRaw("DPADV");
 
-        IsLeft = false;
-        IsRight = false;
-        IsUp = false;
-        IsDown = false;
-        
-        if(_LastX != x)
-        {
-            if (x == -1)
-                IsLeft = true;
-            else if (x == 1)
-                IsRight = true;
-        }
-
-        if(_LastY != y)
-        {
-            if (y == -1)
-                IsDown = true;
-            else if (y == 1)
-                IsUp = true;
-        }
-
-        _LastX = x;
-        _LastY = y;
-
-        if (IsUp == true)
         Counts++;
         if (Counts==gameCounts)
         {
