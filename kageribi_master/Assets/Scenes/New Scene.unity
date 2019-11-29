@@ -1249,7 +1249,7 @@ MonoBehaviour:
   gold: {fileID: 594350661}
   silver: {fileID: 4249592101260061527}
   hp: 20
-  damage: 3
+  damage: 1
 --- !u!4 &624635391
 Transform:
   m_ObjectHideFlags: 0
