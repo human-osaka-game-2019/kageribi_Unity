@@ -111,11 +111,11 @@ public class goldfox : MonoBehaviour
             }*/
 
         }
-        else
-        {           
-            animator.SetInteger("Right", 0);
-            animator.SetInteger("Left", 0);
-        }
+       //else
+       //         {           
+       //     animator.SetInteger("Right", 0);
+       //     animator.SetInteger("Left", 0);
+       // }
        
         if (up == true)
         {
@@ -218,7 +218,7 @@ public class goldfox : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "floor")
+        if (collision.gameObject.tag == "floor")
         {
             jumpCounts = 0;
             animator.SetBool("Jumping", false);

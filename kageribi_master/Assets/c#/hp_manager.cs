@@ -7,12 +7,12 @@ public class hp_manager : MonoBehaviour
 {
     [SerializeField] private GameObject gold;
     [SerializeField] private GameObject silver;
-    public GameObject player;
     private GameObject[] gold_hp = new GameObject[20];
     private GameObject[] silver_hp = new GameObject[20];
     int hp;
     int count = 0;
-    public int[] damage;
+    int Pdm = 0;
+    public int damage;
     public float night_timeout;
     public float morning_timeout;
     public float time;
@@ -20,7 +20,6 @@ public class hp_manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hp = player.GetComponent<gold_hp>().HP;
 
         foreach (Transform gold_child in gold.transform)
         {
@@ -53,9 +52,8 @@ public class hp_manager : MonoBehaviour
             // Update is called once per frame
     void Update()
     {
-        
+        Pdm = hp - damage;
         time += Time.deltaTime;
-        int Pdm = hp - damage[0];
         if (Input.GetKeyDown(KeyCode.A))
         {
             for (hp = hp; hp > Pdm; hp--)

@@ -129,6 +129,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5121065308230116427, guid: 8f0f14de182b8f84cb9db92f9152c29d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5121065308230116429, guid: 8f0f14de182b8f84cb9db92f9152c29d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -209,6 +214,11 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5121065308230116424, guid: 8f0f14de182b8f84cb9db92f9152c29d,
+        type: 3}
+      propertyPath: Kin
+      value: 
+      objectReference: {fileID: 1483949325}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f0f14de182b8f84cb9db92f9152c29d, type: 3}
 --- !u!1001 &166837199
@@ -1347,6 +1357,11 @@ PrefabInstance:
       propertyPath: Silver_Grass
       value: 
       objectReference: {fileID: 9100000, guid: 52ba9948da428304ebb4f54a4011e54a, type: 2}
+    - target: {fileID: 7733794015670031265, guid: d8c524af9d79d2b49a26ab11cc534c13,
+        type: 3}
+      propertyPath: gameCounts
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8c524af9d79d2b49a26ab11cc534c13, type: 3}
 --- !u!1 &1483949325 stripped
@@ -1687,6 +1702,16 @@ PrefabInstance:
       propertyPath: Gin
       value: 
       objectReference: {fileID: 1081451954}
+    - target: {fileID: 5258425911839318139, guid: 4ec9dfe16433f3741a09056c0fdeea18,
+        type: 3}
+      propertyPath: jumpForce
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258425911839318139, guid: 4ec9dfe16433f3741a09056c0fdeea18,
+        type: 3}
+      propertyPath: jumpForce2
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 166251759634644863, guid: 4ec9dfe16433f3741a09056c0fdeea18,
         type: 3}
       propertyPath: m_Constraints

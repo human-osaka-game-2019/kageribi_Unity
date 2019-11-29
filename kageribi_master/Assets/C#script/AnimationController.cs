@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    
+    /*
     public static int score = 0;
     public static GameObject GetGameObject()
     {
@@ -22,7 +22,7 @@ public class AnimationController : MonoBehaviour
     {
         return GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
-    
+    */
 
     public RuntimeAnimatorController Gold_Fire;
     public RuntimeAnimatorController Gold_Water;
@@ -41,8 +41,8 @@ public class AnimationController : MonoBehaviour
     private Vector2 Player_01_position;//ä½ç½®æƒ??±ã®å¤‰æ•°ã€?é‡‘ç‹
     private Vector2 Player_02_position;//ä½ç½®æƒ??±ã®å¤‰æ•°ã€?éŠ?ç‹?
 
-    public int gameCounts=10;
-    int Counts = 0;
+    public float gameCounts;
+    float Counts = 0;
 
 
     // Start is called before the first frame update
@@ -56,12 +56,12 @@ public class AnimationController : MonoBehaviour
     void Update()
     {
 
-        Counts++;
-        if (Counts==gameCounts)
+        Counts += Time.deltaTime;
+        if (Counts == gameCounts)
         {
-            Counts = 0;
             if(goldfox.activeSelf==true)
             {
+                
                 if (Player_Animator_01.runtimeAnimatorController == Gold_Fire)
                 {
                     goldfox.SetActive(false);
@@ -89,7 +89,7 @@ public class AnimationController : MonoBehaviour
                     Player_Animator_02.runtimeAnimatorController = Silver_Grass;
 
                 }
-
+                Counts = 0;
             }
 
 
