@@ -1,4 +1,4 @@
-?�using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,10 +23,10 @@ public class silverfox : MonoBehaviour
     [SerializeField ]
     private bool Attack_Flag;
 
-    int Run_Flag=0;
+    int RunFlag = 0;
 
     // Start is called before the first frame update
-    void Start() //�?初�?�?回�?み呼び出され�?
+    void Start() 
     {
       animator =  GetComponent<Animator>();
       rigid2D = GetComponent<Rigidbody2D>();
@@ -44,22 +44,21 @@ public class silverfox : MonoBehaviour
         bool left = Input.GetKey(KeyCode.LeftArrow) || Input.GetAxisRaw("HorizontalL") < -0.19;
         bool up = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("XBOXA");
         bool attack = Input.GetKeyDown(KeyCode.S) || Input.GetButtonDown("XBOXB");
-        //Animator animator = GetComponent<Animator>();
-        //float GetAxis ("Horizintal") ←と→�??を同時に取得できる�?
+
         if (Attack_Flag == false)
         {
             if (right == true)
             {
                 Debug.Log("abs");
-                transform.Translate(speed, 0.0f, 0.0f);//座標�?更新�?rigidbody .Addforce 
+                transform.Translate(speed, 0.0f, 0.0f);
                 animator.SetInteger("Right", 1);
-                Run_Flag = 1;
+                RunFlag = 1;
             }
             else if (left == true)
             {
                 transform.Translate(-speed, 0.0f, 0.0f);
                 animator.SetInteger("Left", 1);
-                Run_Flag = -1;
+                RunFlag = -1;
             }
             else
             {
@@ -72,7 +71,7 @@ public class silverfox : MonoBehaviour
         if (attack==true)
         {
 
-            transform.Translate(speed, 0.0f, 0.0f);//座標�?更新�?rigidbody .Addforce 
+            transform.Translate(speed, 0.0f, 0.0f);
             animator.SetInteger("Right", 1);
             RunFlag = 1;
         }
@@ -82,7 +81,7 @@ public class silverfox : MonoBehaviour
             animator.SetInteger("Left", 1);
             RunFlag = -1;
         }
-        */
+        
         if(attack==true)
         {
 
@@ -92,7 +91,7 @@ public class silverfox : MonoBehaviour
             rigid2D.velocity = Vector2.zero;
         }
 
-        {
+      
 
         if (up == true)
         {
