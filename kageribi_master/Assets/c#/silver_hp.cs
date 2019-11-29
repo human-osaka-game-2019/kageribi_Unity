@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class silver_hp : MonoBehaviour
 {
+    public int hp = 20;
     // Start is called before the first frame update
     void Start()
     {
