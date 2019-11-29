@@ -628,12 +628,12 @@ PrefabInstance:
     - target: {fileID: 8086154456675349556, guid: 4ba7365a95fc8d848b42588e06fc3403,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -29.5
+      value: 45.91
       objectReference: {fileID: 0}
     - target: {fileID: 8086154456675349556, guid: 4ba7365a95fc8d848b42588e06fc3403,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.5
+      value: -94.03
       objectReference: {fileID: 0}
     - target: {fileID: 5248150167008196181, guid: 4ba7365a95fc8d848b42588e06fc3403,
         type: 3}
@@ -943,12 +943,12 @@ PrefabInstance:
     - target: {fileID: 3479689858819145568, guid: 4ba7365a95fc8d848b42588e06fc3403,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.2
+      value: -84.3
       objectReference: {fileID: 0}
     - target: {fileID: 3479689858819145568, guid: 4ba7365a95fc8d848b42588e06fc3403,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -33.7
+      value: 40.1
       objectReference: {fileID: 0}
     - target: {fileID: 3479689858895186043, guid: 4ba7365a95fc8d848b42588e06fc3403,
         type: 3}
@@ -1250,7 +1250,8 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8227154325915367473, guid: 4ba7365a95fc8d848b42588e06fc3403, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4ba7365a95fc8d848b42588e06fc3403, type: 3}
 --- !u!1 &636099921 stripped
 GameObject:
@@ -1447,6 +1448,26 @@ PrefabInstance:
       propertyPath: gold
       value: 
       objectReference: {fileID: 636099922}
+    - target: {fileID: 2585651168347657482, guid: 036c6582fdd30084ba826f804cc2f8ba,
+        type: 3}
+      propertyPath: hp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585651168347657482, guid: 036c6582fdd30084ba826f804cc2f8ba,
+        type: 3}
+      propertyPath: damage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585651168347657482, guid: 036c6582fdd30084ba826f804cc2f8ba,
+        type: 3}
+      propertyPath: night_timeout
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585651168347657482, guid: 036c6582fdd30084ba826f804cc2f8ba,
+        type: 3}
+      propertyPath: morning_timeout
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 036c6582fdd30084ba826f804cc2f8ba, type: 3}
 --- !u!1001 &1538294405
