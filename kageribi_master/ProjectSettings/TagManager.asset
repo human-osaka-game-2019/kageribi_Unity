@@ -14,8 +14,8 @@ TagManager:
   - 
   - 
   - Sprite
-  - 
-  - 
+  - Background
+  - Filter
   - 
   - 
   - 
@@ -40,6 +40,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3524072653
+    locked: 0
+  - name: Filter
+    uniqueID: 973078789
     locked: 0
   - name: Sprite
     uniqueID: 1783016777
