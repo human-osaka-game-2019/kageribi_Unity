@@ -41,8 +41,8 @@ public class AnimationController : MonoBehaviour
     private Vector2 Player_01_position;//ä½ç½®æƒ??±ã®å¤‰æ•°ã€?é‡‘ç‹
     private Vector2 Player_02_position;//ä½ç½®æƒ??±ã®å¤‰æ•°ã€?éŠ?ç‹?
 
-    public float gameCounts;
-    float Counts = 0;
+    public float GameCount;
+    private float Counts;
 
 
     // Start is called before the first frame update
@@ -57,11 +57,12 @@ public class AnimationController : MonoBehaviour
     {
 
         Counts += Time.deltaTime;
-        if (Counts == gameCounts)
+        if (Counts >= GameCount)
         {
-            if(goldfox.activeSelf==true)
+            Counts = 0;
+            if (goldfox.activeSelf==true)
             {
-                
+
                 if (Player_Animator_01.runtimeAnimatorController == Gold_Fire)
                 {
                     goldfox.SetActive(false);
@@ -69,7 +70,6 @@ public class AnimationController : MonoBehaviour
                     Player_01_position = goldfox.transform.position;
                     silverfox.transform.position = Player_01_position;
                     Player_Animator_02.runtimeAnimatorController = Silver_Fire;
-
                 }
                 else if (Player_Animator_01.runtimeAnimatorController == Gold_Water)
                 {
@@ -89,7 +89,7 @@ public class AnimationController : MonoBehaviour
                     Player_Animator_02.runtimeAnimatorController = Silver_Grass;
 
                 }
-                Counts = 0;
+               
             }
 
 

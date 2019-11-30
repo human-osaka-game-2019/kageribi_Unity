@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2207030414371518306
 Transform:
   m_ObjectHideFlags: 0
@@ -119,7 +119,6 @@ MonoBehaviour:
   Water: {fileID: 9100000, guid: 16d1557b2e20aac42a3699eed9361fe7, type: 2}
   Grass: {fileID: 9100000, guid: 3431c093aeb9c6e42b53991b0466a68c, type: 2}
   Gin: {fileID: 0}
-  rigid2D: {fileID: 0}
   jumpForce: 0
   jumpForce2: 0
 --- !u!50 &166251759634644863

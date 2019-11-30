@@ -45,12 +45,14 @@ public class goldfox : MonoBehaviour
                 Debug.Log("aaa");
                 transform.Translate(speed, 0.0f, 0.0f);//座標�?更新�?rigidbody .Addforce 
                 animator.SetInteger("Right", 1);
+                animator.SetInteger("Left", 0);
                 Run_Flag = 1;
             }
             else if (left == true)
             {
                 transform.Translate(-speed, 0.0f, 0.0f);
                 animator.SetInteger("Left", 1);
+                animator.SetInteger("Right", 0);
                 Run_Flag = -1;
             }
             else
@@ -111,12 +113,8 @@ public class goldfox : MonoBehaviour
             }*/
 
         }
-       //else
-       //         {           
-       //     animator.SetInteger("Right", 0);
-       //     animator.SetInteger("Left", 0);
-       // }
-       
+
+
         if (up == true)
         {
 
@@ -160,7 +158,7 @@ public class goldfox : MonoBehaviour
             
         }
 
-        if (Input.GetButtonDown("XBOXLB"))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetButtonDown("XBOXLB"))
         {
             
             if (animator.runtimeAnimatorController == Fire)
@@ -179,40 +177,6 @@ public class goldfox : MonoBehaviour
                 animator.runtimeAnimatorController = Fire;
             }
         }
-        /*
-                if (Input.GetKeyDown(KeyCode.C))
-                {
-                    if (animator.runtimeAnimatorController == Fire)//もし�?アニメーターがFireな�?
-                    {
-                        GameObject prefab = Resources.Load("prefabs/Silver") as GameObject;
-                        Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
-                        Destroy(this.gameObject);
-                        Debug.Log("kieta");
-                        animator.runtimeAnimatorController = Fire;
-                    }
-                }
-                if (Input.GetKeyDown(KeyCode.C))
-                {
-                    if (animator.runtimeAnimatorController == Water)//もし�?アニメーターがFireな�?
-                    {
-                        GameObject prefab = Resources.Load("prefabs/Silver") as GameObject;
-                        Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
-                        Destroy(this.gameObject);
-                        Debug.Log("kieta");
-                        animator.runtimeAnimatorController = Water;
-                    }
-                }
-                if (Input.GetKeyDown(KeyCode.C))
-                {
-                    if (animator.runtimeAnimatorController == Grass)//もし�?アニメーターがFireな�?
-                    {
-                        GameObject prefab = Resources.Load("prefabs/Silver") as GameObject;
-                        Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
-                        Destroy(this.gameObject);
-                        Debug.Log("kieta");
-                        animator.runtimeAnimatorController = Grass;
-                    }
-                }*/
 
     }
 
