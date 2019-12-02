@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ChaseAI : MonoBehaviour
 {
-
     public float movePower = 1f;
     bool isTracing;
     GameObject traceTarget;
@@ -44,6 +43,7 @@ public class ChaseAI : MonoBehaviour
         Move();
     }
     // Update is called once per frame
+
     void Move()
     {
         Vector3 moveVelocity = Vector3.zero;
@@ -99,13 +99,16 @@ public class ChaseAI : MonoBehaviour
             animator.SetBool("isMoving", true);
         }
     }
+
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
             isTracing = false;
             StartCoroutine("ChangeMovement");
+            
         }
+
     }
 
 }
