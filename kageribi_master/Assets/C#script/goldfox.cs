@@ -140,7 +140,7 @@ public class goldfox : MonoBehaviour
         }
 
                 //以下テストコー�?
-                  if (Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("XBOXRB"))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("XBOXRB"))
         {
            
             if(animator.runtimeAnimatorController == Fire)

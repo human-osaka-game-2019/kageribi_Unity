@@ -13,6 +13,7 @@ TagManager:
   - floor
   - stage
   - PlayerSensor
+  - EnemyFire
   layers:
   - Default
   - TransparentFX
@@ -36,7 +37,7 @@ TagManager:
   - obj2
   - obj3
   - 
-  - EnemySensor
+  - Bullet
   - Enemy
   - 
   - 
