@@ -66,52 +66,8 @@ public class goldfox : MonoBehaviour
             Attack_Flag = true;
             animator.SetTrigger("Attack");
             rigid2D.velocity = Vector2.zero;
-            /*
-            if (Run_Flag == 1)
-            {
-                if (animator.runtimeAnimatorController == Fire)
-                {
-                    GameObject prefab = Resources.Load("prefabs/floar") as GameObject;
-                    Instantiate(prefab, transform.position, Quaternion.identity);
-
-                }
-                if (animator.runtimeAnimatorController == Water)
-                {
-                    GameObject prefab = Resources.Load("prefabs/floar") as GameObject;
-                    Instantiate(prefab, transform.position, Quaternion.identity);
-
-                }
-                if (animator.runtimeAnimatorController == Grass)
-                {
-                    GameObject prefab = Resources.Load("prefabs/floar") as GameObject;
-                    Instantiate(prefab, transform.position, Quaternion.identity);
-
-                }
-
-            }
-            if (Run_Flag == -1)
-            {
-                if (animator.runtimeAnimatorController == Fire)
-                {
-                    GameObject prefab = Resources.Load("prefabs/floar") as GameObject;
-                    Instantiate(prefab, transform.position, Quaternion.identity);
-
-                }
-                if (animator.runtimeAnimatorController == Water)
-                {
-                    GameObject prefab = Resources.Load("prefabs/floar") as GameObject;
-                    Instantiate(prefab, transform.position, Quaternion.identity);
-
-                }
-                if (animator.runtimeAnimatorController == Grass)
-                {
-                    GameObject prefab = Resources.Load("prefabs/floar") as GameObject;
-                    Instantiate(prefab, transform.position, Quaternion.identity);
-
-                }
-
-            }*/
-
+            
+            
         }
 
 
@@ -205,6 +161,50 @@ public class goldfox : MonoBehaviour
     void FinishAttack()
     {
         Attack_Flag = false;
+
+        if (Run_Flag == 1)
+        {
+            if (animator.runtimeAnimatorController == Fire)
+            {
+                GameObject prefab = Resources.Load("prefabs/FireBullet_Right") as GameObject;
+                Instantiate(prefab, transform.position, Quaternion.identity);
+            }
+            if (animator.runtimeAnimatorController == Water)
+            {
+                GameObject prefab = Resources.Load("prefabs/WaterBullet_Right") as GameObject;
+                Instantiate(prefab, transform.position, Quaternion.identity);
+
+            }
+            if (animator.runtimeAnimatorController == Grass)
+            {
+                GameObject prefab = Resources.Load("prefabs/GrassBullet_Right") as GameObject;
+                Instantiate(prefab, transform.position, Quaternion.identity);
+
+            }
+
+        }
+        if (Run_Flag == -1)
+        {
+            if (animator.runtimeAnimatorController == Fire)
+            {
+                GameObject prefab = Resources.Load("prefabs/FireBullet_Left") as GameObject;
+                Instantiate(prefab, transform.position, Quaternion.identity);
+
+            }
+            if (animator.runtimeAnimatorController == Water)
+            {
+                GameObject prefab = Resources.Load("prefabs/WaterBullet_Left") as GameObject;
+                Instantiate(prefab, transform.position, Quaternion.identity);
+
+            }
+            if (animator.runtimeAnimatorController == Grass)
+            {
+                GameObject prefab = Resources.Load("prefabs/GrassBullet_Left") as GameObject;
+                Instantiate(prefab, transform.position, Quaternion.identity);
+
+            }
+
+        }
     }
 
 }

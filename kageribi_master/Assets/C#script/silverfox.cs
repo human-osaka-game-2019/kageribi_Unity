@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class silverfox : MonoBehaviour
 {
-    public GameObject AttackRange;
+    public GameObject[] AttackRange;
 
     public float speed = 0.1f;
 
@@ -76,11 +76,42 @@ public class silverfox : MonoBehaviour
 
             Attack_Flag = true;
             animator.SetTrigger("Attack");
-            AttackRange.SetActive(true);
             rigid2D.velocity = Vector2.zero;
+
+            if (RunFlag == 1)
+            {
+                if (animator.runtimeAnimatorController == Fire)
+                {
+                    AttackRange[0].SetActive(true);
+                }
+                if (animator.runtimeAnimatorController == Water)
+                {
+                    AttackRange[1].SetActive(true);
+                }
+                if (animator.runtimeAnimatorController == Grass)
+                {
+                    AttackRange[2].SetActive(true);
+                }
+            }
+            if (RunFlag == -1)
+            {
+                if (animator.runtimeAnimatorController == Fire)
+                {
+                    AttackRange[3].SetActive(true);
+                }
+                if (animator.runtimeAnimatorController == Water)
+                {
+                    AttackRange[4].SetActive(true);
+                }
+                if (animator.runtimeAnimatorController == Grass)
+                {
+                    AttackRange[5].SetActive(true);
+                }
+            }
+
         }
 
-      
+
 
         if (up == true)
         {
@@ -96,35 +127,21 @@ public class silverfox : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("XBOXRB"))
         {
-            if(RunFlag==1)
 
-            if (animator.runtimeAnimatorController == Fire)
-            {
-                Debug.Log("aa");
                 if (animator.runtimeAnimatorController == Fire)
                 {
                     animator.runtimeAnimatorController = Water;
-                    animator.SetInteger("Right", 1);
                 }
 
                 else if (animator.runtimeAnimatorController == Water)
                 {
                     animator.runtimeAnimatorController = Grass;
-                    animator.SetInteger("Right", 1);
-
                 }
 
                 else if (animator.runtimeAnimatorController == Grass)
                 {
                     animator.runtimeAnimatorController = Fire;
-                    animator.SetInteger("Right", 1);
-
                 }
-
-            }
-
-
-
         }
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetButtonDown("XBOXLB"))
@@ -144,8 +161,6 @@ public class silverfox : MonoBehaviour
             {
                 animator.runtimeAnimatorController = Fire;
             }
-
-
 
         }
 
@@ -176,8 +191,14 @@ public class silverfox : MonoBehaviour
     }
     void FinishAttack()
     {
-        AttackRange.SetActive(false);
         Attack_Flag = false;
+        AttackRange[0].SetActive(false);
+        AttackRange[1].SetActive(false);
+        AttackRange[2].SetActive(false);
+        AttackRange[3].SetActive(false);
+        AttackRange[4].SetActive(false);
+        AttackRange[5].SetActive(false);
+
     }
 
 }
