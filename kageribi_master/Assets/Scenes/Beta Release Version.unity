@@ -15672,7 +15672,8 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 380535564895165878, guid: 589f50cfd5b10c14cb5dc10301c96197, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 589f50cfd5b10c14cb5dc10301c96197, type: 3}
 --- !u!95 &6848554382694916969
 Animator:
@@ -15792,15 +15793,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6848554382694916975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 679eb1b6f7ee9c941bde8f5162201aaa, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b4d6d54c261706499b10397886afc8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePower: 0.5
-  Player: {fileID: 1483949325}
-  Enemy: {fileID: 6848554382694916975}
+  movePower: 1
   Thung: {fileID: 9100000, guid: d9d81d3485d53454cb841b2fdba78996, type: 2}
   Fireball: {fileID: 9100000, guid: 2b207aeb25b9d0d4f8e1f7333141ab89, type: 2}
   isMoving: {fileID: 9100000, guid: 2f5673aa613bebc4dbdfe7f80f19ce53, type: 2}
+  player: {fileID: 1483949325}
+  enemy: {fileID: 6848554382694916975}
 --- !u!212 &6848554382694916982
 SpriteRenderer:
   m_ObjectHideFlags: 0

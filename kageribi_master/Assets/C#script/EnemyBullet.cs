@@ -12,18 +12,20 @@ public class EnemyBullet : MonoBehaviour
     public Transform bulletPos;
     private bool FireState;
 
-    public float MoveSpeed;
-    int movementFlag = 0;
+    public float BulletSpeed;
+    int bulletFlag = 0;
 
-    public float MaxCount;
-    public float Count;
+    public float BulletMaxCount;
+    public float BCount;
 
     Animator animator;
     Rigidbody2D rigidbody;
+    int attackFlag = 0;
 
 
     void Start()
     {
+        FireState = true;
         animator = gameObject.GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
     }
@@ -34,7 +36,6 @@ public class EnemyBullet : MonoBehaviour
 
     void Update()
     {
-        FireState = true;
         Flameshot();
         BulletMove();
     }
@@ -43,11 +44,14 @@ public class EnemyBullet : MonoBehaviour
     {
         if (FireState)
         {
-            Count += Time.deltaTime;
-            if (MaxCount <= Count)
+            BCount += Time.deltaTime;
+            if (BulletMaxCount <= BCount)
             {
                 Destroy(this.gameObject);
             }
+
+            
+           
         }
    
     }      
@@ -69,9 +73,9 @@ public class EnemyBullet : MonoBehaviour
         }
         else
         {
-            if (movementFlag == 1)
+            if (bulletFlag == 1)
                 dist = "Right";
-            else if (movementFlag == 2)
+            else if (bulletFlag == 2)
                 dist = "Left";
         }
 
@@ -87,7 +91,51 @@ public class EnemyBullet : MonoBehaviour
 
         }
 
-        transform.position += moveVelocity * MoveSpeed * Time.deltaTime;
+        transform.position += moveVelocity * BulletSpeed * Time.deltaTime;
+    }
+
+    IEnumerator Movement()
+    {
+        bulletFlag = Random.Range(0, 3);
+
+        if (bulletFlag == 0)
+        {
+            animator.SetBool( "isMoving" , false);
+        }
+        else if (bulletFlag == 1)
+        {
+            animator.SetBool("isMoving", true);
+        }
+        else if (bulletFlag == 2)
+        {
+            animator.SetBool("isMoving", true);
+        }
+                
+        yield return new WaitForSeconds(3f);
+
+        StartCoroutine("E_Movement");
+    }
+
+    IEnumerator Attacking()
+    {
+        if (attackFlag == 0)
+        {
+            animator.SetBool("isMoving", true);
+        }
+        else if (attackFlag == 1)
+        {
+            animator.SetBool("isMoving", false);
+            animator.SetTrigger("Thung");
+        }
+        else if (attackFlag == 2)
+        {
+            animator.SetBool("isMoving", false);
+            animator.SetTrigger("Fireball");
+        }
+
+        yield return new WaitForSeconds(2.5f);
+
+        StartCoroutine("E_Movement");
     }
 
 
