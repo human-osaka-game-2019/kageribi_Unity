@@ -95,17 +95,5 @@ public class hp_manager : MonoBehaviour
         
 
     }
-    public void juge()
-    {
-        /*if (Input.GetKeyDown(KeyCode.A))
-        {
-            for (hp = hp; hp > hp - damage; hp--)
-            {
-                gold_hp[count].SetActive(false);
-                silver_hp[count].SetActive(false);
-                count--;
-            }
-        }*/
-    }
 
 }
