@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GreenFire(normal)
+  m_Name: EnemyFireball
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: c0e90d39ad6cb2145b02d7f68da64582, type: 3}
+      value: {fileID: 21300000, guid: f707e913434432440a6603a3221ed3ce, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: e391c8ff8bc21904d90364a4b8a66735, type: 3}
+      value: {fileID: 21300000, guid: 7d197b969935d984eb5d4c6761460baa, type: 3}
     - time: 0.16666667
-      value: {fileID: 21300000, guid: 8f8733919c46e50488cb7ddba6d72cac, type: 3}
+      value: {fileID: 21300000, guid: 573f706542161ce4486a36e9588ebff0, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: 9a263a926564e9d47887285695116eb6, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,15 +46,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: c0e90d39ad6cb2145b02d7f68da64582, type: 3}
-    - {fileID: 21300000, guid: e391c8ff8bc21904d90364a4b8a66735, type: 3}
-    - {fileID: 21300000, guid: 8f8733919c46e50488cb7ddba6d72cac, type: 3}
+    - {fileID: 21300000, guid: f707e913434432440a6603a3221ed3ce, type: 3}
+    - {fileID: 21300000, guid: 7d197b969935d984eb5d4c6761460baa, type: 3}
+    - {fileID: 21300000, guid: 573f706542161ce4486a36e9588ebff0, type: 3}
+    - {fileID: 21300000, guid: 9a263a926564e9d47887285695116eb6, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.25
+    m_StopTime: 0.33333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -71,4 +74,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.25
+    functionName: EndAnim
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

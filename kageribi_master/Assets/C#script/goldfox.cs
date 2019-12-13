@@ -22,7 +22,7 @@ public class goldfox : MonoBehaviour
     int Run_Flag = 1;
 
     // Start is called before the first frame update
-    void Start() //�?初�?�?回�?み呼び出され�?
+    void Start() 
     {
       animator =  GetComponent<Animator>();
       rigid2D = GetComponent<Rigidbody2D>();
@@ -37,13 +37,13 @@ public class goldfox : MonoBehaviour
         bool up = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("XBOXA");
         bool attack = Input.GetKeyDown(KeyCode.S) || Input.GetButtonDown("XBOXB");
         //Animator animator = GetComponent<Animator>();
-        //float GetAxis ("Horizintal") ←と→�??を同時に取得できる�?
+        //float GetAxis ("Horizintal")
         if (Attack_Flag == false)
         {
             if (right == true)
             {
                 Debug.Log("aaa");
-                transform.Translate(speed, 0.0f, 0.0f);//座標�?更新�?rigidbody .Addforce 
+                transform.Translate(speed, 0.0f, 0.0f);//rigidbody .Addforce 
                 animator.SetInteger("Right", 1);
                 Run_Flag = 1;
             }
@@ -139,7 +139,7 @@ public class goldfox : MonoBehaviour
 
         }
 
-                //以下テストコー�?
+        
         if (Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("XBOXRB"))
         {
            
@@ -182,7 +182,7 @@ public class goldfox : MonoBehaviour
         /*
                 if (Input.GetKeyDown(KeyCode.C))
                 {
-                    if (animator.runtimeAnimatorController == Fire)//もし�?アニメーターがFireな�?
+                    if (animator.runtimeAnimatorController == Fire)//
                     {
                         GameObject prefab = Resources.Load("prefabs/Silver") as GameObject;
                         Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
@@ -193,7 +193,7 @@ public class goldfox : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.C))
                 {
-                    if (animator.runtimeAnimatorController == Water)//もし�?アニメーターがFireな�?
+                    if (animator.runtimeAnimatorController == Water)//
                     {
                         GameObject prefab = Resources.Load("prefabs/Silver") as GameObject;
                         Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
@@ -204,7 +204,7 @@ public class goldfox : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.C))
                 {
-                    if (animator.runtimeAnimatorController == Grass)//もし�?アニメーターがFireな�?
+                    if (animator.runtimeAnimatorController == Grass)//
                     {
                         GameObject prefab = Resources.Load("prefabs/Silver") as GameObject;
                         Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
