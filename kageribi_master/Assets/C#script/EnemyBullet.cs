@@ -6,153 +6,107 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+    ChouChinAI chouchinAI;
 
-    GameObject traceTarget;
-    public GameObject bullet;
-    public Transform bulletPos;
-    private bool FireState;
+    public GameObject bulletShot;
+    public Transform bulletFireLine;
+    public float fireDelay;
+    public bool fireState;
 
-    public float BulletSpeed;
-    int bulletFlag = 0;
+    public float bulletSpeed = 3.0f;
 
-    public float BulletMaxCount;
-    public float BCount;
+    public int MaxBulletPool;
+    private MemoryPool MPool;
+    private GameObject[] BulletArray;
 
-    Animator animator;
-    Rigidbody2D rigidbody;
-    int attackFlag = 0;
-
+    private void OnApplicationQuit()
+    {
+        MPool.Dispose();
+    }
 
     void Start()
     {
-        FireState = true;
-        animator = gameObject.GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody2D>();
+        chouchinAI = new ChouChinAI();
+        MPool = new MemoryPool();
+        MPool.Create(bulletShot, MaxBulletPool);
+        BulletArray = new GameObject[MaxBulletPool];
     }
+
     //transform.Translate(Vector2.left * MoveSpeed * Time.deltaTime);
     //transform.Translate(Vector2.down * MoveSpeed * Time.deltaTime);
     //GetComponent<Rigidbody2D>().AddForce(Vector2.left * MoveSpeed * Time.deltaTime);
     //GetComponent<Rigidbody2D>().AddForce(Vector2.down * MoveSpeed * Time.deltaTime);
 
-    void Update()
+    void FixedUpdate()
     {
-        Flameshot();
-        BulletMove();
+        if (chouchinAI.Fireball == true)
+        {
+
+            fireState = true;
+
+            BulletFire();
+
+        }
+
+        transform.Translate(Vector2.left * bulletSpeed * Time.deltaTime);
+        transform.Translate(Vector2.down * bulletSpeed * Time.deltaTime);
     }
 
-    void Flameshot()
+    void BulletFire()
     {
-        if (FireState)
+
+        if(fireState)
         {
-            BCount += Time.deltaTime;
-            if (BulletMaxCount <= BCount)
+            for (int i = 0; i < MaxBulletPool; i++ )
             {
-                Destroy(this.gameObject);
+                StartCoroutine(FireCoroutine());
+
+                if (BulletArray[i] == null)
+                {
+                    BulletArray[i] = MPool.NewItem();
+                    BulletArray[i].transform.position = bulletFireLine.transform.position;
+                    
+                    break;
+                }
             }
-
-            
-           
         }
-   
-    }      
-    
-    void BulletMove()
-    {
-        Vector3 moveVelocity = Vector3.zero;
 
-        string dist = "";
-
-        if(FireState)
+        for (int i = 0; i < MaxBulletPool; i++)
         {
-            Vector3 playerPos = traceTarget.transform.position;
 
-            if (playerPos.x < transform.position.x)
-                dist = "Right";
-            else if (playerPos.x > transform.position.x)
-                dist = "Left";
+            if (BulletArray[i])
+            {
+                if (BulletArray[i].GetComponent<Collider2D>().enabled == false)
+                {
+                    BulletArray[i].GetComponent<Collider2D>().enabled = true;
+                    MPool.RemoveItem(BulletArray[i]);
+                    BulletArray[i] = null;
+                }
+            }
         }
-        else
-        {
-            if (bulletFlag == 1)
-                dist = "Right";
-            else if (bulletFlag == 2)
-                dist = "Left";
-        }
-
-        if (dist == "Right")
-        {
-            moveVelocity = Vector3.left;
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y * -1);
-        }
-        else if (dist == "Left")
-        {
-            moveVelocity = Vector3.right;
-            transform.localScale = new Vector3(transform.localScale.x * 1, transform.localScale.y * -1);
-
-        }
-
-        transform.position += moveVelocity * BulletSpeed * Time.deltaTime;
     }
 
-    IEnumerator Movement()
+    IEnumerator FireCoroutine()
     {
-        bulletFlag = Random.Range(0, 3);
-
-        if (bulletFlag == 0)
-        {
-            animator.SetBool( "isMoving" , false);
-        }
-        else if (bulletFlag == 1)
-        {
-            animator.SetBool("isMoving", true);
-        }
-        else if (bulletFlag == 2)
-        {
-            animator.SetBool("isMoving", true);
-        }
-                
-        yield return new WaitForSeconds(3f);
-
-        StartCoroutine("E_Movement");
+        fireState = false;
+        yield return new WaitForSeconds(fireDelay);
+        fireState = true;
+        gameObject.SetActive(true);
     }
-
-    IEnumerator Attacking()
-    {
-        if (attackFlag == 0)
-        {
-            animator.SetBool("isMoving", true);
-        }
-        else if (attackFlag == 1)
-        {
-            animator.SetBool("isMoving", false);
-            animator.SetTrigger("Thung");
-        }
-        else if (attackFlag == 2)
-        {
-            animator.SetBool("isMoving", false);
-            animator.SetTrigger("Fireball");
-        }
-
-        yield return new WaitForSeconds(2.5f);
-
-        StartCoroutine("E_Movement");
-    }
-
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // 弾が接触したら弾は消滅する
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "floor")
         {
-            Debug.Log("Contact Bullet");
-            Destroy(this.gameObject);
+            GetComponent<Collider2D>().enabled = false;
+            gameObject.SetActive(false);
         }
-        else if (other.gameObject.tag == "floor")
-        {
-            Destroy(this.gameObject);
-        }
-
     }
 
+    void OnBecameInvisible()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        gameObject.SetActive(false);
+    }
 }
 
