@@ -46,7 +46,7 @@ public class TimeCycle : MonoBehaviour
         // 誤差を修正
         if (elapsed_seconds >= cycle_second)
         {
-            ClockHands.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+            ClockHands.transform.eulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
 
             elapsed_seconds = 0;
         }
