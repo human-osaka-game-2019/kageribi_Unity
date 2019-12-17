@@ -21,14 +21,14 @@ public class goldfox : MonoBehaviour
     private bool Attack_Flag;
     int Run_Flag = 1;
 
-    // Start is called before the first frame update
+    // Start is called before the first elapsed_time update
     void Start() //æœ?åˆã?ä¸?å›ã?ã¿å‘¼ã³å‡ºã•ã‚Œã‚?
     {
       animator =  GetComponent<Animator>();
       rigid2D = GetComponent<Rigidbody2D>();
     }
    
-    // Update is called once per frame
+    // Update is called once per elapsed_time
     void Update()
     {
 

@@ -17,7 +17,7 @@ public class hp_manager : MonoBehaviour
     public float morning_timeout;
     public float time;
 
-    // Start is called before the first frame update
+    // Start is called before the first elapsed_time update
     void Start()
     {
 
@@ -49,7 +49,7 @@ public class hp_manager : MonoBehaviour
         }
     }
 
-            // Update is called once per frame
+            // Update is called once per elapsed_time
     void Update()
     {
         int Pdm = hp - damage;

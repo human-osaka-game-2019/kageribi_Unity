@@ -12,7 +12,7 @@ public class ChaseAI : MonoBehaviour
     Vector3 movement;
     int movementFlag = 0;  // 0:　停止　1:　左へ　2:　右へ
 
-    // Start is called before the first frame update
+    // Start is called before the first elapsed_time update
     void Start()
     {
         animator = gameObject.GetComponentInChildren<Animator>();
@@ -43,7 +43,7 @@ public class ChaseAI : MonoBehaviour
     {
         Move();
     }
-    // Update is called once per frame
+    // Update is called once per elapsed_time
     void Move()
     {
         Vector3 moveVelocity = Vector3.zero;

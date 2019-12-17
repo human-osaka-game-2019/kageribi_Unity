@@ -6,13 +6,13 @@ public class AttackRange : MonoBehaviour
 {
     public GameObject ParentObject;
     public GameObject Enemy;
-    // Start is called before the first frame update
+    // Start is called before the first elapsed_time update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    // Update is called once per elapsed_time
     void Update()
     {
         

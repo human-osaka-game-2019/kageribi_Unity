@@ -25,7 +25,7 @@ public class silverfox : MonoBehaviour
 
     int RunFlag = 0;
 
-    // Start is called before the first frame update
+    // Start is called before the first elapsed_time update
     void Start() 
     {
       animator =  GetComponent<Animator>();
@@ -36,7 +36,7 @@ public class silverfox : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    // Update is called once per elapsed_time
     void Update()
     {
 

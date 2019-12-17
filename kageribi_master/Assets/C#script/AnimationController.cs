@@ -45,14 +45,14 @@ public class AnimationController : MonoBehaviour
     float Counts = 0;
 
 
-    // Start is called before the first frame update
+    // Start is called before the first elapsed_time update
     void Start()
     {
         Player_Animator_01 = goldfox.GetComponent<Animator>();
         Player_Animator_02 = silverfox.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    // Update is called once per elapsed_time
     void Update()
     {
 

@@ -8,14 +8,14 @@ using UnityEngine;
     public GameObject silver;
     public float timeout;
     public float time;
-    // Start is called before the first frame update
+    // Start is called before the first elapsed_time update
     void Start()
     {
         silver.SetActive(false);
 
     }
 
-    // Update is called once per frame
+    // Update is called once per elapsed_time
     void Update()
     {
         time += Time.deltaTime;

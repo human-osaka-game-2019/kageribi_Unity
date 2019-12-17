@@ -54,14 +54,14 @@ public class EnemyController : MonoBehaviour
     private Vector2 lentern_B_position;
     private Vector2 lentern_G_position;
 
-    // Start is called before the first frame update
+    // Start is called before the first elapsed_time update
     void Start()
     {
         red_datara = datara_R.GetComponent<Animator>();
         blue_datara = datara_B.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    // Update is called once per elapsed_time
     void Update()
     {
         

@@ -52,13 +52,13 @@ public class FilterGradation : MonoBehaviour
     }
 
     public float seconds;
-    public float frame = 0;
+    public float elapsed_time = 0;
 
     public BGFilter Moning = new BGFilter();
     public BGFilter Evening = new BGFilter();
     public BGFilter Night = new BGFilter();
 
-    // Start is called before the first frame update
+    // Start is called before the first elapsed_time update
     void Start()
     {
         Moning.Filter.SetActive(false);
@@ -66,7 +66,7 @@ public class FilterGradation : MonoBehaviour
         Night.Filter.SetActive(false);
     }
 
-    // Update is called once per frame
+    // Update is called once per elapsed_time
     void Update()
     {
         if (Moning.isStart == true)
@@ -77,11 +77,11 @@ public class FilterGradation : MonoBehaviour
             }
             else
             {
-                frame += 1.0f * Time.deltaTime;
+                elapsed_time += 1.0f * Time.deltaTime;
                 Moning.DrawTexture(seconds * 1.25f);
             }
 
-            if (frame >= seconds)
+            if (elapsed_time >= seconds)
             {
                 Moning.alpha = 1.0f;
                 Moning.isMax = true;
@@ -101,11 +101,11 @@ public class FilterGradation : MonoBehaviour
             }
             else
             {
-                frame += 1.0f * Time.deltaTime;
+                elapsed_time += 1.0f * Time.deltaTime;
                 Evening.DrawTexture(seconds * 1.25f);
             }
 
-            if (frame >= seconds)
+            if (elapsed_time >= seconds)
             {
                 Evening.alpha = 1.0f;
                 Evening.isMax = true;
@@ -124,7 +124,7 @@ public class FilterGradation : MonoBehaviour
                 Night.DrawTexture(seconds);
             }
 
-            if (frame >= seconds)
+            if (elapsed_time >= seconds)
             {
                 Night.alpha = 0.0f;
             }
@@ -136,9 +136,9 @@ public class FilterGradation : MonoBehaviour
             }
         }
 
-        if (frame >= seconds)
+        if (elapsed_time >= seconds)
         {
-            frame = 0.0f;
+            elapsed_time = 0.0f;
         }
     }
 }
