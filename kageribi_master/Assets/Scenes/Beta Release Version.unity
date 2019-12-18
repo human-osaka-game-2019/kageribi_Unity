@@ -16215,5 +16215,17 @@ PrefabInstance:
       propertyPath: movePower
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 2272788338474489379, guid: f1b86cfae23ec4d4394dd63d954438d5,
+        type: 3}
+      propertyPath: bulletPLeft
+      value: 
+      objectReference: {fileID: 5938405757095299185, guid: 620a3f12a7d0f2148b9275971c5cd227,
+        type: 3}
+    - target: {fileID: 2272788338474489379, guid: f1b86cfae23ec4d4394dd63d954438d5,
+        type: 3}
+      propertyPath: bulletPRight
+      value: 
+      objectReference: {fileID: 5891594056434997306, guid: 460fe3447803b8e4cb540cc9aa7dbc5f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1b86cfae23ec4d4394dd63d954438d5, type: 3}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyChoChi : MonoBehaviour
+public class EnemyChoChiGreen : MonoBehaviour
 {
     int attackFlag = 0;
     int movementFlag = 0;
@@ -22,11 +22,13 @@ public class EnemyChoChi : MonoBehaviour
     public GameObject player;
     public GameObject enemy;
 
-    public GameObject bulletPrefab;
+    public GameObject bulletPLeft;
+    public GameObject bulletPRight;
 
     private float timer;
     private float waitingTime;
-    
+    string dist = "";
+
 
     /////////////////////////////////
     ///  Start, Update, Functions 
@@ -42,7 +44,6 @@ public class EnemyChoChi : MonoBehaviour
     void MoveRoutine()
     {
         Vector3 moveVelocity = Vector3.zero;
-        string dist = "";
 
         if (isTracing)
         {
@@ -148,9 +149,14 @@ public class EnemyChoChi : MonoBehaviour
 
     void BulletPref()
     {
-
-            Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-
+        if (dist == "Right")
+        {
+            Instantiate(bulletPLeft, transform.position, Quaternion.identity);
+        }
+        else if(dist == "Left")
+        {
+            Instantiate(bulletPRight, transform.position, Quaternion.identity);
+        }
     }
 
     IEnumerator E_Attack()

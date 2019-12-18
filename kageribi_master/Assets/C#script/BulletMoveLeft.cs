@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMove : MonoBehaviour
+public class BulletMoveLeft : MonoBehaviour
 {
     public float moveSpeed;
 
@@ -29,7 +29,9 @@ public class BulletMove : MonoBehaviour
     {
         if (col.gameObject.tag == "Player" || col.gameObject.tag == "floor")
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            Destroy(gameObject);
+            Debug.Log("destroyed");
         }
     }
 
