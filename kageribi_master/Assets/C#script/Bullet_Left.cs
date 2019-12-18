@@ -23,4 +23,9 @@ public class Bullet_Left : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+    }
+
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class silverfox : MonoBehaviour
 {
+    public int HP;
     public GameObject[] AttackRange;
 
     public float speed = 0.1f;
@@ -30,26 +31,27 @@ public class silverfox : MonoBehaviour
     {
       animator =  GetComponent<Animator>();
       rigid2D = GetComponent<Rigidbody2D>();
-      
-      animator =  GetComponent<Animator>();
-      rigid2D = GetComponent<Rigidbody2D>();
-
+        Attack_Flag = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            animator.SetBool("Damage", true);
+        }
 
         bool right = Input.GetKey(KeyCode.RightArrow) || Input.GetAxisRaw("HorizontalL") > 0.19;
         bool left = Input.GetKey(KeyCode.LeftArrow) || Input.GetAxisRaw("HorizontalL") < -0.19;
         bool up = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("XBOXA");
         bool attack = Input.GetKeyDown(KeyCode.S) || Input.GetButtonDown("XBOXB");
+        bool special_attack = Input.GetKeyDown(KeyCode.D);
 
         if (Attack_Flag == false)
         {
             if (right == true)
             {
-                Debug.Log("abs");
                 transform.Translate(speed, 0.0f, 0.0f);
                 animator.SetInteger("Right", 1);
                 animator.SetInteger("Left", 0);
@@ -93,7 +95,7 @@ public class silverfox : MonoBehaviour
                     AttackRange[2].SetActive(true);
                 }
             }
-            if (RunFlag == -1)
+            else if (RunFlag == -1)
             {
                 if (animator.runtimeAnimatorController == Fire)
                 {
@@ -110,6 +112,44 @@ public class silverfox : MonoBehaviour
             }
 
         }
+        if (special_attack == true)
+        {
+            Attack_Flag = true;
+            animator.SetTrigger("SpecialAttack");
+            rigid2D.velocity = Vector2.zero;
+            if (RunFlag == 1)
+            {
+                if (animator.runtimeAnimatorController == Fire)
+                {
+                    AttackRange[6].SetActive(true);
+                }
+                if (animator.runtimeAnimatorController == Water)
+                {
+                    AttackRange[7].SetActive(true);
+                }
+                if (animator.runtimeAnimatorController == Grass)
+                {
+                    AttackRange[8].SetActive(true);
+                }
+            }
+            else if (RunFlag == -1)
+            {
+                if (animator.runtimeAnimatorController == Fire)
+                {
+                    AttackRange[9].SetActive(true);
+                }
+                if (animator.runtimeAnimatorController == Water)
+                {
+                    AttackRange[10].SetActive(true);
+                }
+                if (animator.runtimeAnimatorController == Grass)
+                {
+                    AttackRange[11].SetActive(true);
+                }
+            }
+
+        }
+
 
 
 
@@ -185,9 +225,6 @@ public class silverfox : MonoBehaviour
 
     void FinishJump()
     {
-        animator.SetBool("Jump", false);
-        animator.SetBool("JumpRight", false);
-        animator.SetBool("JumpLeft", false);
     }
     void FinishAttack()
     {
@@ -199,6 +236,31 @@ public class silverfox : MonoBehaviour
         AttackRange[4].SetActive(false);
         AttackRange[5].SetActive(false);
 
+
+    }
+    void FinishSpecialAttack()
+    {
+        Attack_Flag = false;
+        AttackRange[6].SetActive(false);
+        AttackRange[7].SetActive(false);
+        AttackRange[8].SetActive(false);
+        AttackRange[9].SetActive(false);
+        AttackRange[10].SetActive(false);
+        AttackRange[11].SetActive(false);
+
+        if (RunFlag == 1)
+        {
+            rigid2D.position = new Vector3(transform.position.x + 5, transform.position.y, transform.position.z);
+        }
+        else if (RunFlag == -1)
+        {
+            rigid2D.position = new Vector3(transform.position.x - 5, transform.position.y, transform.position.z);
+        }
+
+    }
+    void FinishDamage()
+    {
+        animator.SetBool("Damage", false);
     }
 
 }

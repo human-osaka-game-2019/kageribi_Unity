@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class goldfox : MonoBehaviour
 {
+    public int HP;
     public float speed = 0.1f;
 
     public RuntimeAnimatorController   Fire;
@@ -19,23 +20,35 @@ public class goldfox : MonoBehaviour
     int jumpCounts = 0;
 
     private bool Attack_Flag;
+    private bool AttackFinish_Flag;
     int Run_Flag = 1;
+
+    float Counts = 0;
+    float MaxCount = 1;
+
 
     // Start is called before the first frame update
     void Start() //�?初�?�?回�?み呼び出され�?
     {
       animator =  GetComponent<Animator>();
       rigid2D = GetComponent<Rigidbody2D>();
+        Attack_Flag = false;
     }
    
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            animator.SetBool("Damage", true);
+        }
+
 
         bool right = Input.GetKey(KeyCode.RightArrow) || Input.GetAxisRaw("HorizontalL") > 0.19;
         bool left = Input.GetKey(KeyCode.LeftArrow) || Input.GetAxisRaw("HorizontalL") < -0.19;
         bool up = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("XBOXA");
         bool attack = Input.GetKeyDown(KeyCode.S) || Input.GetButtonDown("XBOXB");
+        bool special_attack = Input.GetKeyDown(KeyCode.D);
         //Animator animator = GetComponent<Animator>();
         //float GetAxis ("Horizintal") ←と→�??を同時に取得できる�?
         if (Attack_Flag == false)
@@ -61,13 +74,22 @@ public class goldfox : MonoBehaviour
                 animator.SetInteger("Left", 0);
             }
         }
+
         if (attack == true)
         {
             Attack_Flag = true;
+            AttackFinish_Flag = false;
             animator.SetTrigger("Attack");
             rigid2D.velocity = Vector2.zero;
             
             
+        }
+        if (special_attack == true)
+        {
+            Attack_Flag = true;
+            AttackFinish_Flag = false;
+            animator.SetTrigger("SpecialAttack");
+            rigid2D.velocity = Vector2.zero;
         }
 
 
@@ -134,6 +156,19 @@ public class goldfox : MonoBehaviour
             }
         }
 
+
+        if (AttackFinish_Flag == true)
+        {
+            Counts += Time.deltaTime;
+            if (Counts >= MaxCount)
+            {
+                Attack_Flag = false;
+                AttackFinish_Flag = false;
+                Counts = 0;
+            }
+        }
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -154,14 +189,11 @@ public class goldfox : MonoBehaviour
 
     void FinishJump()
     {
-        animator.SetBool("JumpRight", false);
-        animator.SetBool("JumpLeft", false);
     }
 
     void FinishAttack()
     {
-        Attack_Flag = false;
-
+        AttackFinish_Flag = true;
         if (Run_Flag == 1)
         {
             if (animator.runtimeAnimatorController == Fire)
@@ -172,7 +204,7 @@ public class goldfox : MonoBehaviour
             if (animator.runtimeAnimatorController == Water)
             {
                 GameObject prefab = Resources.Load("prefabs/WaterBullet_Right") as GameObject;
-                Instantiate(prefab, transform.position, Quaternion.identity);
+                Instantiate(prefab, new Vector3(transform.position.x,transform .position .y,transform .position .z), Quaternion.identity);
 
             }
             if (animator.runtimeAnimatorController == Grass)
@@ -205,6 +237,54 @@ public class goldfox : MonoBehaviour
             }
 
         }
+    }
+    void FinishSpecialAttack()
+    {
+        AttackFinish_Flag = true;
+        if (Run_Flag == 1)
+        {
+            if (animator.runtimeAnimatorController == Fire)
+            {
+                GameObject prefab = Resources.Load("prefabs/FireSpecialBullet_Right") as GameObject;
+                Instantiate(prefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+            }
+            if (animator.runtimeAnimatorController == Water)
+            {
+                GameObject prefab = Resources.Load("prefabs/WaterSpecialBullet_Right") as GameObject;
+                Instantiate(prefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+
+            }
+            if (animator.runtimeAnimatorController == Grass)
+            {
+                GameObject prefab = Resources.Load("prefabs/GrassSpecialBullet_Right") as GameObject;
+                Instantiate(prefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+
+            }
+
+        }
+        if (Run_Flag == -1)
+        {
+            if (animator.runtimeAnimatorController == Fire)
+            {
+                GameObject prefab = Resources.Load("prefabs/FireSpecialBullet_Left") as GameObject;
+                Instantiate(prefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+
+            }
+            if (animator.runtimeAnimatorController == Water)
+            {
+                GameObject prefab = Resources.Load("prefabs/WaterSpecialBullet_Left") as GameObject;
+                Instantiate(prefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+
+            }
+            if (animator.runtimeAnimatorController == Grass)
+            {
+                GameObject prefab = Resources.Load("prefabs/GrassSpecialBullet_Left") as GameObject;
+                Instantiate(prefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+
+            }
+
+        }
+
     }
 
 }

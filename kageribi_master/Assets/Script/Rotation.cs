@@ -13,7 +13,7 @@ public class Rotation : MonoBehaviour
         public void Start()
         {
             // 画面の幅のサイズを取得
-            width = Screen.width * Camera.main.orthographicSize / (Screen.height / 2);
+            //width = Screen.width * Camera.main.orthographicSize / (Screen.height / 2);
             half_width = width / 2;
         }
 
