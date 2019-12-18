@@ -23,8 +23,6 @@ public class ChaseAI : MonoBehaviour
     public RuntimeAnimatorController Fireball;
     public RuntimeAnimatorController isMoving;
 
-    EnemyBullet eBullet;
-
     void Start()
     {
 

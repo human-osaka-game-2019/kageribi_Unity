@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lantern_Green_Move
+  m_Name: Movement
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -22,8 +22,6 @@ AnimationClip:
     - time: 0
       value: {fileID: 21300000, guid: 5413b9cc02735744ea3276f7ef6519d3, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: 8264dc118ba80f54b906bb90066c1646, type: 3}
-    - time: 0.16666667
       value: {fileID: 21300000, guid: 8264dc118ba80f54b906bb90066c1646, type: 3}
     attribute: m_Sprite
     path: 
@@ -46,13 +44,12 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 21300000, guid: 5413b9cc02735744ea3276f7ef6519d3, type: 3}
     - {fileID: 21300000, guid: 8264dc118ba80f54b906bb90066c1646, type: 3}
-    - {fileID: 21300000, guid: 8264dc118ba80f54b906bb90066c1646, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.25
+    m_StopTime: 0.16666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

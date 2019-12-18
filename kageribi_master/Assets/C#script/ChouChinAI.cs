@@ -22,26 +22,89 @@ public class ChouChinAI : MonoBehaviour
     GameObject traceTarget;
     public GameObject player;
     public GameObject enemy;
+   
+    public GameObject bulletPrefab;
+    public GameObject targetCheck;
 
-    public bool FireState = true;
-    public bool FireQuit = false;
+    // public bool canShoot = true;
 
-    private class Player : MonoBehaviour
-    {
-        void Player_HP()
-        {
+    // public int MaxBulletPool;
+    // private MemoryPool MPool;
+    // private GameObject[] BulletArray;
 
-        }
-
-        void Player_Damage()
-        {
-
-        }
-    }
 
     ///////////////////////////////////////////////////
     ///  関数、Start、Update　　　　　　　　　　　　　 ///
     ///////////////////////////////////////////////////
+    ///
+
+    /*private void OnApplicationQuit()
+    {
+        MPool.Dispose();
+    }*/
+
+    /*void ShootControl()
+    {
+        Vector2 playerPos = player.transform.position;
+        Vector2 enemyPos = enemy.transform.position;
+
+        if (Mathf.Abs(playerPos.x - enemyPos.x) < 7.0f &&
+            Mathf.Abs(playerPos.y - enemyPos.y) < 7.0f)
+        {
+
+            if(Mathf.Abs(playerPos.x - transform.position.x) <= 4.0f &&
+                Mathf.Abs(playerPos.y - transform.position.y) <= 4.0f)
+            {
+                animator.runtimeAnimatorController = Thung;
+            }
+
+            if (Mathf.Abs(playerPos.x - transform.position.x) > 4.0f &&
+                Mathf.Abs(playerPos.y - transform.position.y) > 4.0f)
+            {
+
+                for (int i = 0; i < MaxBulletPool; i++)
+                {
+
+                    animator.runtimeAnimatorController = Fireball;
+
+                    if (BulletArray[i] == null)
+                    {
+                        BulletArray[i] = MPool.NewItem();
+                        BulletArray[i].transform.position = transform.position;
+                        
+                        //gameObject.SetActive(true);
+
+                        break;
+                    }
+                }
+
+                for (int i = 0; i < MaxBulletPool; i++)
+                {
+
+                    if (BulletArray[i])
+                    {
+                        if (BulletArray[i].GetComponent<Collider2D>().enabled == false)
+                        {
+                            BulletArray[i].GetComponent<Collider2D>().enabled = true;
+                            MPool.RemoveItem(BulletArray[i]);
+                            BulletArray[i] = null;
+
+                            break;
+                        }
+
+                    }
+                }
+            }
+        }
+
+        else
+        {
+            animator.runtimeAnimatorController = isMoving;
+
+            EnemyMove();
+
+        }
+    }*/
 
     void Bullet_Damage()
     {
@@ -86,37 +149,44 @@ public class ChouChinAI : MonoBehaviour
 
     }
 
-    void EnemyAtk()
+   void EnemyAtk()
     {
         Vector3 playerPos = traceTarget.transform.position;
-        Vector3 moveVelocity = Vector3.zero;
 
         if (Mathf.Abs(playerPos.x - transform.position.x) < 7 &&
             Mathf.Abs(playerPos.y - transform.position.y) < 7)
         {
+
+            attackFlag = 0;
+
+
             if (Mathf.Abs(playerPos.x - transform.position.x) <= 4 &&
                 Mathf.Abs(playerPos.y - transform.position.y) <= 4)
             {
-
+                attackFlag =  1;
                 animator.runtimeAnimatorController = Thung;
-
+   
             }
             else
             {
-                
+                attackFlag = 2;
                 animator.runtimeAnimatorController = Fireball;
-                
-                //Instantiate(bullet, transform.position, Quaternion.identity);
+                Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+                //bulletPrefab.SetActive(true);
 
             }
         }
         else
         {
             animator.runtimeAnimatorController = isMoving;
+           
             EnemyMove();
+
         }
 
     }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -126,6 +196,14 @@ public class ChouChinAI : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
 
         StartCoroutine(E_Movement());
+
+        
+        /*
+        MPool = new MemoryPool();
+        MPool.Create(bulletPrefab, MaxBulletPool);
+        BulletArray = new GameObject[MaxBulletPool];
+        */
+        
     }
 
     // Update is called once per frame
@@ -158,7 +236,7 @@ public class ChouChinAI : MonoBehaviour
         StartCoroutine(E_Movement());
     }
 
-    IEnumerator E_Attack()
+    /*IEnumerator E_Attack()
     {
         if (attackFlag == 0)
         {
@@ -173,12 +251,14 @@ public class ChouChinAI : MonoBehaviour
         {
             animator.SetBool("isMoving", false);
             animator.SetTrigger("Fireball");
+            //bulletPrefab.SetActive(true);
+            ShootControl();
         }
 
         yield return new WaitForSeconds(2.5f);
 
         StartCoroutine(E_Movement());
-    }
+    }*/
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -188,21 +268,10 @@ public class ChouChinAI : MonoBehaviour
             traceTarget = other.gameObject;
 
             StopCoroutine(E_Movement());
-
-            StartCoroutine(E_Attack());
         }
 
     }
 
-    void OnTriggerStay2D(Collider2D other)
-    {
-
-        if (other.gameObject.tag == "Player")
-        {
-            isTracing = true;
-            EnemyMove();
-        }
-    }
 
     void OnTriggerExit2D(Collider2D other)
     {
@@ -211,10 +280,9 @@ public class ChouChinAI : MonoBehaviour
         {
             isTracing = false;
 
-            StopCoroutine(E_Attack());
-
             StartCoroutine(E_Movement());
         }
+
     }
 
 }
