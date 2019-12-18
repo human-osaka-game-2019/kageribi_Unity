@@ -23,6 +23,9 @@ public class EnemyChoChi : MonoBehaviour
     public GameObject enemy;
 
     public GameObject bulletPrefab;
+
+    private float timer;
+    private float waitingTime;
     
 
     /////////////////////////////////
@@ -106,28 +109,34 @@ public class EnemyChoChi : MonoBehaviour
         Vector3 playerPos = player.transform.position;
         Vector3 enemyPos = enemy.transform.position;
         Vector3 moveVelocity = Vector3.zero;
+        timer += Time.deltaTime;
+        waitingTime = 0.2f;
 
         if (Mathf.Abs(playerPos.x - enemyPos.x) < 7 &&
             Mathf.Abs(playerPos.y - enemyPos.y) < 7)
         {
-
-
-
-            if (Mathf.Abs(playerPos.x - enemyPos.x) <= 4 &&
-                Mathf.Abs(playerPos.y - enemyPos.y) <= 4)
+            if (timer > waitingTime)
             {
-                attackFlag = 1;
-                animator.runtimeAnimatorController = Thung;
-            }
+                if (Mathf.Abs(playerPos.x - enemyPos.x) <= 4 &&
+                Mathf.Abs(playerPos.y - enemyPos.y) <= 4)
+                {
+                   attackFlag = 1;
+
+                   animator.runtimeAnimatorController = Thung;
+                }
 
             //if (Mathf.Abs(playerPos.x - transform.position.x) > 4 &&
             //    Mathf.Abs(playerPos.y - transform.position.y) > 4)
-            else
-            {
-                attackFlag = 2;
-                animator.runtimeAnimatorController = Fireball;
+                else
+                {
+                    attackFlag = 2;
+                
+                    animator.runtimeAnimatorController = Fireball;
+                }
 
                 //GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                timer = 0;
+
             }
         }
         else
@@ -135,6 +144,13 @@ public class EnemyChoChi : MonoBehaviour
             animator.runtimeAnimatorController = isMoving;
             MoveRoutine();
         }
+    }
+
+    void BulletPref()
+    {
+
+            Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
     }
 
     IEnumerator E_Attack()
@@ -147,15 +163,17 @@ public class EnemyChoChi : MonoBehaviour
         else if (attackFlag == 1)
         {
             animator.SetBool("isMoving", false);
+
             animator.SetTrigger("Thung");
         }
         else if (attackFlag == 2)
         {
             animator.SetBool("isMoving", false);
+
             animator.SetTrigger("Fireball");
         }
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2);
 
         StartCoroutine(E_Movement());
     }
@@ -192,6 +210,7 @@ public class EnemyChoChi : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isTracing = true;
+
             MoveRoutine();
         }
     }
