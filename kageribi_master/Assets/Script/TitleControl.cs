@@ -14,7 +14,12 @@ public class TitleControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetButtonDown("XBOXA"))
+        {
+            SceneManager.LoadScene("Beta Release Version");
+        }
+
+        if (Input.GetMouseButtonDown(0))
         {
             SceneManager.LoadScene("Beta Release Version");
         }
