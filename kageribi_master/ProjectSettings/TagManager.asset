@@ -64,3 +64,6 @@ TagManager:
   - name: UI
     uniqueID: 1966607619
     locked: 0
+  - name: Panel
+    uniqueID: 2005737217
+    locked: 0
