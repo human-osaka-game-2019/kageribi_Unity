@@ -14,6 +14,7 @@ public class CameraMove : MonoBehaviour
     bool move_side;
     bool move_height;
     bool size;
+    bool camera_return;
     void Start()
     {
 
@@ -23,27 +24,6 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //以下テストコード
-        //if (Input.GetKeyDown(KeyCode.F))
-        //{
-        //    Main_camera.orthographicSize -= Camera_aspet;
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.O))
-        //{
-        //    Main_camera.orthographicSize += Camera_aspet;
-        //}
-
-
-        //if (Main_camera.orthographicSize <= 4 && Main_Camera_Move.transform.position.x > 20f)
-        //{
-        //    move = true;
-        //}
-        //else
-        //{
-        //    Main_camera.orthographicSize -= Camera_aspet;
-        //    Main_Camera_Move.transform.Translate(0.1f, 0, 0);
-        //}
         if (move_side != false)
         {
             if (Main_Camera_Move.transform.position.x > 55f)
@@ -68,10 +48,6 @@ public class CameraMove : MonoBehaviour
             }
         }
 
-        //else
-        //{
-        //    Main_Camera_Move.transform.position = Player.transform.position;
-        //}
         if (size != false)
         {
             if (Main_camera.orthographicSize >= 10)
@@ -83,6 +59,35 @@ public class CameraMove : MonoBehaviour
                 Main_camera.orthographicSize += 0.1f;
 
             }
+        }
+
+        if (camera_return == true)
+        {
+            if (Main_Camera_Move.transform.position.x <= Player.transform.position.x)
+            {
+                Main_Camera_Move.transform.Translate(0.1f, 0, 0);
+            }
+            if (Main_Camera_Move.transform.position.x >= Player.transform.position.x)
+            {
+                Main_Camera_Move.transform.Translate(-0.1f, 0, 0);
+            }
+
+            if (Main_Camera_Move.transform.position.y <= Player.transform.position.y + 3)
+            {
+                Main_Camera_Move.transform.Translate(0, 0.1f, 0);
+            }
+            if (Main_Camera_Move.transform.position.y >= Player.transform.position.y + 3)
+            {
+                Main_Camera_Move.transform.Translate(0, -0.1f, 0);
+            }
+
+            if (Main_camera.orthographicSize >= 5)
+            {
+                Main_camera.orthographicSize -= 0.1f;
+            }
+            Main_camera.transform.parent = Player.transform;
+            PlayerCollider.SetActive(false);
+
         }
 
     }
@@ -98,5 +103,10 @@ public class CameraMove : MonoBehaviour
             Main_camera.transform.parent = null;
             PlayerCollider.SetActive(true);
         }
+    }
+
+    public void CameraReturn()
+    {
+        camera_return = true;
     }
 }

@@ -24,7 +24,7 @@ public class silverfox : MonoBehaviour
     [SerializeField ]
     private bool Attack_Flag;
 
-    int RunFlag = 0;
+    int Run_Flag;
 
     // Start is called before the first frame update
     void Start() 
@@ -32,6 +32,7 @@ public class silverfox : MonoBehaviour
       animator =  GetComponent<Animator>();
       rigid2D = GetComponent<Rigidbody2D>();
         Attack_Flag = false;
+        Run_Flag = 1;
     }
 
     // Update is called once per frame
@@ -55,14 +56,14 @@ public class silverfox : MonoBehaviour
                 transform.Translate(speed, 0.0f, 0.0f);
                 animator.SetInteger("Right", 1);
                 animator.SetInteger("Left", 0);
-                RunFlag = 1;
+                Run_Flag = 1;
             }
             else if (left == true)
             {
                 transform.Translate(-speed, 0.0f, 0.0f);
                 animator.SetInteger("Left", 1);
                 animator.SetInteger("Right", 0);
-                RunFlag = -1;
+                Run_Flag = -1;
             }
             else
             {
@@ -80,7 +81,7 @@ public class silverfox : MonoBehaviour
             animator.SetTrigger("Attack");
             rigid2D.velocity = Vector2.zero;
 
-            if (RunFlag == 1)
+            if (Run_Flag == 1)
             {
                 if (animator.runtimeAnimatorController == Fire)
                 {
@@ -95,7 +96,7 @@ public class silverfox : MonoBehaviour
                     AttackRange[2].SetActive(true);
                 }
             }
-            else if (RunFlag == -1)
+            else if (Run_Flag == -1)
             {
                 if (animator.runtimeAnimatorController == Fire)
                 {
@@ -117,7 +118,7 @@ public class silverfox : MonoBehaviour
             Attack_Flag = true;
             animator.SetTrigger("SpecialAttack");
             rigid2D.velocity = Vector2.zero;
-            if (RunFlag == 1)
+            if (Run_Flag == 1)
             {
                 if (animator.runtimeAnimatorController == Fire)
                 {
@@ -132,7 +133,7 @@ public class silverfox : MonoBehaviour
                     AttackRange[8].SetActive(true);
                 }
             }
-            else if (RunFlag == -1)
+            else if (Run_Flag == -1)
             {
                 if (animator.runtimeAnimatorController == Fire)
                 {
@@ -248,11 +249,11 @@ public class silverfox : MonoBehaviour
         AttackRange[10].SetActive(false);
         AttackRange[11].SetActive(false);
 
-        if (RunFlag == 1)
+        if (Run_Flag == 1)
         {
             rigid2D.position = new Vector3(transform.position.x + 5, transform.position.y, transform.position.z);
         }
-        else if (RunFlag == -1)
+        else if (Run_Flag == -1)
         {
             rigid2D.position = new Vector3(transform.position.x - 5, transform.position.y, transform.position.z);
         }

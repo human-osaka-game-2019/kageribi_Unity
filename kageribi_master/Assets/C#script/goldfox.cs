@@ -21,7 +21,7 @@ public class goldfox : MonoBehaviour
 
     private bool Attack_Flag;
     private bool AttackFinish_Flag;
-    int Run_Flag = 1;
+    int Run_Flag;
 
     float Counts = 0;
     float MaxCount = 1;
@@ -33,6 +33,7 @@ public class goldfox : MonoBehaviour
       animator =  GetComponent<Animator>();
       rigid2D = GetComponent<Rigidbody2D>();
         Attack_Flag = false;
+        Run_Flag = 1;
     }
    
     // Update is called once per frame
