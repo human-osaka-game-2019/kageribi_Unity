@@ -194,7 +194,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &3775294098832635738
+--- !u!1001 &2025135208
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -219,7 +219,7 @@ PrefabInstance:
     - target: {fileID: 3775294098858823764, guid: 3e842cff9b3fe0e4aaf6d63e276c6f29,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3775294098858823764, guid: 3e842cff9b3fe0e4aaf6d63e276c6f29,
         type: 3}
@@ -266,10 +266,5 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 1151421564}
-    - target: {fileID: 3775294100516037252, guid: 3e842cff9b3fe0e4aaf6d63e276c6f29,
-        type: 3}
-      propertyPath: cycle_second
-      value: 40
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e842cff9b3fe0e4aaf6d63e276c6f29, type: 3}
