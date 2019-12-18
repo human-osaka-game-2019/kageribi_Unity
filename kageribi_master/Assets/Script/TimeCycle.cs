@@ -30,8 +30,8 @@ public class TimeCycle : MonoBehaviour
            MainCamera.transform.position.y + (height / 2.0f) - (ClockHands.GetComponent<SpriteRenderer>().bounds.size.y / 2.0f),
            1.0f);
 
-        // 時計の針を朝に設定
-        ClockHands.transform.eulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
+        // 時計を朝が上に来るように設定
+        Clock.transform.eulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
     }
 
     // Update is called once per elapsed_time
@@ -40,13 +40,13 @@ public class TimeCycle : MonoBehaviour
         // フレームカウント
         elapsed_seconds += 1.0f * Time.deltaTime;
 
-        // 針を回す
-        ClockHands.transform.Rotate(new Vector3(0.0f, 0.0f, 360.0f / cycle_second * Time.deltaTime));
+        // 時計を回す
+        Clock.transform.Rotate(new Vector3(0.0f, 0.0f, 360.0f / -cycle_second * Time.deltaTime));
 
         // 誤差を修正
         if (elapsed_seconds >= cycle_second)
         {
-            ClockHands.transform.eulerAngles = new Vector3(0.0f, 0.0f, -90.0f);
+            Clock.transform.eulerAngles = new Vector3(0.0f, 0.0f, 90.0f);
 
             elapsed_seconds = 0;
         }
