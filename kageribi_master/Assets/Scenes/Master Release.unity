@@ -340,7 +340,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1475406517}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 488deb3bcf31027479906c99d37d055e, type: 3}
 --- !u!4 &86248446 stripped
@@ -1211,7 +1211,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1475406517}
     - target: {fileID: 2272788338474489379, guid: f1b86cfae23ec4d4394dd63d954438d5,
         type: 3}
       propertyPath: movePower
@@ -15090,7 +15090,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1475406517}
     - target: {fileID: 2272788338474489379, guid: f1b86cfae23ec4d4394dd63d954438d5,
         type: 3}
       propertyPath: movePower
@@ -15125,6 +15125,11 @@ PrefabInstance:
       propertyPath: maxCount
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 2272788338474489379, guid: f1b86cfae23ec4d4394dd63d954438d5,
+        type: 3}
+      propertyPath: Thung
+      value: 
+      objectReference: {fileID: 9100000, guid: f2669a947c080804bba0f43f392bd7ce, type: 2}
     - target: {fileID: 4040400745072019603, guid: f1b86cfae23ec4d4394dd63d954438d5,
         type: 3}
       propertyPath: m_Constraints
@@ -15440,7 +15445,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1475406517}
     - target: {fileID: 506748700913098790, guid: 488deb3bcf31027479906c99d37d055e,
         type: 3}
       propertyPath: isMoving
@@ -16221,7 +16226,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1475406517}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 488deb3bcf31027479906c99d37d055e, type: 3}
 --- !u!4 &1831169279 stripped
@@ -16384,36 +16389,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6828038276126897212, guid: 41b76bcdcc481e7408b8acc5431deeeb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 7714020462525102194, guid: 41b76bcdcc481e7408b8acc5431deeeb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383346488935762534, guid: 41b76bcdcc481e7408b8acc5431deeeb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183356528884029236, guid: 41b76bcdcc481e7408b8acc5431deeeb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2406690302375340452, guid: 41b76bcdcc481e7408b8acc5431deeeb,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 973078789
-      objectReference: {fileID: 0}
-    - target: {fileID: 2406690302375340452, guid: 41b76bcdcc481e7408b8acc5431deeeb,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8196100354081681581, guid: 41b76bcdcc481e7408b8acc5431deeeb,
         type: 3}
       propertyPath: Moning.Filter
@@ -16448,6 +16423,36 @@ PrefabInstance:
         type: 3}
       propertyPath: Moning.alpha
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6828038276126897212, guid: 41b76bcdcc481e7408b8acc5431deeeb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383346488935762534, guid: 41b76bcdcc481e7408b8acc5431deeeb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183356528884029236, guid: 41b76bcdcc481e7408b8acc5431deeeb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714020462525102194, guid: 41b76bcdcc481e7408b8acc5431deeeb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2406690302375340452, guid: 41b76bcdcc481e7408b8acc5431deeeb,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 973078789
+      objectReference: {fileID: 0}
+    - target: {fileID: 2406690302375340452, guid: 41b76bcdcc481e7408b8acc5431deeeb,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7766825613834466927, guid: 41b76bcdcc481e7408b8acc5431deeeb,
         type: 3}
