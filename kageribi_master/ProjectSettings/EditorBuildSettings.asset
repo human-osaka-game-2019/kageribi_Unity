@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/#8 Yeon.unity
     guid: 710ac87e052a9d54ea9520eed7bfd9d8
   - enabled: 1
-    path: Assets/Scenes/#11Yuma.unity
+    path: Assets/AnimatorController/#11Yuma.unity
     guid: 90515f510bd219f4f8072990d4152032
   m_configObjects: {}

@@ -21,9 +21,10 @@ public class silverfox : MonoBehaviour
     public float jumpForce2;
     int jumpCounts = 0;
     int attackCounts = 0;
+
     [SerializeField ]
     private bool Attack_Flag;
-
+    private bool Land_Flag;
     int Run_Flag;
 
     // Start is called before the first frame update
@@ -205,7 +206,42 @@ public class silverfox : MonoBehaviour
 
         }
 
-       
+        if (Land_Flag == true)
+        {
+            if (Input.GetKey(KeyCode.Space) == true)
+            {
+                animator.SetBool("Shadow", true);
+                GetComponent<CapsuleCollider2D>().enabled = false;
+                rigid2D.constraints = RigidbodyConstraints2D.FreezePositionY|RigidbodyConstraints2D.FreezeRotation;
+                if (animator.runtimeAnimatorController == Fire)
+                {
+                    AttackRange[12].SetActive(true);
+                }
+                if (animator.runtimeAnimatorController == Water)
+                {
+                    AttackRange[13].SetActive(true);
+                }
+                if (animator.runtimeAnimatorController == Grass)
+                {
+                    AttackRange[14].SetActive(true);
+                }
+                Land_Flag = true;
+            }
+            else
+            {
+                animator.SetBool("Shadow", false);
+                GetComponent<CapsuleCollider2D>().enabled = true;
+                rigid2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+                AttackRange[12].SetActive(false);
+                AttackRange[13].SetActive(false);
+                AttackRange[14].SetActive(false);
+            }
+
+        }
+
+    }
+    private void OntriggerEnter2D(Collision2D collision)
+    {
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -214,13 +250,19 @@ public class silverfox : MonoBehaviour
         {
             jumpCounts = 0;
             animator.SetBool("Jumping", false);
+            Land_Flag = true;
         }
+
+        
     }
+
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "floor")
         {
             animator.SetBool("Jumping",true);
+            Land_Flag = false;
         }
     }
 

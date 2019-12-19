@@ -35,7 +35,7 @@ public class goldfox : MonoBehaviour
         Attack_Flag = false;
         Run_Flag = 1;
     }
-   
+
     // Update is called once per frame
     void Update()
     {
