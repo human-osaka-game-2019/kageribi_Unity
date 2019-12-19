@@ -58,12 +58,12 @@ public class TitleControl : MonoBehaviour
 
         if (Input.GetButtonDown("XBOXA"))
         {
-            SceneManager.LoadScene("Beta Release Version");
+            SceneManager.LoadScene("Master Release");
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("Beta Release Version");
+            SceneManager.LoadScene("Master Release");
         }
     }
 }
