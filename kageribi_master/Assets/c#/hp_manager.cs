@@ -9,6 +9,8 @@ public class hp_manager : MonoBehaviour
     [SerializeField] private GameObject silver;
     private GameObject[] gold_hp = new GameObject[20];
     private GameObject[] silver_hp = new GameObject[20];
+    GameObject Player;
+    goldfox script;
     public int hp;
     int count = 0;
     int Acount = 0;
@@ -20,7 +22,8 @@ public class hp_manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Player = GameObject.Find("金狐_光彩エフェクト_右向き_火_03");
+        script = Player.GetComponent<goldfox>();
         foreach (Transform gold_child in gold.transform)
         {
             if (count == gold_hp.Length)
@@ -52,17 +55,9 @@ public class hp_manager : MonoBehaviour
             // Update is called once per frame
     void Update()
     {
-        int Pdm = hp - damage;
+        //int Pdm = Player.hp;
         time += Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            for (hp = hp; hp > Pdm; hp--)
-            {
-                gold_hp[Acount].SetActive(false);
-                silver_hp[Acount].SetActive(false);
-                Acount++;
-            }
-        }
+
         if (time > morning_timeout)
         {
             count = 19;
@@ -95,5 +90,14 @@ public class hp_manager : MonoBehaviour
         
 
     }
+    /*void Controle()
+    {
+        for (hp = hp; hp > Pdm; hp--)
+        {
+            gold_hp[Acount].SetActive(false);
+            silver_hp[Acount].SetActive(false);
+            Acount++;
+        }       
+    }*/
 
 }
