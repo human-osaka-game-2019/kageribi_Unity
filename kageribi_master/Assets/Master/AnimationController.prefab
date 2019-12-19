@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1669618910942190715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1669618910942190693}
+  - component: {fileID: 1669618910942190714}
+  m_Layer: 0
+  m_Name: AnimationController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1669618910942190693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669618910942190715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 49.60227, y: 3.5385966, z: -0.06248797}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1669618910942190714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669618910942190715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775b47c2f4401f34092cdcefdf9ae710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gold_Fire: {fileID: 9100000, guid: 570db7e532291b8409e827bdce497947, type: 2}
+  Gold_Water: {fileID: 9100000, guid: 16d1557b2e20aac42a3699eed9361fe7, type: 2}
+  Gold_Grass: {fileID: 9100000, guid: 3431c093aeb9c6e42b53991b0466a68c, type: 2}
+  Silver_Fire: {fileID: 9100000, guid: 9b44a160adae88e47867cf89d4351a0e, type: 2}
+  Silver_Water: {fileID: 9100000, guid: 8bf0792a919efe04d84624e20f543380, type: 2}
+  Silver_Grass: {fileID: 9100000, guid: 52ba9948da428304ebb4f54a4011e54a, type: 2}
+  goldfox: {fileID: 0}
+  silverfox: {fileID: 0}
+  GameCount: 10
