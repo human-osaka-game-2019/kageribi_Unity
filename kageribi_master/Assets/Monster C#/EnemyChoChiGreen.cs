@@ -31,8 +31,8 @@ public class EnemyChoChiGreen : MonoBehaviour
     private float waitingTime;
     string dist = "";
 
-    const float maxTime = 20.0f;
-    float time = 0.0f;
+    public int maxCount;
+    public float Count;
     Vector3 moveVelocity = Vector3.zero;
 
     /////////////////////////////////
@@ -53,26 +53,49 @@ public class EnemyChoChiGreen : MonoBehaviour
         {
             Vector3 playerPos = player.transform.position;
 
+
             if (playerPos.x < transform.position.x)
+            {
                 dist = "Right";
+            }
+
             else if (playerPos.x > transform.position.x)
+            {
                 dist = "Left";
-            else if (time == 10.0f)
+            }
+
+            else if (Count >= 20)
+            {
                 dist = "Down";
-            else if (time > maxTime)
+            }
+            else if (Count >= maxCount)
+            {
                 dist = "Up";
-            
+
+                Count = 0;
+            }
         }
         else
         {
             if (movementFlag == 1)
+            {
                 dist = "Right";
-            else if (movementFlag == 2)
+            }
+            else if (movementFlag == 2) 
+            {
                 dist = "Left";
-            else if (movementFlag == 3)
+            }
+
+            if (movementFlag == 3)
+            {
                 dist = "Down";
+            }
             else if (movementFlag == 4)
+            {
                 dist = "Up";
+            }
+
+
         }
 
         if(dist == "Right")
@@ -85,54 +108,23 @@ public class EnemyChoChiGreen : MonoBehaviour
             moveVelocity = Vector3.right;
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        
+
+        else if (dist == "Down")
+        {
+            moveVelocity = Vector3.down;
+            transform.localScale = new Vector3(1, -1, 1);
+        }
+        else if (dist == "Up")
+        {
+            moveVelocity = Vector3.up;
+            transform.localScale = new Vector3(1, 2, 1);
+        }
+
 
         transform.position += moveVelocity * movePower * Time.deltaTime;
 
     }
 
-
-    IEnumerator Gimic()
-    {
-
-        while (true)
-        {
-            time += Time.deltaTime;
-
-            if (time == 10.0f)
-            {
-
-                dist = "Down";
-
-                moveVelocity = Vector3.down;
-                transform.position = new Vector3(0, -3, 1);
-
-                if (time > maxTime)
-                {
-
-                    dist = "Up";
-
-                    time = 0.0f;
-
-                }
-            }
-
-            if(dist == "Down")
-            {
-                moveVelocity = Vector3.down;
-                transform.localScale = new Vector3(0, -3, 1);
-            }
-            else if (dist == "Up")
-            {
-                moveVelocity = Vector3.up;
-                transform.localScale = new Vector3(0, 3, 1);
-            }
-
-            transform.position += moveVelocity * movePower * Time.deltaTime;
-
-            yield return null;
-        }
-    }
 
 
     IEnumerator E_Movement()
@@ -164,6 +156,7 @@ public class EnemyChoChiGreen : MonoBehaviour
             animator.SetBool("isMoving", true);
         }
 
+
         yield return new WaitForSeconds(3f);
 
         StartCoroutine(E_Movement());
@@ -185,7 +178,7 @@ public class EnemyChoChiGreen : MonoBehaviour
             if (timer > waitingTime)
             {
                 if (Mathf.Abs(playerPos.x - enemyPos.x) <= 4 &&
-                Mathf.Abs(playerPos.y - enemyPos.y) <= 4)
+                    Mathf.Abs(playerPos.y - enemyPos.y) <= 4)
                 {
                    attackFlag = 1;
 
@@ -263,14 +256,23 @@ public class EnemyChoChiGreen : MonoBehaviour
 
     void Start()
     {
+        Count = 0.0f;
+        maxCount = 40;
+        
         animator = gameObject.GetComponentInChildren<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
         StartCoroutine(E_Movement());
-        StartCoroutine(Gimic());
     }
 
     void FixedUpdate()
     {
+        Count += Time.deltaTime;
+
+        if(Count > maxCount)
+        {
+            Count = 0;
+        }
+
         MoveRoutine();
 
         Attack();

@@ -16713,6 +16713,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6393034478800728095, guid: 5f8a74cf6f2a64b4fbfb2106703b19d8,
         type: 3}
+    - target: {fileID: 2272788338474489379, guid: f1b86cfae23ec4d4394dd63d954438d5,
+        type: 3}
+      propertyPath: maxCount
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4040400745072019603, guid: f1b86cfae23ec4d4394dd63d954438d5,
         type: 3}
       propertyPath: m_Constraints
