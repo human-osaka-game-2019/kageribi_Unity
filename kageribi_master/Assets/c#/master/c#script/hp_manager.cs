@@ -9,8 +9,8 @@ public class hp_manager : MonoBehaviour
     [SerializeField] private GameObject silver;
     private GameObject[] gold_hp = new GameObject[20];
     private GameObject[] silver_hp = new GameObject[20];
-    GameObject Player;
-    goldfox script;
+    public GameObject Player;
+    bothHP script;
     public int hp;
     int count = 0;
     int Acount = 0;
@@ -18,6 +18,7 @@ public class hp_manager : MonoBehaviour
     public float night_timeout;
     public float morning_timeout;
     public float time;
+    public int Pdm;
 
     // Start is called before the first frame update
     void Start()
@@ -49,8 +50,7 @@ public class hp_manager : MonoBehaviour
         {
             silver_hp[i].SetActive(false);
         }
-        Player = GameObject.Find("金狐_光彩エフェクト_右向き_火_03 ");
-        script = Player.GetComponent<goldfox>();
+        script = Player.GetComponent<bothHP>();
     }
 
             // Update is called once per frame
@@ -91,14 +91,15 @@ public class hp_manager : MonoBehaviour
         
 
     }
-    /*void Controle()
+    public void Controle()
     {
+        Pdm = script.HP;
         for (hp = hp; hp > Pdm; hp--)
         {
             gold_hp[Acount].SetActive(false);
             silver_hp[Acount].SetActive(false);
             Acount++;
         }       
-    }*/
+    }
 
 }
