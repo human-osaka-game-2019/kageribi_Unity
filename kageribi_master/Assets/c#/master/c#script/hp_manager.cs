@@ -22,8 +22,7 @@ public class hp_manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.Find("金狐_光彩エフェクト_右向き_火_03");
-        script = Player.GetComponent<goldfox>();
+
         foreach (Transform gold_child in gold.transform)
         {
             if (count == gold_hp.Length)
@@ -50,6 +49,8 @@ public class hp_manager : MonoBehaviour
         {
             silver_hp[i].SetActive(false);
         }
+        Player = GameObject.Find("金狐_光彩エフェクト_右向き_火_03 ");
+        script = Player.GetComponent<goldfox>();
     }
 
             // Update is called once per frame

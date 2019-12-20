@@ -97,6 +97,7 @@ public class CameraMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Main_camera.GetComponent<camera>().enabled = false;
             move_side = true;
             move_height = true;
             size = true;
@@ -108,5 +109,6 @@ public class CameraMove : MonoBehaviour
     public void CameraReturn()
     {
         camera_return = true;
+        Main_camera.GetComponent<camera>().enabled = true;
     }
 }
