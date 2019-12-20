@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class goldfox : MonoBehaviour
 {
-    public int HP;
+    public GameObject HP;
+    bothHP golsilHP;
     public float speed = 0.1f;
 
     public RuntimeAnimatorController   Fire;
@@ -34,6 +35,7 @@ public class goldfox : MonoBehaviour
       rigid2D = GetComponent<Rigidbody2D>();
         Attack_Flag = false;
         Run_Flag = 1;
+        golsilHP = HP.GetComponent<bothHP>();
     }
 
     // Update is called once per frame
@@ -41,6 +43,7 @@ public class goldfox : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
+            golsilHP.BigDamage();
             animator.SetBool("Damage", true);
         }
 
@@ -49,14 +52,13 @@ public class goldfox : MonoBehaviour
         bool left = Input.GetKey(KeyCode.LeftArrow) || Input.GetAxisRaw("HorizontalL") < -0.19;
         bool up = Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("XBOXA");
         bool attack = Input.GetKeyDown(KeyCode.S) || Input.GetButtonDown("XBOXB");
-        bool special_attack = Input.GetKeyDown(KeyCode.D);
+        bool special_attack = Input.GetKeyDown(KeyCode.D)||Input.GetButtonDown("XBOXY");
         //Animator animator = GetComponent<Animator>();
         //float GetAxis ("Horizintal") ←と→�??を同時に取得できる�?
         if (Attack_Flag == false)
         {
             if (right == true)
             {
-                Debug.Log("aaa");
                 transform.Translate(speed, 0.0f, 0.0f);//座標�?更新�?rigidbody .Addforce 
                 animator.SetInteger("Right", 1);
                 animator.SetInteger("Left", 0);

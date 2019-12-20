@@ -25,6 +25,30 @@ public class Bullet_Left : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "MonsterD_Fire")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "MonsterD_Water")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "MonsterD_Grass")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "MonsterC_Fire")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "MonsterC_Water")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "MonsterC_Grass")
+        {
+            Destroy(gameObject);
+        }
 
     }
 

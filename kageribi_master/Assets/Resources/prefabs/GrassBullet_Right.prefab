@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 70489672676611663}
   - component: {fileID: 2936812349072128844}
   - component: {fileID: 6172899963680683099}
-  - component: {fileID: 560589437060741895}
+  - component: {fileID: 8659267061899738891}
+  - component: {fileID: 3894140063134600765}
   m_Layer: 0
   m_Name: GrassBullet_Right
-  m_TagString: Untagged
+  m_TagString: AttackRange_Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +101,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &560589437060741895
+--- !u!58 &8659267061899738891
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017047669642576395}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.33, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.56
+--- !u!114 &3894140063134600765
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,9 +126,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2017047669642576395}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fb5c63cbb1781b4bbc2a97b24700b56, type: 3}
+  m_Script: {fileID: 11500000, guid: 62365223e5841da4cb6d1832eb1f7095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0
   Counts: 0
-  MaxCount: 1
+  MaxCount: 0

@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 1997555903590930582}
   - component: {fileID: 1997555903590930581}
   - component: {fileID: 1997555903590930580}
-  - component: {fileID: 1997555903590930583}
   - component: {fileID: 1997555903590930576}
   - component: {fileID: 1997555903590930577}
+  - component: {fileID: 1915032101875589029}
   m_Layer: 0
   m_Name: FireSpecialBullet_Right
-  m_TagString: Untagged
+  m_TagString: AttackRange_Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,21 +102,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1997555903590930583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1997555903590930587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d3e5567a6b71354492fc83d2cacfa8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.1
-  Counts: 0
-  MaxCount: 3
 --- !u!58 &1997555903590930576
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -154,3 +139,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1915032101875589029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997555903590930587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a7a59cfba7e884ba2417648a1cc992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.1
+  Counts: 0
+  MaxCount: 3

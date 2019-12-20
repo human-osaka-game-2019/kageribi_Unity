@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 2495881271646447960}
   - component: {fileID: 2495881271646447962}
   - component: {fileID: 2495881271646447963}
-  - component: {fileID: 2495881271646447961}
+  - component: {fileID: 3719979212475843534}
   m_Layer: 0
   m_Name: GrassSpecialBullet_Left
-  m_TagString: Untagged
+  m_TagString: AttackRange_Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2495881271646447961
+--- !u!114 &3719979212475843534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2495881271646447956}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 698892cbb1658b64c8476c89b13fbec7, type: 3}
+  m_Script: {fileID: 11500000, guid: d59e28abc2ada1842a2ed0705ba935c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1

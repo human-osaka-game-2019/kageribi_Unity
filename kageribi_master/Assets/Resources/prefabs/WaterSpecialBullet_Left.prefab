@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 718726013528504490}
   - component: {fileID: 718726013528504488}
   - component: {fileID: 718726013528504495}
-  - component: {fileID: 718726013528504489}
+  - component: {fileID: 5835192404034708938}
   m_Layer: 0
   m_Name: WaterSpecialBullet_Left
-  m_TagString: Untagged
+  m_TagString: AttackRange_Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &718726013528504489
+--- !u!114 &5835192404034708938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 718726013528504494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 698892cbb1658b64c8476c89b13fbec7, type: 3}
+  m_Script: {fileID: 11500000, guid: d59e28abc2ada1842a2ed0705ba935c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1

@@ -20,15 +20,15 @@ public class TimeCycle : MonoBehaviour
         height = Screen.height * Camera.main.orthographicSize / (Screen.height / 2);
 
         // オブジェクトの初期座標を設定
-        Clock.transform.position = new Vector3(
-            MainCamera.transform.position.x + (width  / 2.0f) - (Clock.GetComponent<SpriteRenderer>().bounds.size.x / 2.0f),
-            MainCamera.transform.position.y + (height  / 2.0f) - (Clock.GetComponent<SpriteRenderer>().bounds.size.y / 2.0f),
-            2.0f);
+        //Clock.transform.position = new Vector3(
+        //    MainCamera.transform.position.x + (width  / 2.0f) - (Clock.GetComponent<SpriteRenderer>().bounds.size.x / 2.0f),
+        //    MainCamera.transform.position.y + (height  / 2.0f) - (Clock.GetComponent<SpriteRenderer>().bounds.size.y / 2.0f),
+        //    2.0f);
 
-        ClockHands.transform.position = new Vector3(
-           MainCamera.transform.position.x + (width / 2.0f) - (ClockHands.GetComponent<SpriteRenderer>().bounds.size.x / 2.0f),
-           MainCamera.transform.position.y + (height / 2.0f) - (ClockHands.GetComponent<SpriteRenderer>().bounds.size.y / 2.0f),
-           1.0f);
+        //ClockHands.transform.position = new Vector3(
+        //   MainCamera.transform.position.x + (width / 2.0f) - (ClockHands.GetComponent<SpriteRenderer>().bounds.size.x / 2.0f),
+        //   MainCamera.transform.position.y + (height / 2.0f) - (ClockHands.GetComponent<SpriteRenderer>().bounds.size.y / 2.0f),
+        //   1.0f);
 
         // 時計を朝が上に来るように設定
         Clock.transform.eulerAngles = new Vector3(0.0f, 0.0f, 90.0f);

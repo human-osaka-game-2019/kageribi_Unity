@@ -41,6 +41,37 @@ public class SpecialBullet_Left : MonoBehaviour
             Hit_Flag = true;
             animator.SetBool("Hit", true);
         }
+        if (collision.gameObject.tag == "MonsterD_Fire")
+        {
+            Hit_Flag = true;
+            animator.SetBool("Hit", true);
+        }
+        if (collision.gameObject.tag == "MonsterD_Water")
+        {
+            Hit_Flag = true;
+            animator.SetBool("Hit", true);
+        }
+        if (collision.gameObject.tag == "MonsterD_Grass")
+        {
+            Hit_Flag = true;
+            animator.SetBool("Hit", true);
+        }
+        if (collision.gameObject.tag == "MonsterC_Fire")
+        {
+            Hit_Flag = true;
+            animator.SetBool("Hit", true);
+        }
+        if (collision.gameObject.tag == "MonsterC_Water")
+        {
+            Hit_Flag = true;
+            animator.SetBool("Hit", true);
+        }
+        if (collision.gameObject.tag == "MonsterC_Grass")
+        {
+            Hit_Flag = true;
+            animator.SetBool("Hit", true);
+        }
+
     }
 
 }

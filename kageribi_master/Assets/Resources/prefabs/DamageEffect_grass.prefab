@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6993382333742029746}
   - component: {fileID: 6993382333742029749}
   - component: {fileID: 6993382333742029748}
-  - component: {fileID: 7763241986559246257}
+  - component: {fileID: 7487674476972227445}
   m_Layer: 0
   m_Name: DamageEffect_grass
   m_TagString: Untagged
@@ -100,7 +100,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7763241986559246257
+--- !u!114 &7487674476972227445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,6 +109,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6993382333742029751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dac82aa9ac55ab499d8b3404a904b68, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f7a52e054c463a4994958b9df1dbc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

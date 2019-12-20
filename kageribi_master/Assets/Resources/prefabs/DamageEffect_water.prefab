@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5942724787662349090}
   - component: {fileID: 5942724787662349091}
   - component: {fileID: 5942724787662349100}
-  - component: {fileID: 925575353268950553}
+  - component: {fileID: 6782373161304439885}
   m_Layer: 0
   m_Name: DamageEffect_water
   m_TagString: Untagged
@@ -100,7 +100,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &925575353268950553
+--- !u!114 &6782373161304439885
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,6 +109,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5942724787662349101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dac82aa9ac55ab499d8b3404a904b68, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f7a52e054c463a4994958b9df1dbc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
