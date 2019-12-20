@@ -5,8 +5,6 @@ using UnityEngine;
 public class BulletMoveDLeft : MonoBehaviour
 {
     public float moveSpeed;
-    float Counts = 0;
-    float MaxCount = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +25,6 @@ public class BulletMoveDLeft : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Counts += Time.deltaTime;
 
         if (col.gameObject.tag == "Player" || col.gameObject.tag == "floor")
         {
@@ -35,9 +32,9 @@ public class BulletMoveDLeft : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("destroyed");
         }
-        else if(Counts >= MaxCount)
+        else
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 5);
         }
 
     }

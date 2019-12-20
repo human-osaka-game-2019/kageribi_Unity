@@ -11,12 +11,14 @@ public class EnemyChoChiGreen : MonoBehaviour
     //bool isAttacking;
 
     public float movePower;
+    public float moveSpeed;
 
     Animator animator;
     Rigidbody2D rigidbody;
 
     public RuntimeAnimatorController Thung;
-    public RuntimeAnimatorController Fireball;
+    public RuntimeAnimatorController FireballUp;
+    public RuntimeAnimatorController FireballDown;
     public RuntimeAnimatorController isMoving;
 
     public GameObject player;
@@ -33,26 +35,27 @@ public class EnemyChoChiGreen : MonoBehaviour
 
     public int maxCount;
     public float Count;
-    Vector3 moveVelocity = Vector3.zero;
+
+    
 
     /////////////////////////////////
     ///  Start, Update, Functions 
     /////////////////////////////////
 
-
+        //  해야 할 일 : fireball 하나로 합치기 , 데미지 정보 입력, 
 
     //////////////////////////   MOVE     ////////////////////////////
 
 
 
-
     void MoveRoutine()
     {
+        
+        Vector3 moveVelocity = Vector3.zero;
 
         if (isTracing)
         {
             Vector3 playerPos = player.transform.position;
-
 
             if (playerPos.x < transform.position.x)
             {
@@ -62,17 +65,6 @@ public class EnemyChoChiGreen : MonoBehaviour
             else if (playerPos.x > transform.position.x)
             {
                 dist = "Left";
-            }
-
-            else if (Count >= 20)
-            {
-                dist = "Down";
-            }
-            else if (Count >= maxCount)
-            {
-                dist = "Up";
-
-                Count = 0;
             }
         }
         else
@@ -86,16 +78,6 @@ public class EnemyChoChiGreen : MonoBehaviour
                 dist = "Left";
             }
 
-            if (movementFlag == 3)
-            {
-                dist = "Down";
-            }
-            else if (movementFlag == 4)
-            {
-                dist = "Up";
-            }
-
-
         }
 
         if(dist == "Right")
@@ -108,28 +90,67 @@ public class EnemyChoChiGreen : MonoBehaviour
             moveVelocity = Vector3.right;
             transform.localScale = new Vector3(-1, 1, 1);
         }
+        
+        transform.position += moveVelocity * moveSpeed * Time.deltaTime;
 
-        else if (dist == "Down")
+    }
+
+    void MovGimicDown()
+    {
+        Vector3 enemyPos = transform.position;
+        Vector3 moveVelocity = Vector3.zero;
+
+        if (Count > 18)
         {
+
             moveVelocity = Vector3.down;
-            transform.localScale = new Vector3(1, -1, 1);
-        }
-        else if (dist == "Up")
-        {
-            moveVelocity = Vector3.up;
-            transform.localScale = new Vector3(1, 2, 1);
-        }
+            transform.Translate(0, -movePower, 0);
 
+            //enemyPos.y = enemy.transform.position.y - (movePower * Time.deltaTime);
+
+            dist = "Down";
+
+            if (-1 >= transform.position.y)
+            {
+                transform.position = new Vector3(transform.position.x, -1, transform.position.z);
+            }
+
+            StartCoroutine(E_Attack());
+
+        }
 
         transform.position += moveVelocity * movePower * Time.deltaTime;
 
     }
 
+    void MovGimicUp()
+    {
+        Vector3 enemyPos = transform.position;
+        Vector3 moveVelocity = Vector3.zero;
 
+        if (Count > 38)
+        {
+
+            moveVelocity = Vector3.up;
+            transform.Translate(0, movePower, 0);
+
+            dist = "Up";
+
+            if (5 <= transform.position.y)
+            {
+                transform.position = new Vector3(transform.position.x, 5, transform.position.z);
+            }
+
+            StartCoroutine(E_Attack());
+        }
+
+        transform.position += moveVelocity * movePower * Time.deltaTime;
+
+    }
 
     IEnumerator E_Movement()
     {
-        movementFlag = Random.Range(0, 5);
+        movementFlag = Random.Range(0, 3);
 
         if (movementFlag == 0)
         {
@@ -146,17 +167,6 @@ public class EnemyChoChiGreen : MonoBehaviour
             animator.SetBool("isMoving", true);
         }
 
-        else if (movementFlag == 3)
-        {
-            animator.SetBool("isMoving", true);
-        }
-
-        else if (movementFlag == 4)
-        {
-            animator.SetBool("isMoving", true);
-        }
-
-
         yield return new WaitForSeconds(3f);
 
         StartCoroutine(E_Movement());
@@ -165,39 +175,36 @@ public class EnemyChoChiGreen : MonoBehaviour
     //////////////////////////   ATTACK     ////////////////////////////
 
 
-    void Attack()
+    void AttackP()
     {
         Vector3 playerPos = player.transform.position;
         Vector3 enemyPos = enemy.transform.position;
-        timer += Time.deltaTime;
-        waitingTime = 0.2f;
+        Vector3 moveVelocity = Vector3.zero;
+
 
         if (Mathf.Abs(playerPos.x - enemyPos.x) < 7 &&
             Mathf.Abs(playerPos.y - enemyPos.y) < 7)
         {
-            if (timer > waitingTime)
+
+            if (Mathf.Abs(playerPos.x - enemyPos.x) <= 3 &&
+                Mathf.Abs(playerPos.y - enemyPos.y) <= 3)
             {
-                if (Mathf.Abs(playerPos.x - enemyPos.x) <= 4 &&
-                    Mathf.Abs(playerPos.y - enemyPos.y) <= 4)
-                {
-                   attackFlag = 1;
+                attackFlag = 1;
 
-                   animator.runtimeAnimatorController = Thung;
-                }
-
-            //if (Mathf.Abs(playerPos.x - transform.position.x) > 4 &&
-            //    Mathf.Abs(playerPos.y - transform.position.y) > 4)
-                else
-                {
-                    attackFlag = 2;
-                
-                    animator.runtimeAnimatorController = Fireball;
-                }
-
-                //GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                timer = 0;
-
+                animator.runtimeAnimatorController = Thung;
             }
+            //else if (Mathf.Abs(playerPos.x - enemyPos.x) > 3 &&
+            //Mathf.Abs(playerPos.y - enemyPos.y) > 3)
+
+            else
+            {
+                attackFlag = 2;
+
+                animator.runtimeAnimatorController = FireballUp;
+            }
+
+            //GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
         }
         else
         {
@@ -206,27 +213,74 @@ public class EnemyChoChiGreen : MonoBehaviour
         }
     }
 
-    void BulletPref()
+    void AttackD()
     {
-        if (dist == "Right")
+        Vector3 playerPos = player.transform.position;
+        Vector3 enemyPos = enemy.transform.position;
+        Vector3 moveVelocity = Vector3.zero;
+
+
+        if (Mathf.Abs(playerPos.x - enemyPos.x) < 7 &&
+            Mathf.Abs(playerPos.y - enemyPos.y) < 7)
         {
-            Instantiate(bulletPLeft, transform.position, Quaternion.identity);
+            if (Mathf.Abs(playerPos.x - enemyPos.x) <= 3 &&
+              Mathf.Abs(playerPos.y - enemyPos.y) <= 3)
+            {
+                attackFlag = 1;
+
+                animator.runtimeAnimatorController = Thung;
+            }
+            //else if (Mathf.Abs(playerPos.x - enemyPos.x) > 3 &&
+            //Mathf.Abs(playerPos.y - enemyPos.y) > 3)
+
+            else
+            {
+                attackFlag = 3;
+
+                animator.runtimeAnimatorController = FireballDown;
+            }
+
+            //GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
         }
-        else if(dist == "Left")
+        else
         {
-            Instantiate(bulletPRight, transform.position, Quaternion.identity);
+            animator.runtimeAnimatorController = isMoving;
+            MoveRoutine();
         }
-        else if(dist == "Down")
+    }
+
+    void PBulletPref()
+    {
+        if (attackFlag == 2)
         {
-            if(dist == "Right")
+            if (dist == "Right") // Right
+            {
+                Instantiate(bulletPLeft, transform.position, Quaternion.identity);
+            }
+            else if (dist == "Left") // Left
+            {
+                Instantiate(bulletPRight, transform.position, Quaternion.identity);
+            }
+        }
+
+    }
+
+    void DBulletPref()
+    {
+
+        if (attackFlag == 3)
+        {
+            if (dist == "Right") // Right
             {
                 Instantiate(bulletDLeft, transform.position, Quaternion.identity);
             }
-            else if(dist == "Left")
+            else if (dist == "Right") // Left
             {
                 Instantiate(bulletDRight, transform.position, Quaternion.identity);
             }
         }
+
     }
 
     IEnumerator E_Attack()
@@ -248,6 +302,12 @@ public class EnemyChoChiGreen : MonoBehaviour
 
             animator.SetTrigger("Fireball");
         }
+        else if (attackFlag == 3)
+        {
+            animator.SetBool("isMoving", false);
+
+            animator.SetTrigger("DFireball");
+        }
 
         yield return new WaitForSeconds(2);
 
@@ -258,7 +318,6 @@ public class EnemyChoChiGreen : MonoBehaviour
     {
         Count = 0.0f;
         maxCount = 40;
-        
         animator = gameObject.GetComponentInChildren<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
         StartCoroutine(E_Movement());
@@ -268,14 +327,21 @@ public class EnemyChoChiGreen : MonoBehaviour
     {
         Count += Time.deltaTime;
 
-        if(Count > maxCount)
+        MovGimicDown();
+
+        AttackD();
+
+        MovGimicUp();
+
+        AttackP();
+       
+        if (Count >= maxCount)
         {
-            Count = 0;
+           Count = 0.0f;
         }
 
         MoveRoutine();
 
-        Attack();
     }
 
 
@@ -298,6 +364,15 @@ public class EnemyChoChiGreen : MonoBehaviour
             isTracing = true;
 
             MoveRoutine();
+
+            if (dist == "Up")
+            {
+                AttackP();
+            }
+            else if (dist == "Down")
+            {
+                AttackD();
+            }
         }
     }
 
