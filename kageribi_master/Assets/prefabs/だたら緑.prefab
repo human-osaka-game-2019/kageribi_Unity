@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8222069737245227222}
   - component: {fileID: 8222069737245227243}
+  - component: {fileID: 4237934859848075760}
   - component: {fileID: 8222069737245227242}
-  - component: {fileID: 1128003357527740985}
   - component: {fileID: 8222069737245227220}
   - component: {fileID: 8222069737245227223}
   m_Layer: 23
   m_Name: "\u3060\u305F\u3089\u7DD1"
-  m_TagString: Monsters
+  m_TagString: MonsterD_Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +83,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4237934859848075760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8222069737245227217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694fe6a2189746a41b1c14e3dc33b877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 10
+  great_damage: 4
+  normal_damage: 2
+  poor_damage: 1
+  movePower: 1
 --- !u!95 &8222069737245227242
 Animator:
   serializedVersion: 3
@@ -102,19 +119,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1128003357527740985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8222069737245227217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 069baa3112224844c8283e751b1b3f00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movePower: 1
 --- !u!50 &8222069737245227220
 Rigidbody2D:
   serializedVersion: 4

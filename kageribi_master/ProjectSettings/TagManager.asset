@@ -12,6 +12,13 @@ TagManager:
   - AttackRange_Fire
   - floor
   - stage
+  - Bullet
+  - MonsterD_Fire
+  - MonsterD_Water
+  - MonsterD_Grass
+  - Bullet_Fire
+  - Bullet_Water
+  - Bullet_Grass
   layers:
   - Default
   - TransparentFX

@@ -24,16 +24,16 @@ public class EnemyChoChiGreen : MonoBehaviour
 
     public GameObject bulletPLeft;
     public GameObject bulletPRight;
-    public GameObject bulletDLeft;
-    public GameObject bulletDRight;
 
     private float timer;
     private float waitingTime;
     string dist = "";
 
-    public int maxCount;
-    public float Count;
-    Vector3 moveVelocity = Vector3.zero;
+    public int hp = 15;
+
+    public int great_damage = 4;
+    public int normal_damage = 2;
+    public int poor_damage = 1;
 
     /////////////////////////////////
     ///  Start, Update, Functions 
@@ -44,107 +44,46 @@ public class EnemyChoChiGreen : MonoBehaviour
     //////////////////////////   MOVE     ////////////////////////////
 
 
-
-
     void MoveRoutine()
     {
+        Vector3 moveVelocity = Vector3.zero;
 
         if (isTracing)
         {
             Vector3 playerPos = player.transform.position;
 
-
             if (playerPos.x < transform.position.x)
                 dist = "Right";
             else if (playerPos.x > transform.position.x)
                 dist = "Left";
-            else if (Count >= 2)
-                movementFlag = 3;
-            else if (Count >= maxCount)
-            {
-                movementFlag = 4;
-
-                Count = 0;
-            }
-
-
         }
         else
         {
             if (movementFlag == 1)
-            {
                 dist = "Right";
-
-                if (movementFlag == 3)
-                {
-                    dist = "Down";
-                }
-                else if (movementFlag == 4)
-                {
-                    dist = "Up";
-                }
-            }
-            else if (movementFlag == 2) 
-            {
+            else if (movementFlag == 2)
                 dist = "Left";
-
-                if (movementFlag == 3)
-                {
-                    dist = "Down";
-                }
-                else if (movementFlag == 4)
-                {
-                    dist = "Up";
-                }
-
-            }
-
-           
         }
 
-        if(dist == "Right")
+        if (dist == "Right")
         {
             moveVelocity = Vector3.left;
             transform.localScale = new Vector3(1, 1, 1);
-
-            if (dist == "Down")
-            {
-                moveVelocity = Vector3.down;
-                transform.localScale = new Vector3(0, -3, 1);
-            }
-            else if (dist == "Up")
-            {
-                moveVelocity = Vector3.up;
-                transform.localScale = new Vector3(0, 3, 1);
-            }
         }
-        else if(dist == "Left")
+        else if (dist == "Left")
         {
             moveVelocity = Vector3.right;
             transform.localScale = new Vector3(-1, 1, 1);
-
-            if (dist == "Down")
-            {
-                moveVelocity = Vector3.down;
-                transform.localScale = new Vector3(0, -3, 1);
-            }
-            else if (dist == "Up")
-            {
-                moveVelocity = Vector3.up;
-                transform.localScale = new Vector3(0, 3, 1);
-            }
         }
-
 
         transform.position += moveVelocity * movePower * Time.deltaTime;
 
     }
 
 
-
     IEnumerator E_Movement()
     {
-        movementFlag = Random.Range(0, 5);
+        movementFlag = Random.Range(0, 3);
 
         if (movementFlag == 0)
         {
@@ -154,31 +93,11 @@ public class EnemyChoChiGreen : MonoBehaviour
         else if (movementFlag == 1)
         {
             animator.SetBool("isMoving", true);
-
-            if (movementFlag == 3)
-            {
-                animator.SetBool("isMoving", true);
-            }
-
-            else if (movementFlag == 4)
-            {
-                animator.SetBool("isMoving", true);
-            }
         }
 
         else if (movementFlag == 2)
         {
             animator.SetBool("isMoving", true);
-
-            if (movementFlag == 3)
-            {
-                animator.SetBool("isMoving", true);
-            }
-
-            else if (movementFlag == 4)
-            {
-                animator.SetBool("isMoving", true);
-            }
         }
 
         yield return new WaitForSeconds(3f);
@@ -193,6 +112,7 @@ public class EnemyChoChiGreen : MonoBehaviour
     {
         Vector3 playerPos = player.transform.position;
         Vector3 enemyPos = enemy.transform.position;
+        Vector3 moveVelocity = Vector3.zero;
         timer += Time.deltaTime;
         waitingTime = 0.2f;
 
@@ -202,19 +122,19 @@ public class EnemyChoChiGreen : MonoBehaviour
             if (timer > waitingTime)
             {
                 if (Mathf.Abs(playerPos.x - enemyPos.x) <= 4 &&
-                    Mathf.Abs(playerPos.y - enemyPos.y) <= 4)
+                Mathf.Abs(playerPos.y - enemyPos.y) <= 4)
                 {
-                   attackFlag = 1;
+                    attackFlag = 1;
 
-                   animator.runtimeAnimatorController = Thung;
+                    animator.runtimeAnimatorController = Thung;
                 }
 
-            //if (Mathf.Abs(playerPos.x - transform.position.x) > 4 &&
-            //    Mathf.Abs(playerPos.y - transform.position.y) > 4)
+                //if (Mathf.Abs(playerPos.x - transform.position.x) > 4 &&
+                //    Mathf.Abs(playerPos.y - transform.position.y) > 4)
                 else
                 {
                     attackFlag = 2;
-                
+
                     animator.runtimeAnimatorController = Fireball;
                 }
 
@@ -236,20 +156,9 @@ public class EnemyChoChiGreen : MonoBehaviour
         {
             Instantiate(bulletPLeft, transform.position, Quaternion.identity);
         }
-        else if(dist == "Left")
+        else if (dist == "Left")
         {
             Instantiate(bulletPRight, transform.position, Quaternion.identity);
-        }
-        else if(dist == "Down")
-        {
-            if(dist == "Right")
-            {
-                Instantiate(bulletDLeft, transform.position, Quaternion.identity);
-            }
-            else if(dist == "Left")
-            {
-                Instantiate(bulletDRight, transform.position, Quaternion.identity);
-            }
         }
     }
 
@@ -280,9 +189,6 @@ public class EnemyChoChiGreen : MonoBehaviour
 
     void Start()
     {
-        Count = 0.0f;
-        maxCount = 4;
-        
         animator = gameObject.GetComponentInChildren<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
         StartCoroutine(E_Movement());
@@ -290,13 +196,6 @@ public class EnemyChoChiGreen : MonoBehaviour
 
     void FixedUpdate()
     {
-        Count += Time.deltaTime;
-
-        if(Count > maxCount)
-        {
-            Count = 0;
-        }
-
         MoveRoutine();
 
         Attack();
@@ -312,6 +211,36 @@ public class EnemyChoChiGreen : MonoBehaviour
             StopCoroutine(E_Movement());
 
             StartCoroutine(E_Attack());
+        }
+        else if (other.gameObject.tag == ("Fire"))
+        {
+            GameObject prefab = Resources.Load("prefabs/DamageEffect_fire") as GameObject;
+            Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
+            hp = hp - great_damage;
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (other.gameObject.tag == ("Water"))
+        {
+            GameObject prefab = Resources.Load("prefabs/DamageEffect_water") as GameObject;
+            Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
+            hp = hp - poor_damage;
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (other.gameObject.tag == ("Grass"))
+        {
+            GameObject prefab = Resources.Load("prefabs/DamageEffect_grass") as GameObject;
+            Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
+            hp = hp - normal_damage;
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -337,4 +266,3 @@ public class EnemyChoChiGreen : MonoBehaviour
         }
     }
 }
-

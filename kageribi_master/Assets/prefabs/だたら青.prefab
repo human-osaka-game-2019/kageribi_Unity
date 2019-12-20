@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8720418462158657548}
   - component: {fileID: 8720418462158657537}
+  - component: {fileID: 8352067994068249768}
   - component: {fileID: 8720418462158657536}
-  - component: {fileID: 5135263396275530630}
   - component: {fileID: 8720418462158657551}
   - component: {fileID: 8720418462158657550}
   m_Layer: 23
   m_Name: "\u3060\u305F\u3089\u9752"
-  m_TagString: Monsters
+  m_TagString: MonsterD_Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +83,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8352067994068249768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8720418462158657547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33310338731b9444a9f9f65e290df332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 10
+  great_damage: 4
+  normal_damage: 2
+  poor_damage: 1
+  movePower: 1
 --- !u!95 &8720418462158657536
 Animator:
   serializedVersion: 3
@@ -102,19 +119,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5135263396275530630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8720418462158657547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 069baa3112224844c8283e751b1b3f00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movePower: 1
 --- !u!50 &8720418462158657551
 Rigidbody2D:
   serializedVersion: 4

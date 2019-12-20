@@ -29,6 +29,12 @@ public class EnemyChoChiBlue : MonoBehaviour
     private float waitingTime;
     string dist = "";
 
+    public int hp = 15;
+
+    public int great_damage = 4;
+    public int normal_damage = 2;
+    public int poor_damage = 1;
+
 
     /////////////////////////////////
     ///  Start, Update, Functions 
@@ -198,7 +204,6 @@ public class EnemyChoChiBlue : MonoBehaviour
         Attack();
     }
 
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
@@ -208,6 +213,36 @@ public class EnemyChoChiBlue : MonoBehaviour
             StopCoroutine(E_Movement());
 
             StartCoroutine(E_Attack());
+        }
+        else if (other.gameObject.tag == ("Fire"))
+        {
+            GameObject prefab = Resources.Load("prefabs/DamageEffect_fire") as GameObject;
+            Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
+            hp = hp - poor_damage;
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (other.gameObject.tag == ("Water"))
+        {
+            GameObject prefab = Resources.Load("prefabs/DamageEffect_water") as GameObject;
+            Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
+            hp = hp - normal_damage;
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (other.gameObject.tag == ("Grass"))
+        {
+            GameObject prefab = Resources.Load("prefabs/DamageEffect_grass") as GameObject;
+            Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
+            hp = hp - great_damage;
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
