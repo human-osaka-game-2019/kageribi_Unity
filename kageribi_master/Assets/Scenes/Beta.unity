@@ -2031,6 +2031,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 4040400745072019607, guid: f1b86cfae23ec4d4394dd63d954438d5,
+        type: 3}
+      propertyPath: m_TagString
+      value: MonsterC_Glass
+      objectReference: {fileID: 0}
     - target: {fileID: 4040400745072019604, guid: f1b86cfae23ec4d4394dd63d954438d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2119,7 +2124,7 @@ PrefabInstance:
     - target: {fileID: 2272788338474489379, guid: f1b86cfae23ec4d4394dd63d954438d5,
         type: 3}
       propertyPath: movePower
-      value: 3
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2272788338474489379, guid: f1b86cfae23ec4d4394dd63d954438d5,
         type: 3}
@@ -16664,6 +16669,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 4040400745072019607, guid: f1b86cfae23ec4d4394dd63d954438d5,
+        type: 3}
+      propertyPath: m_TagString
+      value: MonsterC_Glass
+      objectReference: {fileID: 0}
     - target: {fileID: 4040400745072019604, guid: f1b86cfae23ec4d4394dd63d954438d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16862,6 +16872,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040400745072019602, guid: f1b86cfae23ec4d4394dd63d954438d5,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1b86cfae23ec4d4394dd63d954438d5, type: 3}

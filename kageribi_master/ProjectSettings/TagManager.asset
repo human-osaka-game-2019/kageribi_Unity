@@ -14,6 +14,15 @@ TagManager:
   - stage
   - PlayerSensor
   - Bullet
+  - MonsterC_Fire
+  - MonsterC_Water
+  - MonsterC_Glass
+  - MonsterD_Fire
+  - MonsterD_Water
+  - MonsterD_Glass
+  - Bullet_Fire
+  - Bullet_Water
+  - Bullet_Glass
   layers:
   - Default
   - TransparentFX
