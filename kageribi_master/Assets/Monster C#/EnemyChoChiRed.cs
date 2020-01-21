@@ -213,35 +213,23 @@ public class EnemyChoChiRed : MonoBehaviour
 
             StartCoroutine(E_Attack());
         }
-        else if (other.gameObject.tag == ("Fire"))
+        else if (other.gameObject.tag == ("AttackRange_Fire"))
         {
             GameObject prefab = Resources.Load("prefabs/DamageEffect_fire") as GameObject;
             Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
             hp = hp - normal_damage;
-            if (hp <= 0)
-            {
-                Destroy(gameObject);
-            }
         }
-        else if (other.gameObject.tag == ("Water"))
+        else if (other.gameObject.tag == ("AttackRange_Water"))
         {
             GameObject prefab = Resources.Load("prefabs/DamageEffect_water") as GameObject;
             Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
             hp = hp - great_damage;
-            if (hp <= 0)
-            {
-                Destroy(gameObject);
-            }
         }
-        else if (other.gameObject.tag == ("Grass"))
+        else if (other.gameObject.tag == ("AttackRange_Grass"))
         {
             GameObject prefab = Resources.Load("prefabs/DamageEffect_grass") as GameObject;
             Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
             hp = hp - poor_damage;
-            if (hp <= 0)
-            {
-                Destroy(gameObject);
-            }
         }
     }
 
@@ -265,6 +253,13 @@ public class EnemyChoChiRed : MonoBehaviour
             StopCoroutine(E_Attack());
 
             StartCoroutine(E_Movement());
+        }
+    }
+    void Update()
+    {
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
