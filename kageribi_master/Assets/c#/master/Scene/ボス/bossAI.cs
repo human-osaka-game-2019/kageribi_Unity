@@ -7,26 +7,35 @@ public class bossAI : MonoBehaviour
     public RuntimeAnimatorController[] Boss;
     public float Change;
     public GameObject[] Player;
+    public GameObject Attackjuge;
+    public GameObject[] BossBulet;
+    public GameObject BulletFactory;
+    public GameObject tackle;
+    tume script; 
     public bothHP damage;
     Animator anim;
 
     bool isAnim;
+    bool tacklestop;
 
+  
     float tacklespeed = 0.5f;
     public float tackletime;
     float ChangeTime;
-    float ScaleX;
+    float ScaleX;    
+    public double[] TacklePos;
+    int bulletcount;
 
     public Vector3 goldpos;
     public Vector3 silverpos;
+    public Vector3 BulletPos;
 
     // Start is called before the first frame update
     void Start()
     {
         ScaleX = transform.localScale.x;
         anim = GetComponent<Animator>();
-        isAnim = anim.GetCurrentAnimatorStateInfo(0).IsName("taiatari");
-
+        script = Attackjuge.GetComponent<tume>();
     }
 
     // Update is called once per frame
@@ -35,6 +44,7 @@ public class bossAI : MonoBehaviour
         float ChangeCount;
         goldpos = Player[0].transform.position;
         silverpos = Player[1].transform.position;
+        BulletPos = BulletFactory.transform.position;
         ChangeTime += Time.deltaTime;
         tackletime += Time.deltaTime;
 
@@ -68,11 +78,9 @@ public class bossAI : MonoBehaviour
             }
             else
             {
-
                 anim.SetInteger("change", 1);
                 anim.runtimeAnimatorController = Boss[1];
-                ChangeTime = 0;
-                
+                ChangeTime = 0;                
             }
 
             
@@ -80,24 +88,31 @@ public class bossAI : MonoBehaviour
 
         if (tackletime >= 30)
         {
-            if (transform.position.x > goldpos.x || transform.position.x > silverpos.x)
+            pos();
+            if (transform.position.x > TacklePos[0] || transform.position.x > TacklePos[1])
             {
+                isAnim = true;
                 anim.SetInteger("Attack", 2);
                 transform.Translate(-tacklespeed, 0.0f, 0.0f);
-                if(transform.position.x <= goldpos.x || transform.position.x <= silverpos.x)
+                if(tackle.transform.position.x <= TacklePos[0] || tackle.transform.position.x <= TacklePos[1] || tacklestop == true)
                 {
                     tackletime = 0;
                     anim.SetInteger("Attack", 0);
+                    isAnim = false;
+                    tacklestop = false;
                 }
             }
-            else if (transform.position.x < goldpos.x || transform.position.x < silverpos.x)
+            else if (transform.position.x < TacklePos[0] || transform.position.x < TacklePos[1])
             {
+                isAnim = true;
                 anim.SetInteger("Attack", 2);
                 transform.Translate(tacklespeed, 0.0f, 0.0f);
-                if (transform.position.x >= goldpos.x || transform.position.x >= silverpos.x)
+                if (tackle.transform.position.x >= TacklePos[0] || tackle.transform.position.x >= TacklePos[1] || tacklestop == true)
                 {
                     tackletime = 0;
                     anim.SetInteger("Attack", 0);
+                    isAnim = false;
+                    tacklestop = false;
                 }
             }
                 
@@ -107,22 +122,85 @@ public class bossAI : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            
             if (isAnim == true)
             {
                 damage.BigDamage();
+                tacklestop = true;
             }
 
             damage.NormalDamage();
         }
     }
 
+    void pos()
+    {
+        TacklePos[0] = goldpos.x;
+        TacklePos[1] = silverpos.x;
+    }
+
     public void shortrange()
     {
         anim.SetInteger("Attack", 1);
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("tume"))
+        {   
+            anim.SetInteger("Attack", 0);
+            script.RangeTime();
+        }
     }
 
     public void longrange()
     {
-        anim.SetInteger("Attack", 3); 
+        anim.SetInteger("Attack", 3);
+        bulletcount += 1;
+        if (anim.runtimeAnimatorController == Boss[0])
+        {
+            Instantiate(BossBulet[0],BulletPos , Quaternion.identity);
+            if (bulletcount < 3)
+            {
+                Invoke("longrange", 0.5f);
+            }
+            
+            if (bulletcount >= 3)
+            {
+                anim.SetInteger("Attack", 0);                
+                bulletcount = 0;
+            }
+            
+        }
+        else if (anim.runtimeAnimatorController == Boss[1])
+        {
+            Instantiate(BossBulet[1], BulletPos, Quaternion.identity);
+            if (bulletcount < 3)
+            {
+                Invoke("longrange", 0.5f);
+            }
+
+            if (bulletcount >= 3)
+            {
+                anim.SetInteger("Attack", 0);
+                bulletcount = 0;
+            }
+        }
+        else if (anim.runtimeAnimatorController == Boss[2])
+        {
+            Instantiate(BossBulet[2], BulletPos, Quaternion.identity);
+            if (bulletcount < 3)
+            {
+                Invoke("longrange", 0.5f);
+            }
+
+            if (bulletcount >= 3)
+            {
+                anim.SetInteger("Attack", 0);
+                bulletcount = 0;
+            }
+        }
+        
+        
+    }
+    public void bulletdamege()
+    {
+        damage.SmallDamage();
     }
 }
