@@ -10,7 +10,8 @@ public class BossBulet : MonoBehaviour
     Vector3 gold;
     Vector3 silver;
     float step;
-    int destroytime;
+    float destroytime;
+    Vector3 shotForward;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,25 +19,24 @@ public class BossBulet : MonoBehaviour
         scr = boss.GetComponent<bossAI>();
         gold = scr.goldpos;
         silver = scr.silverpos;
+        if (scr.Player[0].activeSelf == true)
+        {
+            shotForward = Vector3.Scale((gold - transform.position) , new Vector3(1, 1, 0)).normalized;
+        }
+        else if (scr.Player[1].activeSelf == true)
+        {
+            Vector3 shotForward = Vector3.Scale((silver - transform.position), new Vector3(1, 1, 0)).normalized;
+        }
+          
     }
 
     // Update is called once per frame
     void Update()
     {
-        destroytime += 1;
-        if (scr.Player[0].activeSelf == true)
-        {
-            Vector3 shotForward = Vector3.Scale((gold - transform.position) , new Vector3(1, 1, 0)).normalized;        
-            gameObject.GetComponent<Rigidbody2D>().velocity = shotForward  * speed;
-        }
-        else if(scr.Player[1].activeSelf == true)
-        {
-            //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, silver, speed);
-            Vector3 shotForward = Vector3.Scale((silver - transform.position), new Vector3(1, 1, 0)).normalized;            
-            gameObject.GetComponent<Rigidbody2D>().velocity = shotForward * speed;
-        }
+        gameObject.GetComponent<Rigidbody2D>().velocity = shotForward * speed;
+        destroytime += Time.deltaTime;
         
-        if (gameObject.transform.position == gold ||gameObject.transform.position == silver) 
+        if (destroytime>=5) 
         {
             Destroy(gameObject);
         }

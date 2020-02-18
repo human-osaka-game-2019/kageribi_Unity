@@ -89,12 +89,17 @@ public class bossAI : MonoBehaviour
         if (tackletime >= 30)
         {
             pos();
-            if (transform.position.x > TacklePos[0] || transform.position.x > TacklePos[1])
+            if (transform.position.x > TacklePos[0] && !anim.GetCurrentAnimatorStateInfo(0).IsName("tume") && 
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("longrange") || transform.position.x > TacklePos[1] && 
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("tume") && 
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("longrange")) 
             {
+                Debug.Log("aaa");
                 isAnim = true;
                 anim.SetInteger("Attack", 2);
                 transform.Translate(-tacklespeed, 0.0f, 0.0f);
-                if(tackle.transform.position.x <= TacklePos[0] || tackle.transform.position.x <= TacklePos[1] || tacklestop == true)
+                if(tackle.transform.position.x <= TacklePos[0] || tackle.transform.position.x <= TacklePos[1] || 
+                    tacklestop == true)
                 {
                     tackletime = 0;
                     anim.SetInteger("Attack", 0);
@@ -102,12 +107,17 @@ public class bossAI : MonoBehaviour
                     tacklestop = false;
                 }
             }
-            else if (transform.position.x < TacklePos[0] || transform.position.x < TacklePos[1])
+            else if (transform.position.x < TacklePos[0] && !anim.GetCurrentAnimatorStateInfo(0).IsName("tume") && 
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("longrange") || transform.position.x < TacklePos[1] && 
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("tume") && 
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("longrange"))
             {
+                Debug.Log("aaa");
                 isAnim = true;
                 anim.SetInteger("Attack", 2);
                 transform.Translate(tacklespeed, 0.0f, 0.0f);
-                if (tackle.transform.position.x >= TacklePos[0] || tackle.transform.position.x >= TacklePos[1] || tacklestop == true)
+                if (tackle.transform.position.x >= TacklePos[0] || tackle.transform.position.x >= TacklePos[1] || 
+                    tacklestop == true)
                 {
                     tackletime = 0;
                     anim.SetInteger("Attack", 0);
@@ -161,7 +171,8 @@ public class bossAI : MonoBehaviour
                 Invoke("longrange", 0.5f);
             }
             
-            if (bulletcount >= 3)
+            //if (bulletcount >= 3)
+            else
             {
                 anim.SetInteger("Attack", 0);                
                 bulletcount = 0;

@@ -442,6 +442,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1119122106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1119122107}
+  m_Layer: 0
+  m_Name: tackle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1119122107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119122106}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.64, y: -2.81, z: -0.058414534}
+  m_LocalScale: {x: 1.1111112, y: 1.1111112, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1172544923}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1172544923 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7081365100024390614, guid: 8acc21709c0b5614cb705761a1471eec,
@@ -896,7 +926,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127470584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 197.7, y: -1.77, z: 0}
+  m_LocalPosition: {x: 206.09, y: 0.4, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -979,12 +1009,12 @@ PrefabInstance:
     - target: {fileID: 7081365100024390614, guid: 8acc21709c0b5614cb705761a1471eec,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 203.6
+      value: 186.57
       objectReference: {fileID: 0}
     - target: {fileID: 7081365100024390614, guid: 8acc21709c0b5614cb705761a1471eec,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.03
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 7081365100024390614, guid: 8acc21709c0b5614cb705761a1471eec,
         type: 3}
@@ -1074,7 +1104,7 @@ PrefabInstance:
     - target: {fileID: 7081365100024390613, guid: 8acc21709c0b5614cb705761a1471eec,
         type: 3}
       propertyPath: tackletime
-      value: 0
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 7081365100024390613, guid: 8acc21709c0b5614cb705761a1471eec,
         type: 3}
@@ -1085,25 +1115,30 @@ PrefabInstance:
         type: 3}
       propertyPath: BossBulet.Array.data[0]
       value: 
-      objectReference: {fileID: 3833791577904708316, guid: 9add31926a3e03f45b588f011552ec66,
+      objectReference: {fileID: 4492789128488331990, guid: 9add31926a3e03f45b588f011552ec66,
         type: 3}
     - target: {fileID: 7081365100024390613, guid: 8acc21709c0b5614cb705761a1471eec,
         type: 3}
       propertyPath: BossBulet.Array.data[1]
       value: 
-      objectReference: {fileID: 4330856946246048174, guid: 350264bfd44c3b046937f38f7c9b2c95,
+      objectReference: {fileID: 3910016698519931492, guid: 350264bfd44c3b046937f38f7c9b2c95,
         type: 3}
     - target: {fileID: 7081365100024390613, guid: 8acc21709c0b5614cb705761a1471eec,
         type: 3}
       propertyPath: BossBulet.Array.data[2]
       value: 
-      objectReference: {fileID: 6727404353559246645, guid: d15bf67f098fd394697a7ca907308143,
+      objectReference: {fileID: 2186680781447630334, guid: d15bf67f098fd394697a7ca907308143,
         type: 3}
     - target: {fileID: 7081365100024390613, guid: 8acc21709c0b5614cb705761a1471eec,
         type: 3}
       propertyPath: BulletFactory
       value: 
       objectReference: {fileID: 346603584}
+    - target: {fileID: 7081365100024390613, guid: 8acc21709c0b5614cb705761a1471eec,
+        type: 3}
+      propertyPath: tackle
+      value: 
+      objectReference: {fileID: 1119122106}
     - target: {fileID: 7081365100024390569, guid: 8acc21709c0b5614cb705761a1471eec,
         type: 3}
       propertyPath: m_Constraints
@@ -1138,6 +1173,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 7081365100024390615, guid: 8acc21709c0b5614cb705761a1471eec,
+        type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8acc21709c0b5614cb705761a1471eec, type: 3}
