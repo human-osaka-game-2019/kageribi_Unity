@@ -12,8 +12,10 @@ public class goldfox : MonoBehaviour
     public RuntimeAnimatorController  Water;
     public RuntimeAnimatorController  Grass;
     public GameObject Gin;
+    public GameObject boss;
 
     private Animator animator;
+    Animator bossanim;
 
     Rigidbody2D rigid2D;
     public float jumpForce;
@@ -27,15 +29,18 @@ public class goldfox : MonoBehaviour
     float Counts = 0;
     float MaxCount = 1;
 
+    bossAI ra;
 
     // Start is called before the first frame update
     void Start() //Êú?Âàù„?‰∏?Âõû„?„ÅøÂëº„Å≥Âá∫„Åï„Çå„Ç?
     {
       animator =  GetComponent<Animator>();
+        bossanim = boss.GetComponent<Animator>();
       rigid2D = GetComponent<Rigidbody2D>();
         Attack_Flag = false;
         Run_Flag = 1;
         golsilHP = HP.GetComponent<bothHP>();
+        ra = boss.GetComponent<bossAI>();
     }
 
     // Update is called once per frame
@@ -189,7 +194,7 @@ public class goldfox : MonoBehaviour
             animator.SetBool("Jumping", true);
         }
 
-        if (collision.gameObject.tag == "MonsterD_Fire")
+        if (collision.gameObject.tag == "MonsterD_Fire" ) 
         {
             if (animator.runtimeAnimatorController == Fire)
             {

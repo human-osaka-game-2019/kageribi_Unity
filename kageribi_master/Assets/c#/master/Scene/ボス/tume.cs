@@ -9,9 +9,8 @@ public class tume : MonoBehaviour
     bossAI script;
     bothHP Damage;
     public float attacktime;
-    public Vector3 gold;
-    public Vector3 silver;
-    public double[] attackjuge;
+    public Vector3 playerpos;
+    public double attackjuge;
     public BoxCollider2D col;
     // Start is called before the first frame update
     void Start()
@@ -37,23 +36,20 @@ public class tume : MonoBehaviour
             col.enabled = false;
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            Damage.NormalDamage();
-            
+            script.shortattack();            
         }
     }
 
     void Attack()
     {
-        gold = script.goldpos;
-        silver = script.silverpos;
-        attackjuge[0] = Boss.transform.position.x - gold.x;
-        attackjuge[1] = Boss.transform.position.x - silver.x;
+        playerpos = script.playerpos;
+        attackjuge = Boss.transform.position.x - playerpos.x;
 
-        if (attackjuge[0] <= 10 && attackjuge[0] >= -10 || attackjuge[1] <= 10 && attackjuge[1] >= -10) 
+        if (attackjuge <= 10 && attackjuge >= -10) 
         {
             if (attacktime >= 5)
             {

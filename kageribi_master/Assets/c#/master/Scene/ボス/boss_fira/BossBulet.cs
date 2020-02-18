@@ -7,26 +7,27 @@ public class BossBulet : MonoBehaviour
     public GameObject boss;
     bossAI scr;
     float speed = 5f;
-    Vector3 gold;
-    Vector3 silver;
+    Vector3 Playerpos;
+
     float step;
     float destroytime;
     Vector3 shotForward;
+    int BossHP;
     // Start is called before the first frame update
     void Start()
     {
         boss = GameObject.Find("狐_待機_04_火_01");
         scr = boss.GetComponent<bossAI>();
-        gold = scr.goldpos;
-        silver = scr.silverpos;
-        if (scr.Player[0].activeSelf == true)
-        {
-            shotForward = Vector3.Scale((gold - transform.position) , new Vector3(1, 1, 0)).normalized;
-        }
-        else if (scr.Player[1].activeSelf == true)
-        {
-            Vector3 shotForward = Vector3.Scale((silver - transform.position), new Vector3(1, 1, 0)).normalized;
-        }
+        Playerpos = scr.playerpos;
+        shotForward = Vector3.Scale((Playerpos - transform.position) , new Vector3(1, 1, 0)).normalized;
+        //if (scr.Player[0].activeSelf == true)
+        //{
+            
+        //}
+        //else if (scr.Player[1].activeSelf == true)
+        //{
+        //    shotForward = Vector3.Scale((silve - transform.position), new Vector3(1, 1, 0)).normalized;
+        //}
           
     }
 
@@ -46,8 +47,10 @@ public class BossBulet : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            scr.bulletdamege();
+            Debug.Log("出力");
             Destroy(gameObject);
+            scr.bulletdamege();
+            
         }
     }
 }
