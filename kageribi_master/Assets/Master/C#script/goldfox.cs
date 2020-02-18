@@ -188,6 +188,111 @@ public class goldfox : MonoBehaviour
         {
             animator.SetBool("Jumping", true);
         }
+
+        if (collision.gameObject.tag == "MonsterD_Fire")
+        {
+            if (animator.runtimeAnimatorController == Fire)
+            {
+                golsilHP.NormalDamage();
+            }
+            if (animator.runtimeAnimatorController == Water)
+            {
+                golsilHP.SmallDamage();
+            }
+            if (animator.runtimeAnimatorController == Grass)
+            {
+                golsilHP.BigDamage();
+            }
+
+        }
+        if (collision.gameObject.tag == "MonsterD_Water")
+        {
+            if (animator.runtimeAnimatorController == Fire)
+            {
+                golsilHP.BigDamage();
+            }
+            if (animator.runtimeAnimatorController == Water)
+            {
+                golsilHP.NormalDamage();
+            }
+            if (animator.runtimeAnimatorController == Grass)
+            {
+                golsilHP.SmallDamage();
+            }
+
+        }
+        if (collision.gameObject.tag == "MonsterD_Grass")
+        {
+            if (animator.runtimeAnimatorController == Fire)
+            {
+                golsilHP.SmallDamage();
+            }
+            if (animator.runtimeAnimatorController == Water)
+            {
+                golsilHP.BigDamage();
+            }
+            if (animator.runtimeAnimatorController == Grass)
+            {
+                golsilHP.NormalDamage();
+            }
+
+        }
+
+    }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+
+
+        if (collider.gameObject.tag == "Bullet_Fire")
+        {
+            if (animator.runtimeAnimatorController == Fire)
+            {
+                golsilHP.NormalDamage();
+            }
+            if (animator.runtimeAnimatorController == Water)
+            {
+                golsilHP.SmallDamage();
+            }
+            if (animator.runtimeAnimatorController == Grass)
+            {
+                golsilHP.BigDamage();
+            }
+
+        }
+        if (collider.gameObject.tag == "Bullet_Water")
+        {
+            if (animator.runtimeAnimatorController == Fire)
+            {
+                golsilHP.BigDamage();
+            }
+            if (animator.runtimeAnimatorController == Water)
+            {
+                golsilHP.NormalDamage();
+            }
+            if (animator.runtimeAnimatorController == Grass)
+            {
+                golsilHP.SmallDamage();
+            }
+
+        }
+        if (collider.gameObject.tag == "Bullet_Grass")
+        {
+            if (animator.runtimeAnimatorController == Fire)
+            {
+                golsilHP.SmallDamage();
+            }
+            if (animator.runtimeAnimatorController == Water)
+            {
+                golsilHP.BigDamage();
+            }
+            if (animator.runtimeAnimatorController == Grass)
+            {
+                golsilHP.NormalDamage();
+            }
+
+        }
+
+
     }
 
     void FinishJump()

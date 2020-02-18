@@ -29,6 +29,11 @@ public class EnemyChoChiRed : MonoBehaviour
     private float waitingTime;
     string dist = "";
 
+    public int hp = 15;
+
+    public int great_damage = 4;
+    public int normal_damage = 2;
+    public int poor_damage = 1;
 
     /////////////////////////////////
     ///  Start, Update, Functions 
@@ -198,7 +203,6 @@ public class EnemyChoChiRed : MonoBehaviour
         Attack();
     }
 
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
@@ -209,7 +213,26 @@ public class EnemyChoChiRed : MonoBehaviour
 
             StartCoroutine(E_Attack());
         }
+        else if (other.gameObject.tag == ("AttackRange_Fire"))
+        {
+            GameObject prefab = Resources.Load("prefabs/DamageEffect_fire") as GameObject;
+            Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
+            hp = hp - normal_damage;
+        }
+        else if (other.gameObject.tag == ("AttackRange_Water"))
+        {
+            GameObject prefab = Resources.Load("prefabs/DamageEffect_water") as GameObject;
+            Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
+            hp = hp - great_damage;
+        }
+        else if (other.gameObject.tag == ("AttackRange_Grass"))
+        {
+            GameObject prefab = Resources.Load("prefabs/DamageEffect_grass") as GameObject;
+            Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
+            hp = hp - poor_damage;
+        }
     }
+
 
     void OnTriggerStay2D(Collider2D other)
     {
@@ -230,6 +253,13 @@ public class EnemyChoChiRed : MonoBehaviour
             StopCoroutine(E_Attack());
 
             StartCoroutine(E_Movement());
+        }
+    }
+    void Update()
+    {
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

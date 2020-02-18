@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5934232962845432205}
   m_Layer: 9
   m_Name: LeftFireR
-  m_TagString: Untagged
+  m_TagString: Bullet_Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
