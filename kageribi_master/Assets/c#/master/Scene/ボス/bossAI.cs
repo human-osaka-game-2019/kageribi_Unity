@@ -158,7 +158,8 @@ public class bossAI : MonoBehaviour
 
         }
 
-        if (movepatern >= 0.6)
+        if (movepatern >= 0.6 && !anim.GetCurrentAnimatorStateInfo(0).IsName("tume") &&
+                     !anim.GetCurrentAnimatorStateInfo(0).IsName("longrange") && !anim.GetCurrentAnimatorStateInfo(0).IsName("dead"))
         {
             anim.SetInteger("move", 1);
             if (transform.position.x < playerpos.x || transform.position.x < playerpos.x)
