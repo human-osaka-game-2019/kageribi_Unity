@@ -7,7 +7,7 @@ public class EnemyChoChiGreen : MonoBehaviour
     int attackFlag = 0;
     int movementFlag = 0;
 
-    bool isTracing;
+    public bool isTracing;
     //bool isAttacking;
 
     public float movePower;
@@ -44,7 +44,7 @@ public class EnemyChoChiGreen : MonoBehaviour
     //////////////////////////   MOVE     ////////////////////////////
 
 
-    void MoveRoutine()
+    public void MoveRoutine()
     {
         Vector3 moveVelocity = Vector3.zero;
 
@@ -81,7 +81,7 @@ public class EnemyChoChiGreen : MonoBehaviour
     }
 
 
-    IEnumerator E_Movement()
+    public IEnumerator E_Movement()
     {
         movementFlag = Random.Range(0, 3);
 
@@ -162,7 +162,7 @@ public class EnemyChoChiGreen : MonoBehaviour
         }
     }
 
-    IEnumerator E_Attack()
+    public IEnumerator E_Attack()
     {
 
         if (attackFlag == 0)
@@ -204,15 +204,15 @@ public class EnemyChoChiGreen : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            player = other.gameObject;
+        //if (other.gameObject.tag == "Player")
+        //{
+        //    player = other.gameObject;
 
-            StopCoroutine(E_Movement());
+        //    StopCoroutine(E_Movement());
 
-            StartCoroutine(E_Attack());
-        }
-        else if (other.gameObject.tag == ("AttackRange_Fire"))
+        //    StartCoroutine(E_Attack());
+        //}
+        if (other.gameObject.tag == ("AttackRange_Fire"))
         {
             GameObject prefab = Resources.Load("prefabs/DamageEffect_fire") as GameObject;
             Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
@@ -232,27 +232,27 @@ public class EnemyChoChiGreen : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            isTracing = true;
+    //void OnTriggerStay2D(Collider2D other)
+    //{
+    //    if (other.gameObject.tag == "Player")
+    //    {
+    //        isTracing = true;
 
-            MoveRoutine();
-        }
-    }
+    //        MoveRoutine();
+    //    }
+    //}
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            isTracing = false;
+    //void OnTriggerExit2D(Collider2D other)
+    //{
+    //    if (other.gameObject.tag == "Player")
+    //    {
+    //        isTracing = false;
 
-            StopCoroutine(E_Attack());
+    //        StopCoroutine(E_Attack());
 
-            StartCoroutine(E_Movement());
-        }
-    }
+    //        StartCoroutine(E_Movement());
+    //    }
+    //}
     void Update()
     {
         if (hp <= 0)

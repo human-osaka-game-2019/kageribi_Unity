@@ -145,6 +145,8 @@ public class bossAI : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Vector3 hitPos = collision.ClosestPointOnBounds(transform.position);
+
         if (anim.runtimeAnimatorController == Boss[0])
         {
             Debug.Log("a");
