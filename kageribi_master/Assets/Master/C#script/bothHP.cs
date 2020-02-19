@@ -14,8 +14,8 @@ public class bothHP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Goldstop = GetComponent<goldfox>();
-        Silverstop = GetComponent<silverfox>();
+        Goldstop = gold.GetComponent<goldfox>();
+        Silverstop = silver.GetComponent<silverfox>();
     }
 
     // Update is called once per frame
@@ -26,8 +26,6 @@ public class bothHP : MonoBehaviour
             Gameover.SetActive(true);
             Goldstop.goldStop();
             Silverstop.silverStop();
-            Goldstop.enabled = false;
-            Silverstop.enabled = false;
         }
     }
     public void BigDamage()

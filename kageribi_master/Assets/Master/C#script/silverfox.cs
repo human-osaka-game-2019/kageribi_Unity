@@ -454,6 +454,7 @@ public class silverfox : MonoBehaviour
     public void silverStop()
     {
         animator.SetBool("Damage", true);
+        enabled = false;
     }
 }
 
