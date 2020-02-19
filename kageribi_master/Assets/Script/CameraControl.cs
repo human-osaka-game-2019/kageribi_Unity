@@ -17,7 +17,7 @@ public class CameraControl : MonoBehaviour
     {
         if (this.transform.position.x >= 150)
         {
-            this.GetComponent<camera>().enabled = false;
+            this.GetComponent<Cameramove>().enabled = false;
 
             if (Camera.orthographicSize < 10)
             {

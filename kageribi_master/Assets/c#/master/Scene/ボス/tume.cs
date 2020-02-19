@@ -26,7 +26,7 @@ public class tume : MonoBehaviour
     void Update()
     {
         attacktime += Time.deltaTime;
-        if (attacktime >= 5)
+        if (attacktime >= 2)
         {
             Attack();
             

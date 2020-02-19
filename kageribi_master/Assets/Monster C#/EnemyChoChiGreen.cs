@@ -253,6 +253,16 @@ public class EnemyChoChiGreen : MonoBehaviour
     //        StartCoroutine(E_Movement());
     //    }
     //}
+
+    public void tracking()
+    {
+        Debug.Log(isTracing);
+        isTracing = true;
+    }
+    public void Nottracking()
+    {
+        isTracing = false;
+    }
     void Update()
     {
         if (hp <= 0)

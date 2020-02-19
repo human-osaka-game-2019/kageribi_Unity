@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class DataraAIBlue : MonoBehaviour
 {
-
-
+    public GameObject count;
+ 
     public int hp = 10;
-
+    
     public int great_damage = 4;
     public int normal_damage = 2;
     public int poor_damage = 1;
@@ -93,6 +93,7 @@ public class DataraAIBlue : MonoBehaviour
     {
         if (hp <= 0)
         {
+            count.GetComponent<CameraMove>().destroycount();
             Destroy(gameObject);
         }
     }

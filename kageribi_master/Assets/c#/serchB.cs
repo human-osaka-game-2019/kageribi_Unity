@@ -9,7 +9,7 @@ public class serchB : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        chocin = transform.root.gameObject;
+        chocin = transform.parent.gameObject;
         enemy = chocin.GetComponent<EnemyChoChiBlue>();
     }
 
@@ -35,7 +35,8 @@ public class serchB : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            enemy.isTracing = true;
+            
+            enemy.tracking();
 
             enemy.MoveRoutine();
         }
@@ -45,7 +46,7 @@ public class serchB : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            enemy.isTracing = false;
+            enemy.Nottracking();
 
             StopCoroutine(enemy.E_Attack());
 

@@ -13,6 +13,7 @@ public class goldfox : MonoBehaviour
     public RuntimeAnimatorController  Grass;
     public GameObject Gin;
     public GameObject boss;
+    public GameObject Checkpoint;
 
     private Animator animator;
     Animator bossanim;
@@ -124,7 +125,7 @@ public class goldfox : MonoBehaviour
         }
 
                 //以下テストコー�?
-                  if (Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("XBOXRB"))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("XBOXRB"))
         {
            
             if(animator.runtimeAnimatorController == Fire)
@@ -404,6 +405,11 @@ public class goldfox : MonoBehaviour
         animator.SetBool("Damage", true);
         enabled = false;
 
+    }
+
+    public void CheckP()
+    {
+        transform.position = Checkpoint.GetComponent<check>().checkpoint;
     }
 }
 

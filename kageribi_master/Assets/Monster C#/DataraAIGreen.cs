@@ -5,7 +5,7 @@ using UnityEngine;
 public class DataraAIGreen : MonoBehaviour
 {
 
-
+    public GameObject count;
     public int hp = 10;
 
     public int great_damage = 4;
@@ -93,6 +93,7 @@ public class DataraAIGreen : MonoBehaviour
     {
         if (hp <= 0)
         {
+            count.GetComponent<CameraMove>().destroycount();
             Destroy(gameObject);
         }
     }

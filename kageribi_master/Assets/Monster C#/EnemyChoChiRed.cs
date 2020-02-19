@@ -25,6 +25,8 @@ public class EnemyChoChiRed : MonoBehaviour
     public GameObject bulletPLeft;
     public GameObject bulletPRight;
 
+    public GameObject count;
+
     private float timer;
     private float waitingTime;
     string dist = "";
@@ -232,11 +234,19 @@ public class EnemyChoChiRed : MonoBehaviour
             hp = hp - poor_damage;
         }
     }
-
+    public void tracking()
+    {
+        isTracing = true;
+    }
+    public void Nottracking()
+    {
+        isTracing = false;
+    }
     void Update()
     {
         if (hp <= 0)
         {
+            count.GetComponent<CameraMove>().destroycount();
             Destroy(gameObject);
         }
     }

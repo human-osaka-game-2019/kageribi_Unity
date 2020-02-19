@@ -165,7 +165,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.4
+  orthographic size: 5.17
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -275,6 +275,42 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444405907511207210, guid: 9fe6f36d3c14854499f5dd656579e41e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444405907511207210, guid: 9fe6f36d3c14854499f5dd656579e41e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444405907511207210, guid: 9fe6f36d3c14854499f5dd656579e41e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23256001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444405907511207210, guid: 9fe6f36d3c14854499f5dd656579e41e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.23256001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444405907511207210, guid: 9fe6f36d3c14854499f5dd656579e41e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.23256001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444405907060293914, guid: 9fe6f36d3c14854499f5dd656579e41e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7d8951d280921424c8f113c4289dbf30,
+        type: 3}
+    - target: {fileID: 6444405907060293914, guid: 9fe6f36d3c14854499f5dd656579e41e,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fe6f36d3c14854499f5dd656579e41e, type: 3}

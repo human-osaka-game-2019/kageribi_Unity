@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class bossAI : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class bossAI : MonoBehaviour
     public GameObject[] BossBulet;
     public GameObject BulletFactory;
     public GameObject tackle;
+    public GameObject clear;
     tume script;
     goldfox Gscr;
     silverfox Sscr;
@@ -21,7 +23,8 @@ public class bossAI : MonoBehaviour
 
     bool isAnim;
     bool tacklestop;
-
+    float movepatern;
+    float movetime;
   
     float tacklespeed = 0.5f;
     public float tackletime;
@@ -32,7 +35,8 @@ public class bossAI : MonoBehaviour
 
     public Vector3 playerpos;
     public Vector3 BulletPos;
-    public int BossHp = 40;
+    public Vector3 hitpos;
+    public int BossHp;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,10 +53,12 @@ public class bossAI : MonoBehaviour
     void Update()
     {
         float ChangeCount;
-        
+
         BulletPos = BulletFactory.transform.position;
         ChangeTime += Time.deltaTime;
         tackletime += Time.deltaTime;
+        movetime += Time.deltaTime;
+
 
         if (Player[0].activeSelf)
         {
@@ -62,11 +68,22 @@ public class bossAI : MonoBehaviour
         {
             playerpos = Player[1].transform.position;
         }
-        if (BossHp <= 0 || Input.GetKeyDown(KeyCode.D))
+        if (BossHp <= 0)
         {
-            Debug.Log("ee");
             anim.SetBool("dead", true);
+            Gscr.enabled = false;
+            Sscr.enabled = false;
+            clear.SetActive(true);
+
+
         }
+
+        if (movetime >= 10)
+        {
+            movepatern = Random.value;
+            movetime = 0;
+        }
+
 
         if (transform.position.x < playerpos.x || transform.position.x < playerpos.x)
         {
@@ -74,14 +91,14 @@ public class bossAI : MonoBehaviour
             scale.x = ScaleX * -1.0f;
             transform.localScale = scale;
         }
-        if(transform.position.x > playerpos.x || transform.position.x > playerpos.x)
+        if (transform.position.x > playerpos.x || transform.position.x > playerpos.x)
         {
             Vector3 scale = transform.localScale;
             scale.x = ScaleX;
             transform.localScale = scale;
         }
 
-        if (ChangeTime >= Change && !anim.GetCurrentAnimatorStateInfo(0).IsName("dead") || Input.GetKeyDown(KeyCode.A)) 
+        if (ChangeTime >= Change && !anim.GetCurrentAnimatorStateInfo(0).IsName("dead"))
         {
             ChangeCount = Random.value;
             if (ChangeCount <= 0.3)
@@ -100,23 +117,22 @@ public class bossAI : MonoBehaviour
             {
                 anim.SetInteger("change", 1);
                 anim.runtimeAnimatorController = Boss[1];
-                ChangeTime = 0;                
+                ChangeTime = 0;
             }
 
-            
+
         }
 
         if (tackletime >= 30)
         {
             pos();
-            if (transform.position.x > TacklePos && !anim.GetCurrentAnimatorStateInfo(0).IsName("tume") && 
+            if (transform.position.x > TacklePos && !anim.GetCurrentAnimatorStateInfo(0).IsName("tume") &&
                 !anim.GetCurrentAnimatorStateInfo(0).IsName("longrange") && !anim.GetCurrentAnimatorStateInfo(0).IsName("dead"))
             {
-                Debug.Log("aaa");
                 isAnim = true;
                 anim.SetInteger("Attack", 2);
                 transform.Translate(-tacklespeed, 0.0f, 0.0f);
-                if(tackle.transform.position.x <= TacklePos || tacklestop == true)
+                if (tackle.transform.position.x <= TacklePos || tacklestop == true)
                 {
                     tackletime = 0;
                     anim.SetInteger("Attack", 0);
@@ -124,14 +140,14 @@ public class bossAI : MonoBehaviour
                     tacklestop = false;
                 }
             }
-            else if (transform.position.x < TacklePos && !anim.GetCurrentAnimatorStateInfo(0).IsName("tume") && 
-                !anim.GetCurrentAnimatorStateInfo(0).IsName("longrange") && !anim.GetCurrentAnimatorStateInfo(0).IsName("dead"))
+            else if (transform.position.x < TacklePos && !anim.GetCurrentAnimatorStateInfo(0).IsName("tume") &&
+                     !anim.GetCurrentAnimatorStateInfo(0).IsName("longrange") && !anim.GetCurrentAnimatorStateInfo(0).IsName("dead"))
             {
                 Debug.Log("aaa");
                 isAnim = true;
                 anim.SetInteger("Attack", 2);
                 transform.Translate(tacklespeed, 0.0f, 0.0f);
-                if (tackle.transform.position.x >= TacklePos ||  tacklestop == true)
+                if (tackle.transform.position.x >= TacklePos || tacklestop == true)
                 {
                     tackletime = 0;
                     anim.SetInteger("Attack", 0);
@@ -139,17 +155,33 @@ public class bossAI : MonoBehaviour
                     tacklestop = false;
                 }
             }
-    
-                
+
+        }
+
+        if (movepatern >= 0.6)
+        {
+            anim.SetInteger("move", 1);
+            if (transform.position.x < playerpos.x || transform.position.x < playerpos.x)
+            {
+                transform.Translate(0.1f, 0.0f, 0.0f);
+            }
+            if (transform.position.x > playerpos.x || transform.position.x > playerpos.x)
+            {
+                transform.Translate(-0.1f, 0.0f, 0.0f);
+            }
+
+            if (tackle.transform.position.x <= playerpos.x)
+            {
+                anim.SetInteger("move", 0);
+                movepatern = 0;
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Vector3 hitPos = collision.ClosestPointOnBounds(transform.position);
 
         if (anim.runtimeAnimatorController == Boss[0])
         {
-            Debug.Log("a");
             if (collision.gameObject.tag == ("AttackRange_Fire"))
             {
                 GameObject prefab = Resources.Load("prefabs/DamageEffect_fire") as GameObject;
@@ -190,35 +222,52 @@ public class bossAI : MonoBehaviour
                 Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
                 BossHp = BossHp - 4;
             }
-            else if (anim.runtimeAnimatorController == Boss[2])
+        }
+        else if (anim.runtimeAnimatorController == Boss[2])
+        {
+            if (collision.gameObject.tag == ("AttackRange_Fire"))
             {
-                if (collision.gameObject.tag == ("AttackRange_Fire"))
-                {
-                    GameObject prefab = Resources.Load("prefabs/DamageEffect_fire") as GameObject;
-                    Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
-                    BossHp = BossHp - 4;
-                }
-                else if (collision.gameObject.tag == ("AttackRange_Water"))
-                {
+                GameObject prefab = Resources.Load("prefabs/DamageEffect_fire") as GameObject;
+                Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
+                BossHp = BossHp - 4;
+            }
+            else if (collision.gameObject.tag == ("AttackRange_Water"))
+            {
                     GameObject prefab = Resources.Load("prefabs/DamageEffect_water") as GameObject;
                     Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
                     BossHp = BossHp - 1;
-                }
-                else if (collision.gameObject.tag == ("AttackRange_Grass"))
-                {
+            }
+            else if (collision.gameObject.tag == ("AttackRange_Grass"))
+            {
                     GameObject prefab = Resources.Load("prefabs/DamageEffect_grass") as GameObject;
                     Instantiate(prefab, this.gameObject.transform.position, Quaternion.identity);
                     BossHp = BossHp - 2;
-                }
             }
+            
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //foreach (ContactPoint2D point in collision.contacts)
+        //{
+        //    hitpos = point.point; 
+        //}
+
+        //if(collision.gameObject.tag == ("AttackRange_Fire")|| collision.gameObject.tag == ("AttackRange_Water")|| 
+        //    collision.gameObject.tag == ("AttackRange_Grass"))
+        //{
+        //    Debug.Log("aaa");
+        //    foreach (ContactPoint2D point in collision.contacts)
+        //    {
+        //        hitpos = point.point;
+        //    }
+        //}
+
         if (collision.gameObject.tag == "Player")
         {
             
+
             if (isAnim == true)
             {
                 damage.BigDamage();

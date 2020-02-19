@@ -15,7 +15,7 @@ public class silverfox : MonoBehaviour
     public RuntimeAnimatorController Water;
     public RuntimeAnimatorController Grass;
     public GameObject Kin;
-    //goldfox gol;
+    public GameObject Checkpoint;
 
     private Animator animator;
 
@@ -455,6 +455,11 @@ public class silverfox : MonoBehaviour
     {
         animator.SetBool("Damage", true);
         enabled = false;
+    }
+
+    public void CheckP()
+    {
+        transform.position = Checkpoint.GetComponent<check>().checkpoint;
     }
 }
 

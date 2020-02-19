@@ -6,6 +6,7 @@ public class EnemyChoChiBlue : MonoBehaviour
 {
     int attackFlag = 0;
     int movementFlag = 0;
+     
 
     public bool isTracing;
     //bool isAttacking;
@@ -24,6 +25,8 @@ public class EnemyChoChiBlue : MonoBehaviour
 
     public GameObject bulletPLeft;
     public GameObject bulletPRight;
+
+    public GameObject count;
 
     private float timer;
     private float waitingTime;
@@ -255,10 +258,19 @@ public class EnemyChoChiBlue : MonoBehaviour
     //        StartCoroutine(E_Movement());
     //    }
     //}
+    public void tracking()
+    {        
+        isTracing = true;
+    }
+    public void Nottracking()
+    {
+        isTracing = false;
+    }
     void Update()
     {
         if (hp <= 0)
         {
+            
             Destroy(gameObject);
         }
     }

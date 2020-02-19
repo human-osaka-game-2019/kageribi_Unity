@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 79232577118695189}
   - component: {fileID: 79232577118695183}
   - component: {fileID: 5957606334012544815}
+  - component: {fileID: 4421826448400595223}
   - component: {fileID: 79232577118695184}
   - component: {fileID: 79232577118695186}
   - component: {fileID: 79232577118695187}
@@ -96,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9559093adbc80746985f81970e97e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTracing: 0
   movePower: 0.7
   Thung: {fileID: 9100000, guid: 346868858dc9a2a4ab128a215dc5c8ba, type: 2}
   Fireball: {fileID: 9100000, guid: a46273efff3403c4aaedce6d1f263abb, type: 2}
@@ -106,6 +108,35 @@ MonoBehaviour:
     type: 3}
   bulletPRight: {fileID: 7468366456079040992, guid: 9c2bee189dd89cf41af626e46455a44e,
     type: 3}
+  hp: 15
+  great_damage: 4
+  normal_damage: 2
+  poor_damage: 1
+--- !u!114 &4421826448400595223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79232577118695190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3961738eec2679b4495e9ff4f3a0c284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTracing: 0
+  movePower: 0.7
+  Thung: {fileID: 9100000, guid: 346868858dc9a2a4ab128a215dc5c8ba, type: 2}
+  Fireball: {fileID: 9100000, guid: a46273efff3403c4aaedce6d1f263abb, type: 2}
+  isMoving: {fileID: 9100000, guid: 7a3dd4f1efdb61f40a7435e4c2b179cc, type: 2}
+  player: {fileID: 0}
+  enemy: {fileID: 0}
+  bulletPLeft: {fileID: 0}
+  bulletPRight: {fileID: 0}
+  hp: 15
+  great_damage: 4
+  normal_damage: 2
+  poor_damage: 1
 --- !u!95 &79232577118695184
 Animator:
   serializedVersion: 3
