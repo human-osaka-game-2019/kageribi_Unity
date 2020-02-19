@@ -1787,7 +1787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: {fileID: 1795558537}
   silver: {fileID: 2050834708}
-  timeout: 5
+  timeout: 7.5
   time: 0
   fadespeed: 0.005
 --- !u!1 &891216292
@@ -52410,6 +52410,11 @@ PrefabInstance:
       value: gold_ukizima
       objectReference: {fileID: 0}
     - target: {fileID: 1543365276, guid: 0dc47e197d84aa641a22eddd4b5e96f2, type: 3}
+      propertyPath: m_TagString
+      value: floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432260160252465474, guid: 0dc47e197d84aa641a22eddd4b5e96f2,
+        type: 3}
       propertyPath: m_TagString
       value: floor
       objectReference: {fileID: 0}
