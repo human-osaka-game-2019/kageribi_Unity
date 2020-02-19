@@ -144,6 +144,8 @@ MonoBehaviour:
   HP: 20
   Gameover: {fileID: 1911695850}
   Hp_manager: {fileID: 1700698393}
+  gold: {fileID: 208873573}
+  silver: {fileID: 1811551723}
 --- !u!4 &15512745
 Transform:
   m_ObjectHideFlags: 0

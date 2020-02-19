@@ -7,10 +7,15 @@ public class bothHP : MonoBehaviour
     public int HP = 20;
     public GameObject Gameover;
     public GameObject Hp_manager;
+    public GameObject gold;
+    goldfox Goldstop;
+    public GameObject silver;
+    silverfox Silverstop;
     // Start is called before the first frame update
     void Start()
     {
-
+        Goldstop = GetComponent<goldfox>();
+        Silverstop = GetComponent<silverfox>();
     }
 
     // Update is called once per frame
@@ -19,6 +24,10 @@ public class bothHP : MonoBehaviour
         if (HP <= 0)
         {
             Gameover.SetActive(true);
+            Goldstop.goldStop();
+            Silverstop.silverStop();
+            Goldstop.enabled = false;
+            Silverstop.enabled = false;
         }
     }
     public void BigDamage()

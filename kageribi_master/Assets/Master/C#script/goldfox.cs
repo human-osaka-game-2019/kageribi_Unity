@@ -399,6 +399,9 @@ public class goldfox : MonoBehaviour
         }
 
     }
-
+    public void goldStop()
+    {
+        animator.SetBool("Damage", true);
+    }
 }
 
